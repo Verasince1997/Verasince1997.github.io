@@ -148,6 +148,87 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-my-new-doc" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/08/26/my-new-doc/">my new doc</a>
+    </h1>
+  
+
+        
+        <a href="/2024/08/26/my-new-doc/" class="archive-article-date">
+  	<time datetime="2024-08-26T11:25:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-08-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-scrapy"><a class="markdownIt-Anchor" href="#1-scrapy"></a> 1. Scrapy</h4>
+<p>我们已经知道如何获取网页源代码，解析数据。现在思考如何提高爬虫的规模，进而提高采集数据的“量”。Scrapy是基于Python的分布式爬虫框架。使用它可以非常方便地实现分布式爬虫。让开发者集中精力在数据的提取上。</p>
+<p>（1）使用Scrapy获取网络源代码。</p>
+<p>（2）在Scrapy中通过BeautifulSoup解析数据。</p>
+<p>（3）在Scrapy中使用MongoDB。</p>
+<p>（4）在Scrapy中使用Redis。</p>
+        
+          <a class="article-more-a" href="/2024/08/26/my-new-doc/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/爬虫//" class="article-tag-list-link color3">爬虫</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/08/26/my-new-doc/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-人文/也许你该找人聊聊" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -458,117 +539,6 @@
 
 
   
-    <article id="post-python/flask/路由与视图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/19/python/flask/%E8%B7%AF%E7%94%B1%E4%B8%8E%E8%A7%86%E5%9B%BE/">路由与视图</a>
-    </h1>
-  
-
-        
-        <a href="/2022/02/19/python/flask/%E8%B7%AF%E7%94%B1%E4%B8%8E%E8%A7%86%E5%9B%BE/" class="archive-article-date">
-  	<time datetime="2022-02-19T08:16:18.979Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.能够创建Py2和Py3版本的虚拟环境</p>
-<ul>
-<li>
-<p>查看虚拟环境版本：<br>
-<code>virtualenv --version</code></p>
-</li>
-<li>
-<p>创建虚拟环境：</p>
-</li>
-</ul>
-<p><code>mkvirtualenv -p python3 虚拟环境名称(指定python3.x)</code><br>
-<code>mkvirtualenv -p python3 py3_flask</code><br>
-<code>mkvirtualenv py3_flask</code></p>
-<ul>
-<li>
-<p>查看虚拟环境：<code>workon</code></p>
-</li>
-<li>
-<p>使用虚拟环境：<code>workon 虚拟环境名称</code></p>
-</li>
-</ul>
-<p>2.能够写出Flask从对象中加载配置的代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Config</span>(<span class="params">object</span>):</span></span><br><span class="line">    DEBUG = <span class="literal">True</span>;</span><br><span class="line">    </span><br><span class="line">app.config.from_object(Config)</span><br></pre></td></tr></table></figure>
-<p>3.能够说出url_for的作用</p>
-<p>通常和redirect一起使用，用以传递参数。url_for反解析：通过视图函数的名称返回地址，格式：<code>url_for('视图函数名称',key=value)</code></p>
-        
-          <a class="article-more-a" href="/2022/02/19/python/flask/%E8%B7%AF%E7%94%B1%E4%B8%8E%E8%A7%86%E5%9B%BE/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Flask</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Flask//" class="article-tag-list-link color1">Flask</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/02/19/python/flask/%E8%B7%AF%E7%94%B1%E4%B8%8E%E8%A7%86%E5%9B%BE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -666,11 +636,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">人文</a>
+                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">人文</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -683,14 +661,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">OJ tricks</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
               </li>
              
               <li class="article-tag-list-item">

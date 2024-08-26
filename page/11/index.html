@@ -148,6 +148,106 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-pat_basic/pat_basic_1053" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/02/02/pat_basic/pat_basic_1053/">PAT_Basic_1053 住房空置率</a>
+    </h1>
+  
+
+        
+        <a href="/2022/02/02/pat_basic/pat_basic_1053/" class="archive-article-date">
+  	<time datetime="2022-02-02T11:24:38.690Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在不打扰居民的前提下，统计住房空置率的一种方法是根据每户用电量的连续变化规律进行判断。判断方法如下：</p>
+<ul>
+<li>在观察期内，若存在超过一半的日子用电量低于某给定的阈值 <em>e</em>，则该住房为“可能空置”；</li>
+<li>若观察期超过某给定阈值 <em>D</em> 天，且满足上一个条件，则该住房为“空置”。</li>
+</ul>
+<p>现给定某居民区的住户用电量数据，请你统计“可能空置”的比率和“空置”比率，即以上两种状态的住房占居民区住房总套数的百分比。</p>
+<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
+<p>输入第一行给出正整数 <em>N</em>（≤1000），为居民区住房总套数；正实数 <em>e</em>，即低电量阈值；正整数 <em>D</em>，即观察期阈值。随后 <em>N</em> 行，每行按以下格式给出一套住房的用电量数据：</p>
+<p><em>K</em> <em>E</em>1 <em>E</em>2 … <em>E**K</em></p>
+<p>其中 <em>K</em> 为观察的天数，<em>E**i</em> 为第 <em>i</em> 天的用电量。</p>
+<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
+<p>在一行中输出“可能空置”的比率和“空置”比率的百分比值，其间以一个空格分隔，保留小数点后 1 位。</p>
+<h4 id="输入样例"><a class="markdownIt-Anchor" href="#输入样例"></a> 输入样例：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span> <span class="number">0.5</span> <span class="number">10</span></span><br><span class="line"><span class="number">6</span> <span class="number">0.3</span> <span class="number">0.4</span> <span class="number">0.5</span> <span class="number">0.2</span> <span class="number">0.8</span> <span class="number">0.6</span></span><br><span class="line"><span class="number">10</span> <span class="number">0.0</span> <span class="number">0.1</span> <span class="number">0.2</span> <span class="number">0.3</span> <span class="number">0.0</span> <span class="number">0.8</span> <span class="number">0.6</span> <span class="number">0.7</span> <span class="number">0.0</span> <span class="number">0.5</span></span><br><span class="line"><span class="number">5</span> <span class="number">0.4</span> <span class="number">0.3</span> <span class="number">0.5</span> <span class="number">0.1</span> <span class="number">0.7</span></span><br><span class="line"><span class="number">11</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span></span><br><span class="line"><span class="number">11</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0.1</span> <span class="number">1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span></span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2022/02/02/pat_basic/pat_basic_1053/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/02/02/pat_basic/pat_basic_1053/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-pat_basic/pat_basic_1052" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -534,91 +634,6 @@
 
 
   
-    <article id="post-pat_basic/刷题总结/专题：小tricks 11.23.26 AM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/30/pat_basic/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E4%B8%93%E9%A2%98%EF%BC%9A%E5%B0%8Ftricks%2011.23.26%20AM/">输入输出小技巧</a>
-    </h1>
-  
-
-        
-        <a href="/2022/01/30/pat_basic/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E4%B8%93%E9%A2%98%EF%BC%9A%E5%B0%8Ftricks%2011.23.26%20AM/" class="archive-article-date">
-  	<time datetime="2022-01-30T08:21:22.417Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>输出小数时保留精度，比如要保留两位小数，我之前用<code>cout&lt;&lt;fixed&lt;&lt;setprecision(2)&lt;&lt;xxx&lt;&lt;endl;</code>，现在觉得还是用<code>printf(&quot;%.2lf\n&quot;,num);</code>方便。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">OJ tricks</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/OJ//" class="article-tag-list-link color3">OJ</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/30/pat_basic/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E4%B8%93%E9%A2%98%EF%BC%9A%E5%B0%8Ftricks%2011.23.26%20AM/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/10/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/12/">Next &amp;raquo;</a>
@@ -716,11 +731,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">人文</a>
+                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">人文</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -733,14 +756,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">OJ tricks</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
               </li>
              
               <li class="article-tag-list-item">

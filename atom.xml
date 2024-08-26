@@ -6,7 +6,7 @@
   <link href="https://verasince1997.github.io/atom.xml" rel="self"/>
   
   <link href="https://verasince1997.github.io/"/>
-  <updated>2024-08-26T04:39:48.252Z</updated>
+  <updated>2024-08-26T11:27:24.105Z</updated>
   <id>https://verasince1997.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>my new doc</title>
+    <link href="https://verasince1997.github.io/2024/08/26/my-new-doc/"/>
+    <id>https://verasince1997.github.io/2024/08/26/my-new-doc/</id>
+    <published>2024-08-26T11:25:41.000Z</published>
+    <updated>2024-08-26T11:27:24.105Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="1-scrapy"><a class="markdownIt-Anchor" href="#1-scrapy"></a> 1. Scrapy</h4><p>我们已经知道如何获取网页源代码，解析数据。现在思考如何提高爬虫的规模，进而提高采集数据的“量”。Scrapy是基于Python的分布式爬虫框架。使用它可以非常方便地实现分布式爬虫。让开发者集中精力在数据的提取上。</p><p>（1）使用Scrapy获取网络源代码。</p><p>（2）在Scrapy中通过BeautifulSoup解析数据。</p><p>（3）在Scrapy中使用MongoDB。</p><p>（4）在Scrapy中使用Redis。<a id="more"></a></p><h5 id="11"><a class="markdownIt-Anchor" href="#11"></a> 1.1</h5><p>使用Scrapy创建工程的命令为：<code>scrapy startproject &lt;Your project name&gt;</code></p><p>比如我创建<code>scrapy startproject firstcrawl</code></p><p>由于Python在导入库的时候，会优先从当前工程文件夹中寻找满足条件的文件或者文件夹，如果工程的名称本身就为scrapy，那么Python就无法找到正常的Scrapy库的文件，这是对project name命名唯一的要求。</p><p>之后 <code>cd &lt;Your project name&gt;</code></p><p><code>scrapy genspider example &lt;url&gt;</code></p><p>在Scrapy genspider命令中，有两个参数，“example”和“url”。其中，第1个参数“example”是爬虫的名字，这个名字可以取英文和数字的组合，但是绝对不能为“scrapy”或者工程的名字。s第2个参数“url”是需要爬取的网址。注意url没有’www’。这是因为在浏览器中直接输入“<a href="http://baidu.com">baidu.com</a>”就可以打开百度的首页，输入’<a href="http://weread.qq.com">weread.qq.com</a>’就可以打开微信读书首页。</p><p>在Pycharm下打开刚生成的爬虫项目，</p>]]></content>
+    
+    
+    <summary type="html">&lt;h4 id=&quot;1-scrapy&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-scrapy&quot;&gt;&lt;/a&gt; 1. Scrapy&lt;/h4&gt;
+&lt;p&gt;我们已经知道如何获取网页源代码，解析数据。现在思考如何提高爬虫的规模，进而提高采集数据的“量”。Scrapy是基于Python的分布式爬虫框架。使用它可以非常方便地实现分布式爬虫。让开发者集中精力在数据的提取上。&lt;/p&gt;
+&lt;p&gt;（1）使用Scrapy获取网络源代码。&lt;/p&gt;
+&lt;p&gt;（2）在Scrapy中通过BeautifulSoup解析数据。&lt;/p&gt;
+&lt;p&gt;（3）在Scrapy中使用MongoDB。&lt;/p&gt;
+&lt;p&gt;（4）在Scrapy中使用Redis。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="爬虫" scheme="https://verasince1997.github.io/categories/%E7%88%AC%E8%99%AB/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>也许你该找人聊聊</title>
@@ -561,39 +585,6 @@
 &lt;h4 id=&quot;输出样例&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#输出样例&quot;&gt;&lt;/a&gt; 输出样例：&lt;/h4&gt;
 &lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h4 id=&quot;代码-more-&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#代码-more-&quot;&gt;&lt;/a&gt; 代码：&lt;/h4&gt;</summary>
-    
-    
-    
-    <category term="PAT (Basic Level) Practice" scheme="https://verasince1997.github.io/categories/PAT-Basic-Level-Practice/"/>
-    
-    
-    <category term="PAT (Basic Level) Practice" scheme="https://verasince1997.github.io/tags/PAT-Basic-Level-Practice/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PAT_Basic_1082 射击比赛</title>
-    <link href="https://verasince1997.github.io/2022/02/12/pat_basic/pat_basic_1082/"/>
-    <id>https://verasince1997.github.io/2022/02/12/pat_basic/pat_basic_1082/</id>
-    <published>2022-02-12T15:55:30.046Z</published>
-    <updated>2022-02-12T16:18:30.611Z</updated>
-    
-    <content type="html"><![CDATA[<p>本题目给出的射击比赛的规则非常简单，谁打的弹洞距离靶心最近，谁就是冠军；谁差得最远，谁就是菜鸟。本题给出一系列弹洞的平面坐标(x,y)，请你编写程序找出冠军和菜鸟。我们假设靶心在原点(0,0)。</p><h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4><p>输入在第一行中给出一个正整数 N（≤ 10 000）。随后 N 行，每行按下列格式给出：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ID x y</span><br></pre></td></tr></table></figure><p>其中 <code>ID</code> 是运动员的编号（由 4 位数字组成）；<code>x</code> 和 <code>y</code> 是其打出的弹洞的平面坐标(<code>x</code>,<code>y</code>)，均为整数，且 0 ≤ |<code>x</code>|, |<code>y</code>| ≤ 100。题目保证每个运动员的编号不重复，且每人只打 1 枪。</p><h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4><p>输出冠军和菜鸟的编号，中间空 1 格。题目保证他们是唯一的。</p><h4 id="输入样例"><a class="markdownIt-Anchor" href="#输入样例"></a> 输入样例：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">0001</span> <span class="number">5</span> <span class="number">7</span></span><br><span class="line"><span class="number">1020</span> <span class="number">-1</span> <span class="number">3</span></span><br><span class="line"><span class="number">0233</span> <span class="number">0</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure><h4 id="输出样例"><a class="markdownIt-Anchor" href="#输出样例"></a> 输出样例：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0233</span> <span class="number">0001</span></span><br></pre></td></tr></table></figure><h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码：</h4><p>其实最大距离就是<code>sqrt(pow(100,2)+pow(100,2))</code>;所以min可以设置为142。<a id="more"></a></p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">sqrt</span>(<span class="built_in">pow</span>(<span class="number">100</span>,<span class="number">2</span>)+<span class="built_in">pow</span>(<span class="number">100</span>,<span class="number">2</span>));<span class="comment">//141.421</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,x,y;</span><br><span class="line">    <span class="built_in">string</span> id,idMax,idMin;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="keyword">int</span> max=<span class="number">0</span>,min=<span class="number">99999</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;id&gt;&gt;x&gt;&gt;y;</span><br><span class="line">        <span class="keyword">int</span> dis=<span class="built_in">sqrt</span>(<span class="built_in">pow</span>(x,<span class="number">2</span>)+<span class="built_in">pow</span>(y,<span class="number">2</span>));</span><br><span class="line">        <span class="keyword">if</span>(dis&gt;max)&#123;</span><br><span class="line">            max=dis;</span><br><span class="line">            idMax=id;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(dis&lt;min)&#123;</span><br><span class="line">            min=dis;</span><br><span class="line">            idMin=id;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;idMin&lt;&lt;<span class="string">&#x27; &#x27;</span>&lt;&lt;idMax;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;本题目给出的射击比赛的规则非常简单，谁打的弹洞距离靶心最近，谁就是冠军；谁差得最远，谁就是菜鸟。本题给出一系列弹洞的平面坐标(x,y)，请你编写程序找出冠军和菜鸟。我们假设靶心在原点(0,0)。&lt;/p&gt;
-&lt;h4 id=&quot;输入格式&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#输入格式&quot;&gt;&lt;/a&gt; 输入格式：&lt;/h4&gt;
-&lt;p&gt;输入在第一行中给出一个正整数 N（≤ 10 000）。随后 N 行，每行按下列格式给出：&lt;/p&gt;
-&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ID x y&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;其中 &lt;code&gt;ID&lt;/code&gt; 是运动员的编号（由 4 位数字组成）；&lt;code&gt;x&lt;/code&gt; 和 &lt;code&gt;y&lt;/code&gt; 是其打出的弹洞的平面坐标(&lt;code&gt;x&lt;/code&gt;,&lt;code&gt;y&lt;/code&gt;)，均为整数，且 0 ≤ |&lt;code&gt;x&lt;/code&gt;|, |&lt;code&gt;y&lt;/code&gt;| ≤ 100。题目保证每个运动员的编号不重复，且每人只打 1 枪。&lt;/p&gt;
-&lt;h4 id=&quot;输出格式&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#输出格式&quot;&gt;&lt;/a&gt; 输出格式：&lt;/h4&gt;
-&lt;p&gt;输出冠军和菜鸟的编号，中间空 1 格。题目保证他们是唯一的。&lt;/p&gt;
-&lt;h4 id=&quot;输入样例&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#输入样例&quot;&gt;&lt;/a&gt; 输入样例：&lt;/h4&gt;
-&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;0001&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;7&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;1020&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;0233&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&quot;输出样例&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#输出样例&quot;&gt;&lt;/a&gt; 输出样例：&lt;/h4&gt;
-&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;0233&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;0001&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&quot;代码&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#代码&quot;&gt;&lt;/a&gt; 代码：&lt;/h4&gt;
-&lt;p&gt;其实最大距离就是&lt;code&gt;sqrt(pow(100,2)+pow(100,2))&lt;/code&gt;;所以min可以设置为142。&lt;/p&gt;</summary>
     
     
     

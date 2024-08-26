@@ -148,6 +148,106 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-pat_basic/pat_basic_1014" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/16/pat_basic/pat_basic_1014/">PAT_Basic_1014 福尔摩斯的约会</a>
+    </h1>
+  
+
+        
+        <a href="/2022/01/16/pat_basic/pat_basic_1014/" class="archive-article-date">
+  	<time datetime="2022-01-16T06:27:16.505Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>大侦探福尔摩斯接到一张奇怪的字条：“我们约会吧！</p>
+<p>3485djDkxh4hhGE<br>
+2984akDfkkkkggEdsb<br>
+s&amp;hgsfdk<br>
+d&amp;Hyscvnm<br>
+大侦探很快就明白了，字条上奇怪的乱码实际上就是约会的时间“星期四 14:04”，因为前面两字符串中第1对相同的大写英文字母（大小写有区分）是第4个字母’D’，代表星期四；第2对相同的字符是’E’，那是第5个英文字母，代表一天里的第14个钟头（于是一天的0点到23点由数字0到9、以及大写字母A到N表示）；后面两字符串第1对相同的英文字母’s’出现在第4个位置（从0开始计数）上，代表第4分钟。现给定两对字符串，请帮助福尔摩斯解码得到约会的时间。</p>
+<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
+<p>输入在4行中分别给出4个非空、不包含空格、且长度不超过60的字符串。</p>
+<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式:</h4>
+<p>在一行中输出约会的时间，格式为“DAY HH:MM”，其中“DAY”是某星期的3字符缩写,即MON表示星期一，TUE表示星期二，WED表示星期三，THU表示星期四，FRI表示星期五，SAT表示星期六，SUN表示星期日。题目输入保证每个测试存在唯一解。</p>
+<h4 id="输入样例"><a class="markdownIt-Anchor" href="#输入样例"></a> 输入样例：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3485</span>djDkxh4hhGE</span><br><span class="line"><span class="number">2984</span>akDfkkkkggEdsb</span><br><span class="line">s&amp;hgsfdk</span><br><span class="line">d&amp;Hyscvnm</span><br></pre></td></tr></table></figure>
+<h4 id="输出样例"><a class="markdownIt-Anchor" href="#输出样例"></a> 输出样例：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">THU <span class="number">14</span>:<span class="number">00</span></span><br></pre></td></tr></table></figure>
+<h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码：</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> ss;</span><br><span class="line">    <span class="keyword">int</span> counts=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">vector</span> &lt;<span class="built_in">string</span>&gt; v;</span><br><span class="line">    <span class="built_in">vector</span> &lt;<span class="keyword">char</span>&gt; v1,v3;</span><br><span class="line">    <span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; v2;</span><br><span class="line">    <span class="built_in">map</span> &lt;<span class="keyword">char</span>,<span class="built_in">string</span>&gt; m=&#123;&#123;<span class="string">&#x27;A&#x27;</span>,<span class="string">&quot;MON&quot;</span>&#125;,&#123;<span class="string">&#x27;B&#x27;</span>,<span class="string">&quot;TUE&quot;</span>&#125;,&#123;<span class="string">&#x27;C&#x27;</span>,<span class="string">&quot;WED&quot;</span>&#125;,&#123;<span class="string">&#x27;D&#x27;</span>,<span class="string">&quot;THU&quot;</span>&#125;,&#123;<span class="string">&#x27;E&#x27;</span>,<span class="string">&quot;FRI&quot;</span>&#125;,&#123;<span class="string">&#x27;F&#x27;</span>,<span class="string">&quot;SAT&quot;</span>&#125;,&#123;<span class="string">&#x27;G&#x27;</span>,<span class="string">&quot;SUN&quot;</span>&#125;&#125;;</span><br><span class="line">    <span class="built_in">map</span> &lt;<span class="keyword">char</span>,<span class="keyword">int</span>&gt; m1=&#123;&#123;<span class="string">&#x27;0&#x27;</span>,<span class="number">0</span>&#125;,&#123;<span class="string">&#x27;1&#x27;</span>,<span class="number">1</span>&#125;,&#123;<span class="string">&#x27;2&#x27;</span>,<span class="number">2</span>&#125;,&#123;<span class="string">&#x27;3&#x27;</span>,<span class="number">3</span>&#125;,&#123;<span class="string">&#x27;4&#x27;</span>,<span class="number">4</span>&#125;,&#123;<span class="string">&#x27;5&#x27;</span>,<span class="number">5</span>&#125;,&#123;<span class="string">&#x27;6&#x27;</span>,<span class="number">6</span>&#125;,&#123;<span class="string">&#x27;7&#x27;</span>,<span class="number">7</span>&#125;,&#123;<span class="string">&#x27;8&#x27;</span>,<span class="number">8</span>&#125;,&#123;<span class="string">&#x27;9&#x27;</span>,<span class="number">9</span>&#125;,&#123;<span class="string">&#x27;A&#x27;</span>,<span class="number">10</span>&#125;,&#123;<span class="string">&#x27;B&#x27;</span>,<span class="number">11</span>&#125;,&#123;<span class="string">&#x27;C&#x27;</span>,<span class="number">12</span>&#125;,&#123;<span class="string">&#x27;D&#x27;</span>,<span class="number">13</span>&#125;,&#123;<span class="string">&#x27;E&#x27;</span>,<span class="number">14</span>&#125;,&#123;<span class="string">&#x27;F&#x27;</span>,<span class="number">15</span>&#125;,&#123;<span class="string">&#x27;G&#x27;</span>,<span class="number">16</span>&#125;,&#123;<span class="string">&#x27;H&#x27;</span>,<span class="number">17</span>&#125;,&#123;<span class="string">&#x27;I&#x27;</span>,<span class="number">18</span>&#125;,&#123;<span class="string">&#x27;J&#x27;</span>,<span class="number">19</span>&#125;,&#123;<span class="string">&#x27;K&#x27;</span>,<span class="number">20</span>&#125;,&#123;<span class="string">&#x27;L&#x27;</span>,<span class="number">21</span>&#125;,&#123;<span class="string">&#x27;M&#x27;</span>,<span class="number">22</span>&#125;,&#123;<span class="string">&#x27;N&#x27;</span>,<span class="number">23</span>&#125;&#125;;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;ss;</span><br><span class="line">        v.push_back(ss);</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="built_in">string</span> ss1 = v[<span class="number">0</span>];</span><br><span class="line">   <span class="built_in">string</span> ss2 = v[<span class="number">1</span>];</span><br><span class="line">   <span class="built_in">string</span> ss3 = v[<span class="number">2</span>];</span><br><span class="line">   <span class="built_in">string</span> ss4 =  v[<span class="number">3</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>,j=<span class="number">0</span>; i &lt; ss1.length(),j&lt;ss2.length(); ++i,++j) &#123;</span><br><span class="line">        <span class="comment">//第一个相同的字符一定是A到G之间的大写字母，第二个相同的字符可能是A到N之间的大写字母也可以是数字0-9</span></span><br><span class="line">      <span class="keyword">if</span>(ss1[i]==ss2[j])&#123;</span><br><span class="line">          <span class="keyword">if</span>(counts==<span class="number">0</span> &amp;&amp; ss1[i]&gt;=<span class="string">&#x27;A&#x27;</span> &amp;&amp; ss1[i]&lt;=<span class="string">&#x27;G&#x27;</span>)&#123;</span><br><span class="line">              v1.push_back(ss1[i]);</span><br><span class="line">              counts++;</span><br><span class="line">          &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> ((ss1[i]&gt;=<span class="string">&#x27;A&#x27;</span> &amp;&amp; ss1[i]&lt;=<span class="string">&#x27;N&#x27;</span>) || (ss1[i]&gt;=<span class="string">&#x27;0&#x27;</span> &amp;&amp; ss1[i]&lt;=<span class="string">&#x27;9&#x27;</span>))&#123;</span><br><span class="line">                <span class="keyword">if</span>(counts == <span class="number">1</span>)&#123;</span><br><span class="line">                v1.push_back(ss1[i]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>; i&lt;ss3.length(),j&lt;ss4.length(); ++i,++j)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">isalpha</span>(ss3[i]) &amp;&amp; ss3[i]==ss4[j])</span><br><span class="line">        &#123;</span><br><span class="line">            v2.push_back(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;m[v1[<span class="number">0</span>]]&lt;&lt;<span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    <span class="built_in">cout</span>.<span class="built_in">fill</span>(<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">    <span class="built_in">cout</span>.<span class="built_in">width</span>(<span class="number">2</span>);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;m1[v1[<span class="number">1</span>]]&lt;&lt;<span class="string">&#x27;:&#x27;</span>;</span><br><span class="line">    <span class="built_in">cout</span>.<span class="built_in">fill</span>(<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">    <span class="built_in">cout</span>.<span class="built_in">width</span>(<span class="number">2</span>);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;v2[<span class="number">0</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/16/pat_basic/pat_basic_1014/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-pat_basic/pat_basic_1009" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -350,6 +450,98 @@
 
 
   
+    <article id="post-爬虫3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/15/%E7%88%AC%E8%99%AB3/">专题：爬虫：从入门到喜欢（三）</a>
+    </h1>
+  
+
+        
+        <a href="/2021/04/15/%E7%88%AC%E8%99%AB3/" class="archive-article-date">
+  	<time datetime="2021-04-15T05:29:43.877Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-scrapy"><a class="markdownIt-Anchor" href="#1-scrapy"></a> 1. Scrapy</h4>
+<p>我们已经知道如何获取网页源代码，解析数据。现在思考如何提高爬虫的规模，进而提高采集数据的“量”。Scrapy是基于Python的分布式爬虫框架。使用它可以非常方便地实现分布式爬虫。让开发者集中精力在数据的提取上。</p>
+<p>（1）使用Scrapy获取网络源代码。</p>
+<p>（2）在Scrapy中通过BeautifulSoup解析数据。</p>
+<p>（3）在Scrapy中使用MongoDB。</p>
+<p>（4）在Scrapy中使用Redis。</p>
+        
+          <a class="article-more-a" href="/2021/04/15/%E7%88%AC%E8%99%AB3/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">python 爬虫</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/爬虫//" class="article-tag-list-link color3">爬虫</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/04/15/%E7%88%AC%E8%99%AB3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-python/爬虫/爬虫2 11.23.15 AM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -413,228 +605,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/04/15/python/%E7%88%AC%E8%99%AB/%E7%88%AC%E8%99%AB2%2011.23.15%20AM/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python/flask/爬虫2 11.23.15 AM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/15/python/flask/%E7%88%AC%E8%99%AB2%2011.23.15%20AM/">专题：爬虫：从入门到喜欢（三）</a>
-    </h1>
-  
-
-        
-        <a href="/2021/04/15/python/flask/%E7%88%AC%E8%99%AB2%2011.23.15%20AM/" class="archive-article-date">
-  	<time datetime="2021-04-15T05:29:43.877Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-scrapy"><a class="markdownIt-Anchor" href="#1-scrapy"></a> 1. Scrapy</h4>
-<p>我们已经知道如何获取网页源代码，解析数据。现在思考如何提高爬虫的规模，进而提高采集数据的“量”。Scrapy是基于Python的分布式爬虫框架。使用它可以非常方便地实现分布式爬虫。让开发者集中精力在数据的提取上。</p>
-<p>（1）使用Scrapy获取网络源代码。</p>
-<p>（2）在Scrapy中通过BeautifulSoup解析数据。</p>
-<p>（3）在Scrapy中使用MongoDB。</p>
-<p>（4）在Scrapy中使用Redis。</p>
-        
-          <a class="article-more-a" href="/2021/04/15/python/flask/%E7%88%AC%E8%99%AB2%2011.23.15%20AM/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">python 爬虫</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/爬虫//" class="article-tag-list-link color3">爬虫</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/15/python/flask/%E7%88%AC%E8%99%AB2%2011.23.15%20AM/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python/爬虫/爬虫1 11.23.15 AM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/15/python/%E7%88%AC%E8%99%AB/%E7%88%AC%E8%99%AB1%2011.23.15%20AM/">专题：爬虫：从入门到喜欢（一）</a>
-    </h1>
-  
-
-        
-        <a href="/2021/04/15/python/%E7%88%AC%E8%99%AB/%E7%88%AC%E8%99%AB1%2011.23.15%20AM/" class="archive-article-date">
-  	<time datetime="2021-04-15T01:56:23.345Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-正则表达式"><a class="markdownIt-Anchor" href="#1-正则表达式"></a> 1. 正则表达式</h4>
-<h5 id="11-基本符号"><a class="markdownIt-Anchor" href="#11-基本符号"></a> 1.1 基本符号</h5>
-<table>
-<thead>
-<tr>
-<th>符号</th>
-<th style="text-align:center">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>.</td>
-<td style="text-align:center">一个点号可以代替除了换行符以外的任何一个字符，包括但不限于英文字母、数字、汉字、英文标点符号和中文标点符号</td>
-</tr>
-<tr>
-<td>*</td>
-<td style="text-align:center">一个星号可以表示它前面的一个子表达式（普通字符、另一个或几个正则表达式符号）0次到无限次。</td>
-</tr>
-<tr>
-<td>?</td>
-<td style="text-align:center">问号表示它前面的子表达式0次或者1次。注意，这里的问号是英文问号。</td>
-</tr>
-<tr>
-<td>.*?</td>
-<td style="text-align:center">问号最大的用处是与点号和星号配合起来使用，构成“.*? ”。通过正则表达式来提取信息的时候，是用到最多的组合。</td>
-</tr>
-<tr>
-<td>.* 和.*?</td>
-<td style="text-align:center">. * 是贪婪匹配，获取最长的满足条件的字符串。.*?是非贪婪，匹配一个能满足要求的最短字符串。</td>
-</tr>
-<tr>
-<td>\</td>
-<td style="text-align:center">反斜杠需要和其他的字符配合使用来把特殊符号变成普通符号，把普通符号变成特殊符号。在使用了反斜杠以后，反斜杠和它后面的一个字符构成一个整体，因此应该将“\n”看成一个字符，而不是两个字符。</td>
-</tr>
-<tr>
-<td>\d</td>
-<td style="text-align:center">正则表达式里面使用“\d”来表示一位数字。为什么要用字母d呢？因为d是英文“digital（数字）”的首字母。</td>
-</tr>
-<tr>
-<td>()</td>
-<td style="text-align:center">小括号可以把括号里面的内容提取出来。</td>
-</tr>
-</tbody>
-</table>
-        
-          <a class="article-more-a" href="/2021/04/15/python/%E7%88%AC%E8%99%AB/%E7%88%AC%E8%99%AB1%2011.23.15%20AM/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">python 爬虫</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/爬虫//" class="article-tag-list-link color3">爬虫</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/15/python/%E7%88%AC%E8%99%AB/%E7%88%AC%E8%99%AB1%2011.23.15%20AM/">展开全文 >></a>
         </p>
       
 
@@ -761,11 +731,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">人文</a>
+                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">人文</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -778,14 +756,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">OJ tricks</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
