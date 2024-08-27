@@ -1,37 +1,733 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="flask," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="jueluo" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="项目概述 使用flask模板语法实现前端界面的继承，有网站首页和每条新闻详情页，以及热门新闻的展示。接着有用户中心管理界面以及另一个全新板块—管理员板块，管理员登录，管理员首页。以上即本项目的架构，书写思路为按蓝图板块进行。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="China Daily蓝图架构">
+<meta property="og:url" content="https://verasince1997.github.io/2021/02/08/python/flask/China%20Daily%E8%93%9D%E5%9B%BE%E6%9E%B6%E6%9E%84/index.html">
+<meta property="og:site_name" content="jueluo">
+<meta property="og:description" content="项目概述 使用flask模板语法实现前端界面的继承，有网站首页和每条新闻详情页，以及热门新闻的展示。接着有用户中心管理界面以及另一个全新板块—管理员板块，管理员登录，管理员首页。以上即本项目的架构，书写思路为按蓝图板块进行。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-02-08T07:03:05.905Z">
+<meta property="article:modified_time" content="2022-02-20T03:00:12.437Z">
+<meta property="article:author" content="jueluo 深圳之恋">
+<meta property="article:tag" content="flask">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://verasince1997.github.io/2021/02/08/python/flask/China Daily蓝图架构/"/>
+
+
+
+
+
+  <title>China Daily蓝图架构 | jueluo</title>
+  
+
+
+
+
+
+
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jueluo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://verasince1997.github.io/2021/02/08/python/flask/China%20Daily%E8%93%9D%E5%9B%BE%E6%9E%B6%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jueluo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">China Daily蓝图架构</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-08T15:03:05+08:00">
+                2021-02-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flask/" itemprop="url" rel="index">
+                    <span itemprop="name">Flask</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h5 id="项目概述"><a class="markdownIt-Anchor" href="#项目概述"></a> 项目概述</h5>
+<p>使用flask模板语法实现前端界面的继承，有网站首页和每条新闻详情页，以及热门新闻的展示。接着有用户中心管理界面以及另一个全新板块—管理员板块，管理员登录，管理员首页。以上即本项目的架构，书写思路为按蓝图板块进行。</p>
+<span id="more"></span>
+<h5 id="index"><a class="markdownIt-Anchor" href="#index"></a> index</h5>
+<p>China Daily的首页，（其实我也不知道什么时候讲模板的继承，因为你不分析完index和detail，你怎么抽取相同的部分），首页有分类新闻，分类包括（最新，股市，商品，财经）默认显示最新一类，点击其他分类即跳转到查询到的相关新闻。所以首页的第二大板块就是新闻列表展示，并且要做成下拉实现分页加载。第三个板块是热门新闻排行，第四个板块是右上角的用户信息，如果没登录显示登录和注册表单，如果登录了显示用户信息，包括头像、用户名，并且它们上面有跳转至用户中心的超链接。</p>
+<h5 id="news"><a class="markdownIt-Anchor" href="#news"></a> news</h5>
+<p>China Daily的新闻详情页，（说完它的几大板块，我就可以把它和index的板块结合起来，抽取相同部分，做成base）新闻详情页第一大板块是前端拼出来的新闻详情，包括标题、创建时间、来源、作者、内容。第二大板块是评论板块，这里面复杂的东西可多了，父级评论，评论点赞。第三大板块是作者板块，这里的逻辑也多，比如你关注了此篇文章的作者，你刷他的新文章，那么显示已关注，而不是还可以再次关注，同样，你刷自己的新闻，不能自己关注自己，以及你关注一个没关注过的作者，前端的粉丝数+1，后端数据库里info_user_fans更新数据。第四大板块是热门新闻排行。</p>
+<h5 id="插播一个basehtml"><a class="markdownIt-Anchor" href="#插播一个basehtml"></a> 插播一个base.html</h5>
+<p>鉴于index和detail的共同之处，为了优雅，抽取相同的部分作为base，base包含6大模块，(titileblock, headerblock,footerblock,contentblock,rankblock,authorblock)，index继承base，修改的有titileblock，headerblock,contentblock，news继承base，修改titileblock，contentblock。</p>
+<h5 id="profile"><a class="markdownIt-Anchor" href="#profile"></a> profile</h5>
+<p>China Daily的用户中心，包括个人资料，头像修改，密码修改，（这个为啥不做到一起，像新闻发布，整个form表单，我是不是又发现可以优化的地方了（但我不想优化，哈哈哈哈，突然想到徐志摩的“但我不能放歌，悄悄是别离的笙箫，夏虫也为我沉默。沉默是今晚的康桥！”））我的关注，我的收藏，新闻发布，新闻列表(即自己发过的所有的新闻)。profile的路由规则为user/info，也可以继承base模版，具体来说，修改titleblock,contentblock,rankblock。</p>
+<h5 id="admin"><a class="markdownIt-Anchor" href="#admin"></a> admin</h5>
+<p>China Daily的管理员模块，其实这儿可以优化，除了/admin/login可以登录，普通用户使用的右上角的登录表单，admin就不能登上？然后大戏是/admin/index，相当于user/info的用户中心，功能分为两大方向，一是用户管理（包括用户统计，用户列表），二是新闻管理（包括新闻审核，新闻编辑，新闻分类）。</p>
+<h5 id="passport"><a class="markdownIt-Anchor" href="#passport"></a> passport</h5>
+<p>China Daily的登录验证模块，正好，我刚才不是先优化管理员登录，其实我认为管理员单独增加一个login.html，然后等着admin里的admin_login()视图函数来渲染挺洋气官方的，但是如果能做成管理员也能通过普通用户登录方式登录成功最好。（这个问题暂时搁置）</p>
+<p>passport的视图函数包括image_code()，sms_code()，register()，login()，logout()，打一段可能不如把视图函数名摆上来，即注册登录表单的图形验证码，短信验证码。注册完成后的登录，登出。</p>
+<p>以上就是5大蓝图板块，就像架构一样，现在目录已经清晰了。下篇博客进入更深层的思考，哪些功能是逻辑相似，代码可复用的。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/flask/" rel="tag"># flask</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/02/02/%E4%BA%BA%E6%96%87/%E6%96%87%E5%AD%A6%E7%9A%84%E6%95%85%E4%B9%A1%2011.24.12%20AM%2011.24.25%20AM/" rel="next" title="文学的故乡">
+                <i class="fa fa-chevron-left"></i> 文学的故乡
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/02/08/python/flask/China%20Daily%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8/" rel="prev" title="China Daily代码复用">
+                China Daily代码复用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">137</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text"> 项目概述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#index"><span class="nav-number">2.</span> <span class="nav-text"> index</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#news"><span class="nav-number">3.</span> <span class="nav-text"> news</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8F%92%E6%92%AD%E4%B8%80%E4%B8%AAbasehtml"><span class="nav-number">4.</span> <span class="nav-text"> 插播一个base.html</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#profile"><span class="nav-number">5.</span> <span class="nav-text"> profile</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#admin"><span class="nav-number">6.</span> <span class="nav-text"> admin</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#passport"><span class="nav-number">7.</span> <span class="nav-text"> passport</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jueluo 深圳之恋</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

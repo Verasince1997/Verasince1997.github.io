@@ -1,37 +1,815 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python 爬虫," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="jueluo" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="1. 正则表达式  1.1 基本符号    符号 含义     . 一个点号可以代替除了换行符以外的任何一个字符，包括但不限于英文字母、数字、汉字、英文标点符号和中文标点符号   * 一个星号可以表示它前面的一个子表达式（普通字符、另一个或几个正则表达式符号）0次到无限次。   ? 问号表示它前面的子表达式0次或者1次。注意，这里的问号是英文问号。   .*? 问号最大的用处是与点号和星号配合起">
+<meta property="og:type" content="article">
+<meta property="og:title" content="专题：爬虫：从入门到喜欢（一）">
+<meta property="og:url" content="https://verasince1997.github.io/2021/04/15/python/%E7%88%AC%E8%99%AB/%E7%88%AC%E8%99%AB1%2011.23.15%20AM/index.html">
+<meta property="og:site_name" content="jueluo">
+<meta property="og:description" content="1. 正则表达式  1.1 基本符号    符号 含义     . 一个点号可以代替除了换行符以外的任何一个字符，包括但不限于英文字母、数字、汉字、英文标点符号和中文标点符号   * 一个星号可以表示它前面的一个子表达式（普通字符、另一个或几个正则表达式符号）0次到无限次。   ? 问号表示它前面的子表达式0次或者1次。注意，这里的问号是英文问号。   .*? 问号最大的用处是与点号和星号配合起">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-04-15T01:56:23.345Z">
+<meta property="article:modified_time" content="2021-06-01T03:11:47.840Z">
+<meta property="article:author" content="jueluo 深圳之恋">
+<meta property="article:tag" content="python 爬虫">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://verasince1997.github.io/2021/04/15/python/爬虫/爬虫1 11.23.15 AM/"/>
+
+
+
+
+
+  <title>专题：爬虫：从入门到喜欢（一） | jueluo</title>
+  
+
+
+
+
+
+
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jueluo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://verasince1997.github.io/2021/04/15/python/%E7%88%AC%E8%99%AB/%E7%88%AC%E8%99%AB1%2011.23.15%20AM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jueluo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">专题：爬虫：从入门到喜欢（一）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-15T09:56:23+08:00">
+                2021-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%88%AC%E8%99%AB/" itemprop="url" rel="index">
+                    <span itemprop="name">爬虫</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="1-正则表达式"><a class="markdownIt-Anchor" href="#1-正则表达式"></a> 1. 正则表达式</h4>
+<h5 id="11-基本符号"><a class="markdownIt-Anchor" href="#11-基本符号"></a> 1.1 基本符号</h5>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.</td>
+<td style="text-align:center">一个点号可以代替除了换行符以外的任何一个字符，包括但不限于英文字母、数字、汉字、英文标点符号和中文标点符号</td>
+</tr>
+<tr>
+<td>*</td>
+<td style="text-align:center">一个星号可以表示它前面的一个子表达式（普通字符、另一个或几个正则表达式符号）0次到无限次。</td>
+</tr>
+<tr>
+<td>?</td>
+<td style="text-align:center">问号表示它前面的子表达式0次或者1次。注意，这里的问号是英文问号。</td>
+</tr>
+<tr>
+<td>.*?</td>
+<td style="text-align:center">问号最大的用处是与点号和星号配合起来使用，构成“.*? ”。通过正则表达式来提取信息的时候，是用到最多的组合。</td>
+</tr>
+<tr>
+<td>.* 和.*?</td>
+<td style="text-align:center">. * 是贪婪匹配，获取最长的满足条件的字符串。.*?是非贪婪，匹配一个能满足要求的最短字符串。</td>
+</tr>
+<tr>
+<td>\</td>
+<td style="text-align:center">反斜杠需要和其他的字符配合使用来把特殊符号变成普通符号，把普通符号变成特殊符号。在使用了反斜杠以后，反斜杠和它后面的一个字符构成一个整体，因此应该将“\n”看成一个字符，而不是两个字符。</td>
+</tr>
+<tr>
+<td>\d</td>
+<td style="text-align:center">正则表达式里面使用“\d”来表示一位数字。为什么要用字母d呢？因为d是英文“digital（数字）”的首字母。</td>
+</tr>
+<tr>
+<td>()</td>
+<td style="text-align:center">小括号可以把括号里面的内容提取出来。</td>
+</tr>
+</tbody>
+</table>
+<span id="more"></span>
+<h5 id="12-re模块"><a class="markdownIt-Anchor" href="#12-re模块"></a> 1.2 re模块</h5>
+<table>
+<thead>
+<tr>
+<th>语法</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>re.findall(pattern, string,flags=0)</td>
+<td>pattern是正则表达式，string是待处理的字符串，flags是一些特殊功能的标志。findall即以列表的形式返回所有满足要求的字符串。</td>
+</tr>
+<tr>
+<td>re.search(pattern, string,flags=0)</td>
+<td>search()的用法和findall()的用法一样，但是search()只会返回第1个满足要求的字符串。</td>
+</tr>
+<tr>
+<td>re.match(pattern, string, flags=0)</td>
+<td>从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回none。</td>
+</tr>
+<tr>
+<td>re.compile(pattern[, flags])</td>
+<td>用于编译正则表达式，生成一个正则表达式（ Pattern ）对象，供 match() 和 search() 这两个函数使用。</td>
+</tr>
+<tr>
+<td>re.sub(pattern, repl, string, count=0, flags=0)</td>
+<td>pattern是正则表达式。 repl是替换的字符串，也可为一个函数。 string : 要被查找替换的原始字符串。 count : 模式匹配后替换的最大次数，默认 0 表示替换所有的匹配。</td>
+</tr>
+<tr>
+<td>re.split(pattern, string[, maxsplit=0, flags=0])</td>
+<td>split 方法按照能够匹配的子串将字符串分割后返回列表。</td>
+</tr>
+</tbody>
+</table>
+<p>re.match只匹配字符串的开始，如果字符串开始不符合正则表达式，则匹配失败，函数返回None；而re.search匹配整个字符串，直到找到一个匹配。</p>
+<h4 id="2-获取网页内容"><a class="markdownIt-Anchor" href="#2-获取网页内容"></a> 2. 获取网页内容</h4>
+<h5 id="21-requests"><a class="markdownIt-Anchor" href="#21-requests"></a> 2.1 requests</h5>
+<p>相信你入门爬虫，一定会看到很多模块，明白谁和谁是相同的效果，并且两者中谁能更便利得到达这个相同的效果，模块urllib和urllib2与第三方库requests就是这样的关系，都能通过请求url，获取网页源代码。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用requests库获取网页源代码</span></span><br><span class="line"><span class="comment"># 对于使用GET方式的网页，在Python里面可以使用requests的get()方法获取网页的源代码：</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url = <span class="string">&#x27;https://weread.qq.com&#x27;</span></span><br><span class="line">html = requests.get(url).content.decode()</span><br><span class="line"><span class="comment"># 使用POST方式获取网站源代码</span></span><br><span class="line">url =<span class="string">&#x27;http://exercise.kingname.info/exercise_requests_post&#x27;</span></span><br><span class="line">data = &#123;<span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;jueluo&#x27;</span>,</span><br><span class="line">       <span class="string">&#x27;password&#x27;</span>:<span class="string">&#x27;7777&#x27;</span>&#125;</span><br><span class="line">html = requests.post(url,data=data).content.decode()</span><br></pre></td></tr></table></figure>
+<h5 id="22-beautifulsoup"><a class="markdownIt-Anchor" href="#22-beautifulsoup"></a> 2.2 BeautifulSoup</h5>
+<p>使用BeautifulSoup的两个经典步骤：</p>
+<p>（1）处理源代码生成BeautifulSoup对象。获取网页源代码后，将html以’lxml’的格式“喂”给bs4模块的BeautifulSoup，做成美味的汤汁吧。</p>
+<p>（2）使用find_all()或者find()来查找内容。 find()与find_all()的不同点如下。find_all()返回的是BeautifulSoup Tag对象组成的列表，如果没有找到任何满足要求的标签，就会返回空列表。find()返回的是一个BeautifulSoup Tag对象，如果有多个符合条件的HTML标签，则返回第1个对象，如果找不到就会返回None。</p>
+<p>除了获取标签里面的文本外，BS4也可以获取标签里面的属性值。如果想获取某个属性值，可以将BeautifulSoup Tag对象看成字典，将属性名当作Key，比如find(‘div’)[‘class’]返回的结果为列表。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line">soup = BeautifulSoup(html,<span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">div_list = soup.find_all(<span class="string">&#x27;div&#x27;</span>,class_=<span class="string">&#x27;ranking_block_book&#x27;</span>)</span><br><span class="line">len(div_list)</span><br><span class="line">[print(i.get_text().strip()) <span class="keyword">for</span> i <span class="keyword">in</span> div_list]</span><br></pre></td></tr></table></figure>
+<h4 id="3-多线程爬虫"><a class="markdownIt-Anchor" href="#3-多线程爬虫"></a> 3. 多线程爬虫</h4>
+<p>单线程爬虫只有一个进程、一个线程。单线程爬虫每次只访问一个页面，不能充分利用计算机的网络带宽。</p>
+<p>Python的全局解释器锁（GlobalInterpreter Lock, GIL）导致Python的多线程都是伪多线程，即本质上还是一个线程，微观上的单线程，在宏观上就像同时在做几件事。这种机制在I/O（Input/Output，输入/输出）密集型的操作上影响不大，但是在CPU计算密集型的操作上面，由于只能使用CPU的一个核，就会对性能产生非常大的影响。所以涉及计算密集型的程序，就需要使用多进程，Python的多进程不受GIL的影响。爬虫属于I/O密集型的程序，所以使用多线程可以大大提高爬取效率。</p>
+<p>Python的多进程库multiprocessing，用来处理与多进程相关的操作。但是由于进程与进程之间不能直接共享内存和堆栈资源，而且启动新的进程开销也比线程大得多，使用多线程来爬取比使用多进程有更多的优势。</p>
+<p>multiprocessing下面有一个dummy模块，它可以让Python的线程使用multiprocessing的各种方法。dummy下面的Pool类，用来实现线程池。这个线程池有一个map()方法，可以让线程池里面的所有线程都“同时”执行一个函数。</p>
+<p>线程池的map()方法接收两个参数，第1个参数是函数名，第2个参数是一个列表。注意：第1个参数仅仅是函数的名字，是不能带括号的。第2个参数是一个可迭代的对象，这个可迭代对象里面的每一个元素都会被函数clac_power2()接收来作为参数。除了列表以外，元组、集合或者字典都可以作为map()的第2个参数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> multiprocessing <span class="keyword">as</span> mp</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="comment"># 单线程循环100次</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">query</span>(<span class="params">url</span>):</span></span><br><span class="line">    requests.get(url)</span><br><span class="line">time0 = time()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</span><br><span class="line">    query(<span class="string">&#x27;https://weread.qq.com&#x27;</span>)</span><br><span class="line">print(<span class="string">&#x27;total time is &#123;&#125;&#x27;</span>.format(</span><br><span class="line">    datetime.fromtimestamp(time()-time0).strftime(<span class="string">&#x27;%M:%S:%f&#x27;</span>))) <span class="comment"># total time is 01:25:539812</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 多线程访问</span></span><br><span class="line"><span class="keyword">from</span> multiprocessing.dummy <span class="keyword">import</span> Pool</span><br><span class="line">time0= time()</span><br><span class="line">pool = Pool(<span class="number">3</span>)</span><br><span class="line">url_list = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</span><br><span class="line">    url_list.append(<span class="string">&#x27;https://weread.qq.com&#x27;</span>)</span><br><span class="line">pool.map(query,url_list)</span><br><span class="line">print(<span class="string">&#x27;total time is &#123;&#125;&#x27;</span>.format(</span><br><span class="line">    datetime.fromtimestamp(time()-time0).strftime(<span class="string">&#x27;%M:%S:%f&#x27;</span>))) <span class="comment"># total time is 00:37:849633</span></span><br></pre></td></tr></table></figure>
+<p>可以看到适当的线程个数会让程序执行时间缩短。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python-%E7%88%AC%E8%99%AB/" rel="tag"># python 爬虫</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/03/31/%E7%AE%97%E6%B3%95/XGBoost/" rel="next" title="XGBoost">
+                <i class="fa fa-chevron-left"></i> XGBoost
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/04/15/python/%E7%88%AC%E8%99%AB/%E7%88%AC%E8%99%AB2%2011.23.15%20AM/" rel="prev" title="专题：爬虫：从入门到喜欢（二）">
+                专题：爬虫：从入门到喜欢（二） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">137</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text"> 1. 正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#11-%E5%9F%BA%E6%9C%AC%E7%AC%A6%E5%8F%B7"><span class="nav-number">1.1.</span> <span class="nav-text"> 1.1 基本符号</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#12-re%E6%A8%A1%E5%9D%97"><span class="nav-number">1.2.</span> <span class="nav-text"> 1.2 re模块</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%8E%B7%E5%8F%96%E7%BD%91%E9%A1%B5%E5%86%85%E5%AE%B9"><span class="nav-number">2.</span> <span class="nav-text"> 2. 获取网页内容</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#21-requests"><span class="nav-number">2.1.</span> <span class="nav-text"> 2.1 requests</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#22-beautifulsoup"><span class="nav-number">2.2.</span> <span class="nav-text"> 2.2 BeautifulSoup</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%88%AC%E8%99%AB"><span class="nav-number">3.</span> <span class="nav-text"> 3. 多线程爬虫</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jueluo 深圳之恋</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

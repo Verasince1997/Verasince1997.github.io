@@ -1,37 +1,752 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="flask," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="jueluo" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="行文逻辑 先列出5大蓝图里的视图函数，通过和前端的显示，看出哪些之间相似，可以复用，这是从深层角度挖掘项目的功能模块，从而记忆更深刻。  index 先写出视图函数show_index()，news_list()，favicon()，handler_error()。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="China Daily代码复用">
+<meta property="og:url" content="https://verasince1997.github.io/2021/02/08/python/flask/China%20Daily%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8/index.html">
+<meta property="og:site_name" content="jueluo">
+<meta property="og:description" content="行文逻辑 先列出5大蓝图里的视图函数，通过和前端的显示，看出哪些之间相似，可以复用，这是从深层角度挖掘项目的功能模块，从而记忆更深刻。  index 先写出视图函数show_index()，news_list()，favicon()，handler_error()。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-02-08T07:47:54.565Z">
+<meta property="article:modified_time" content="2022-02-20T03:00:09.427Z">
+<meta property="article:author" content="jueluo 深圳之恋">
+<meta property="article:tag" content="flask">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://verasince1997.github.io/2021/02/08/python/flask/China Daily代码复用/"/>
+
+
+
+
+
+  <title>China Daily代码复用 | jueluo</title>
+  
+
+
+
+
+
+
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jueluo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://verasince1997.github.io/2021/02/08/python/flask/China%20Daily%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jueluo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">China Daily代码复用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-08T15:47:54+08:00">
+                2021-02-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flask/" itemprop="url" rel="index">
+                    <span itemprop="name">Flask</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h5 id="行文逻辑"><a class="markdownIt-Anchor" href="#行文逻辑"></a> 行文逻辑</h5>
+<p>先列出5大蓝图里的视图函数，通过和前端的显示，看出哪些之间相似，可以复用，这是从深层角度挖掘项目的功能模块，从而记忆更深刻。</p>
+<h5 id="index"><a class="markdownIt-Anchor" href="#index"></a> index</h5>
+<p>先写出视图函数show_index()，news_list()，favicon()，handler_error()。</p>
+<span id="more"></span>
+<h5 id="news"><a class="markdownIt-Anchor" href="#news"></a> news</h5>
+<p>followed_user()，news_detail()，news_collect()，news_comment()，comment_like()</p>
+<h5 id="profile"><a class="markdownIt-Anchor" href="#profile"></a> profile</h5>
+<p>user_index()，base_info()，pic_info()，pass_info()，collection()，news_release()，news_list()，user_follow()。</p>
+<p>profile里的collection()和user_follow()属于逻辑相似，均为判断是否为get请求，然后获取参数，参数校验，参数判空，然后根据参数去数据库查询对象，把对象转为字典对象，渲染给页面，返回响应。（提示：这和admin中的视图函数高度重合）</p>
+<h5 id="admin"><a class="markdownIt-Anchor" href="#admin"></a> admin</h5>
+<p>admin_login()，admin_index()，news_review()，news_review_detail()，news_edit()，news_edit_detail()，news_category()，add_category()，user_count()，user_list()</p>
+<p>其中news_review_detail()，news_edit_detail()都可以用profile中的news_release()。news_review()，news_edit()，user_list()可以用profile中的news_list()。</p>
+<h5 id="复用第一步"><a class="markdownIt-Anchor" href="#复用第一步"></a> 复用第一步</h5>
+<p>秉持着先知道什么就先写好什么的原则，我把上面归纳出来的可复用的模块写出各自的逻辑,先说profile里的collection()和user_follow()，你也可以看看两者代码是不是高度相似：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@profile_bp.route(&#x27;/collection&#x27;, methods=[&#x27;POST&#x27;, &#x27;GET&#x27;])</span></span><br><span class="line"><span class="meta">@user_login_data</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">collection</span>():</span></span><br><span class="line">    <span class="comment"># 1. 获取参数,p(页数)</span></span><br><span class="line">    page = request.args.get(<span class="string">&quot;p&quot;</span>, <span class="string">&quot;1&quot;</span>)</span><br><span class="line">    <span class="comment"># 2. 参数类型转换</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        page = int(page)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        current_app.logger.debug(e)</span><br><span class="line">        <span class="keyword">return</span> jsonify(errno=RET.PARAMERR, errmsg=<span class="string">&quot;页数格式错误&quot;</span>)</span><br><span class="line">    <span class="comment"># 3. 分页查询收藏的新闻</span></span><br><span class="line">    paginate = g.user.collection_news.order_by(News.create_time.desc()).paginate(page, <span class="number">2</span>, <span class="literal">False</span>)</span><br><span class="line">    <span class="comment"># 4. 获取分页对象属性,总页数,当前页,当前页对象列表</span></span><br><span class="line">    totalPage = paginate.pages</span><br><span class="line">    currentPage = paginate.page</span><br><span class="line">    items = paginate.items</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 5. 将对象列表,转成字典列表</span></span><br><span class="line">    collect_news_list = []</span><br><span class="line">    <span class="keyword">for</span> news <span class="keyword">in</span> items:</span><br><span class="line">        collect_news_list.append(news.to_dict())</span><br><span class="line">    <span class="comment"># 6. 拼接数据,渲染页面</span></span><br><span class="line">    data = &#123;</span><br><span class="line">        <span class="string">&quot;totalPage&quot;</span>: totalPage,</span><br><span class="line">        <span class="string">&quot;currentPage&quot;</span>: currentPage,</span><br><span class="line">        <span class="string">&quot;news_list&quot;</span>: collect_news_list</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;news/user_collection.html&#x27;</span>, data=data)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@profile_bp.route(&#x27;user_follow&#x27;, methods=[&#x27;POST&#x27;, &#x27;GET&#x27;])</span></span><br><span class="line"><span class="meta">@user_login_data</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">user_follow</span>():</span></span><br><span class="line">    <span class="comment"># 1. 获取参数,p(页数)</span></span><br><span class="line">    page = request.args.get(<span class="string">&quot;p&quot;</span>, <span class="string">&quot;1&quot;</span>)</span><br><span class="line">    <span class="comment"># 2. 参数类型转换</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        page = int(page)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        current_app.logger.debug(e)</span><br><span class="line">        <span class="keyword">return</span> jsonify(errno=RET.PARAMERR, errmsg=<span class="string">&quot;页数格式错误&quot;</span>)</span><br><span class="line">    <span class="comment"># 3.分页查询用户关注的人</span></span><br><span class="line">    paginate = g.user.followed.paginate(page, <span class="number">1</span>, <span class="literal">False</span>)</span><br><span class="line">    <span class="comment"># 4. 获取分页对象属性,总页数,当前页,当前页对象列表</span></span><br><span class="line">    totalPage = paginate.pages</span><br><span class="line">    currentPage = paginate.page</span><br><span class="line">    items = paginate.items</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 5. 将对象列表,转成字典列表</span></span><br><span class="line">    author_list = []</span><br><span class="line">    <span class="keyword">for</span> author <span class="keyword">in</span> items:</span><br><span class="line">        author_list.append(author.to_dict())</span><br><span class="line">    <span class="comment"># 6. 拼接数据,渲染页面</span></span><br><span class="line">    data = &#123;</span><br><span class="line">        <span class="string">&quot;totalPage&quot;</span>: totalPage,</span><br><span class="line">        <span class="string">&quot;currentPage&quot;</span>: currentPage,</span><br><span class="line">        <span class="string">&quot;author_list&quot;</span>: author_list</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;news/user_follow.html&#x27;</span>, data=data)</span><br></pre></td></tr></table></figure>
+<p>逻辑呢，在profile标题下里也说了，获取参数，参数类型转换，分页查询对象，获取分页对象属性(总页数,当前页,当前页对象列表)，将对象列表转为字典列表，拼接数据，渲染给html模板。</p>
+<p>再看profile里的news_release()</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@profile_bp.route(&#x27;/news_release&#x27;, methods=[&#x27;POST&#x27;, &#x27;GET&#x27;])</span></span><br><span class="line"><span class="meta">@user_login_data</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">news_release</span>():</span></span><br><span class="line">    <span class="comment"># 1. 判断请求方式,如果是GET</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&quot;GET&quot;</span>:</span><br><span class="line">        <span class="comment"># 2. 查询分类数据并携带分类数据渲染页面</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            categories = Category.query.all()</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            current_app.logger.debug(e)</span><br><span class="line">            <span class="keyword">return</span> jsonify(errno=RET.DBERR, errmsg=<span class="string">&quot;未查询到的分类信息&quot;</span>)</span><br><span class="line">        category_list = []</span><br><span class="line">        <span class="keyword">for</span> category <span class="keyword">in</span> categories:</span><br><span class="line">            category_list.append(category.to_dict())</span><br><span class="line">        <span class="keyword">return</span> render_template(<span class="string">&#x27;news/user_news_release.html&#x27;</span>, categories=category_list)</span><br><span class="line">    <span class="comment"># 3. 如果是POST,获取参数</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        title = request.form.get(<span class="string">&#x27;title&#x27;</span>)</span><br><span class="line">        category_id = request.form.get(<span class="string">&#x27;category_id&#x27;</span>)</span><br><span class="line">        digest = request.form.get(<span class="string">&#x27;digest&#x27;</span>)</span><br><span class="line">        index_image = request.files.get(<span class="string">&#x27;index_image&#x27;</span>)</span><br><span class="line">        content = request.form.get(<span class="string">&#x27;content&#x27;</span>)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        current_app.logger.debug(e)</span><br><span class="line">        <span class="keyword">return</span> jsonify(errno=RET.DBERR, errmsg=<span class="string">&quot;取参数失败&quot;</span>)</span><br><span class="line">    <span class="comment"># 4. 校验参数,为空校验</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> all(&#123;title, category_id, digest, index_image, content&#125;):</span><br><span class="line">        <span class="keyword">return</span> jsonify(errno=RET.PARAMERR, errmsg=<span class="string">&quot;参数不全&quot;</span>)</span><br><span class="line">    <span class="comment"># 5. 上传图片,判断是否上传成功</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        image_name = use_storage(index_image.read())</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        current_app.logger.debug(e)</span><br><span class="line">        <span class="keyword">return</span> jsonify(errno=RET.NODATA, errmsg=<span class="string">&quot;七牛云异常&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> image_name:</span><br><span class="line">        <span class="keyword">return</span> jsonify(errno=RET.DATAERR, errmsg=<span class="string">&quot;上传图像失败&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 6. 创建新闻对象,设置属性</span></span><br><span class="line">    news = News()</span><br><span class="line">    news.title = title</span><br><span class="line">    news.content = content</span><br><span class="line">    news.digest = digest</span><br><span class="line">    news.category_id = category_id</span><br><span class="line">    news.user_id = g.user.id</span><br><span class="line">    news.source = g.user.nick_name</span><br><span class="line">    news.status = <span class="number">1</span>  <span class="comment"># 当前新闻状态 如果为0代表审核通过，1代表审核中，-1代表审核不通过</span></span><br><span class="line">    news.reason = <span class="string">&#x27;桃花源记，陶渊明&#x27;</span></span><br><span class="line">    news.index_image_url = constants.QINIU_DOMIN_PREFIX + image_name</span><br><span class="line">    <span class="comment"># 7. 保存到数据</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        db.session.add(news)</span><br><span class="line">        db.session.commit()</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">return</span> jsonify(errno=RET.DBERR, errmsg=<span class="string">&quot;新闻保存失败&quot;</span>)</span><br><span class="line">    <span class="comment"># 8. 返回响应</span></span><br><span class="line">    <span class="keyword">return</span> jsonify(errno=RET.OK, errmsg=<span class="string">&quot;操作成功&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>我在admin标题下说admin里的news_review_detail()，news_edit_detail()视图函数与profile里的news_release()类似。admin下的新闻审核，即news_review_detail()不能修改，只能点击审核通过或者不通过+reason，所以post请求只涉及修改news.status。来看看实际代码吧。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@admin_bp.route(&#x27;/news_review_detail&#x27;, methods=[&#x27;POST&#x27;, &#x27;GET&#x27;])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">news_review_detail</span>():</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&#x27;GET&#x27;</span>:</span><br><span class="line">        news_id = request.args.get(<span class="string">&#x27;news_id&#x27;</span>)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            news = News.query.get(news_id)</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            current_app.logger.debug(e)</span><br><span class="line">            <span class="keyword">return</span> render_template(<span class="string">&#x27;admin/news_review_detail.html&#x27;</span>, errmsg=<span class="string">&#x27;获取新闻失败&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> news:</span><br><span class="line">            <span class="keyword">return</span> render_template(<span class="string">&#x27;admin/news_review_detail.html&#x27;</span>, errmsg=<span class="string">&quot;新闻对象不存在&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> render_template(<span class="string">&#x27;admin/news_review_detail.html&#x27;</span>, news=news.to_dict())</span><br><span class="line">    <span class="comment"># post请求修改新闻status</span></span><br><span class="line">    action = request.json.get(<span class="string">&#x27;action&#x27;</span>)</span><br><span class="line">    news_id = request.json.get(<span class="string">&#x27;news_id&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> all([action, news_id]):</span><br><span class="line">        <span class="keyword">return</span> jsonify(errno=RET.PARAMERR, errmsg=<span class="string">&quot;参数不全&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> action <span class="keyword">in</span> [<span class="string">&quot;accept&quot;</span>, <span class="string">&quot;reject&quot;</span>]:</span><br><span class="line">        <span class="keyword">return</span> jsonify(errno=RET.DATAERR, errmsg=<span class="string">&quot;操作类型有误&quot;</span>)</span><br><span class="line">    <span class="comment"># 获取新闻</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        news = News.query.get(news_id)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        current_app.logger.debug(e)</span><br><span class="line">        <span class="keyword">return</span> jsonify(errno=RET.DATAERR, errmsg=<span class="string">&quot;获取新闻失败&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> news:</span><br><span class="line">        <span class="keyword">return</span> jsonify(errno=RET.NODATA, errmsg=<span class="string">&quot;新闻对象不存在&quot;</span>)</span><br><span class="line">    <span class="comment"># 判断操作类型</span></span><br><span class="line">    <span class="keyword">if</span> action == <span class="string">&#x27;accept&#x27;</span>:</span><br><span class="line">        news.status = <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        news.status = <span class="number">-1</span></span><br><span class="line">        news.reason = request.json.get(<span class="string">&#x27;reason&#x27;</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> jsonify(errno=RET.OK, errmsg=<span class="string">&quot;操作成功&quot;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@admin_bp.route(&#x27;/news_edit_detail&#x27;, methods=[&#x27;POST&#x27;, &#x27;GET&#x27;])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">news_edit_detail</span>():</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&#x27;GET&#x27;</span>:</span><br><span class="line">        news_id = request.args.get(<span class="string">&#x27;news_id&#x27;</span>)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            news = News.query.get(news_id)</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            current_app.logger.debug(e)</span><br><span class="line">            <span class="keyword">return</span> render_template(<span class="string">&#x27;admin/news_edit_detail.html&#x27;</span>, errmsg=<span class="string">&#x27;获取新闻失败&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> news:</span><br><span class="line">            <span class="keyword">return</span> render_template(<span class="string">&#x27;admin/news_edit_detail.html&#x27;</span>, errmsg=<span class="string">&quot;新闻对象不存在&quot;</span>)</span><br><span class="line">        <span class="comment"># 携带数据库中的分类信息</span></span><br><span class="line">        categories = Category.query.all()</span><br><span class="line">        category_list = []</span><br><span class="line">        <span class="keyword">for</span> category <span class="keyword">in</span> categories:</span><br><span class="line">            category_list.append(category.to_dict())</span><br><span class="line">        <span class="keyword">return</span> render_template(<span class="string">&#x27;admin/news_edit_detail.html&#x27;</span>, news=news.to_dict(), category_list=category_list)</span><br><span class="line">    <span class="comment"># post请求</span></span><br><span class="line">    news_id = request.form.get(<span class="string">&#x27;news_id&#x27;</span>)</span><br><span class="line">    title = request.form.get(<span class="string">&#x27;title&#x27;</span>)</span><br><span class="line">    digest = request.form.get(<span class="string">&#x27;digest&#x27;</span>)</span><br><span class="line">    content = request.form.get(<span class="string">&#x27;content&#x27;</span>)</span><br><span class="line">    index_image = request.files.get(<span class="string">&#x27;index_image&#x27;</span>)</span><br><span class="line">    category_id = request.form.get(<span class="string">&quot;category_id&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> all([news_id, title, digest, content, index_image, category_id]):</span><br><span class="line">        <span class="keyword">return</span> jsonify(errno=RET.PARAMERR, errmsg=<span class="string">&quot;参数不全&quot;</span>)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        news = News.query.get(news_id)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        current_app.logger.debug(e)</span><br><span class="line">        <span class="keyword">return</span> jsonify(errno=RET.DBERR, errmsg=<span class="string">&#x27;获取新闻失败&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> news:</span><br><span class="line">        <span class="keyword">return</span> jsonify(errno=RET.NODATA, errmsg=<span class="string">&quot;新闻对象不存在&quot;</span>)</span><br><span class="line">    <span class="comment"># 先上传新闻图片</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        image_name = use_storage(index_image)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        current_app.logger.debug(e)</span><br><span class="line">        <span class="keyword">return</span> jsonify(errno=RET.DBERR, errmsg=<span class="string">&#x27;上传图片失败&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> news:</span><br><span class="line">        <span class="keyword">return</span> jsonify(errno=RET.NODATA, errmsg=<span class="string">&quot;图片不存在&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 设置属性</span></span><br><span class="line">    news.title = title</span><br><span class="line">    news.digest = digest</span><br><span class="line">    news.content = content</span><br><span class="line">    news.index_image_url = constants.QINIU_DOMIN_PREFIX + image_name</span><br><span class="line">    news.category_id = category_id</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> jsonify(errno=RET.OK, errmsg=<span class="string">&quot;操作成功&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>它们的功能是分为get和post请求，get就是填信息，post就是把表单信息提交，并为相应对象设置提交表单里的属性值。逻辑是</p>
+<pre><code>1.判断请求方式,如果是GET
+2.获取新闻编号
+3.通过新闻编号查询新闻对象,并判断新闻对象是否存在
+4.携带新闻数据和分类数据,渲染页面
+5.如果是POST请求,获取参数
+6.参数校验,为空校验
+7.根据新闻的编号取出新闻对象
+8.上传新闻图片
+9.设置新闻对象的属性
+10.返回响应
+</code></pre>
+<p>就是查询对象不同，思路是一整套的。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/flask/" rel="tag"># flask</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/02/08/python/flask/China%20Daily%E8%93%9D%E5%9B%BE%E6%9E%B6%E6%9E%84/" rel="next" title="China Daily蓝图架构">
+                <i class="fa fa-chevron-left"></i> China Daily蓝图架构
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/02/08/python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/multithreading/" rel="prev" title="multithreading基础">
+                multithreading基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">137</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A1%8C%E6%96%87%E9%80%BB%E8%BE%91"><span class="nav-number">1.</span> <span class="nav-text"> 行文逻辑</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#index"><span class="nav-number">2.</span> <span class="nav-text"> index</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#news"><span class="nav-number">3.</span> <span class="nav-text"> news</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#profile"><span class="nav-number">4.</span> <span class="nav-text"> profile</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#admin"><span class="nav-number">5.</span> <span class="nav-text"> admin</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%8D%E7%94%A8%E7%AC%AC%E4%B8%80%E6%AD%A5"><span class="nav-number">6.</span> <span class="nav-text"> 复用第一步</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jueluo 深圳之恋</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

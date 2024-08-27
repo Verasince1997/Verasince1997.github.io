@@ -1,37 +1,894 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python算法," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="jueluo" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="1. 原理 着重探讨研究支持向量机分类器，比如有一组二分类的数据，支持向量机的分类方法是在这组分布中找出一个超平面作为决策边界，使模型在数据上的分类误差尽量小，尤其是在未知数据集上的分类误差（泛化误差）尽量小。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="专题：支持向量机">
+<meta property="og:url" content="https://verasince1997.github.io/2021/03/15/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A2%98%EF%BC%9A%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/index.html">
+<meta property="og:site_name" content="jueluo">
+<meta property="og:description" content="1. 原理 着重探讨研究支持向量机分类器，比如有一组二分类的数据，支持向量机的分类方法是在这组分布中找出一个超平面作为决策边界，使模型在数据上的分类误差尽量小，尤其是在未知数据集上的分类误差（泛化误差）尽量小。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-03-15T08:47:04.490Z">
+<meta property="article:modified_time" content="2021-04-28T08:38:40.930Z">
+<meta property="article:author" content="jueluo 深圳之恋">
+<meta property="article:tag" content="python算法">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://verasince1997.github.io/2021/03/15/算法/专题：支持向量机/"/>
+
+
+
+
+
+  <title>专题：支持向量机 | jueluo</title>
+  
+
+
+
+
+
+
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jueluo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://verasince1997.github.io/2021/03/15/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A2%98%EF%BC%9A%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jueluo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">专题：支持向量机</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-15T16:47:04+08:00">
+                2021-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
+                    <span itemprop="name">数据分析 基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="1-原理"><a class="markdownIt-Anchor" href="#1-原理"></a> 1. 原理</h4>
+<p>着重探讨研究支持向量机分类器，比如有一组二分类的数据，支持向量机的分类方法是在这组分布中找出一个超平面作为决策边界，使模型在数据上的分类误差尽量小，尤其是在未知数据集上的分类误差（泛化误差）尽量小。<span id="more"></span></p>
+<h5 id="11-决策边界"><a class="markdownIt-Anchor" href="#11-决策边界"></a> 1.1 决策边界</h5>
+<p>在几何中，超平面是一个空间的子空间，它是维度比所在空间小一维的空间。 如果数据空间本身是三维的， 则其超平面是二维平面，而如果数据空间本身是二维的，则其超平面是一维的直线。 在二分类问题中，如果一个超平面能够将数据划分为两个集合，其中每个集合中包含单独的一个类别，我们就说这个超平面是数据的“决策边界”。</p>
+<h5 id="12-边际"><a class="markdownIt-Anchor" href="#12-边际"></a> 1.2 边际</h5>
+<p>我们可以把决策边界向两边平移，直到碰到离这条决策边界最近的第一类数据和第二类数据后停下，形成两个新的超平面，并且将原始的决策边界移动到新的两条超平面的中间，确保决策边界到两者的距离相等。在两条新超平面中间的距离，叫做这条决策边界的边际(margin)，通常记作d。</p>
+<p>在边际很小的情况下，模型在训练集上表现很好，却在测试集上表现糟糕，产生“过拟合”。支持向量机，就是通过找出边际最大的决策边界，来对数据进行分类的分类器。也因此，支持向量分类器又叫做最大边际分类器。这个过程在二维平面中看起来十分简单，但将上述过程使用数学表达出来，就不是一件简单的事情了。</p>
+<h5 id="13-损失函数"><a class="markdownIt-Anchor" href="#13-损失函数"></a> 1.3 损失函数</h5>
+<p>在任一个机器学习模型的训练过程中，被最大化或者最小化的那个函数，叫作“<strong>目标函数</strong>”（objective function）。目标函数可以有很多种，比如数据的（（负）对数）似然值，比如margin的大小，比如均方误差。如果目标函数是要最小化的，它就也常常被称为“<strong>损失函数</strong>”（loss function）或“<strong>费用函数</strong>”（cost function）。支持向量机分类算法求解最决策边界，即最大距离d，而d=2/||w||，损失函数f(w)为||w||^2/2，求最大的d，即求最小的w，即求最小的f(w)。</p>
+<h5 id="14-如何画出决策边界"><a class="markdownIt-Anchor" href="#14-如何画出决策边界"></a> 1.4 如何画出决策边界</h5>
+<p>利用matplotlib的contour等高线函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_svc_decision_function</span>(<span class="params">model,ax=None</span>):</span></span><br><span class="line">    <span class="keyword">if</span> ax <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        ax = plt.gca()</span><br><span class="line">    xlim = ax.get_xlim()</span><br><span class="line">    ylim = ax.get_ylim()</span><br><span class="line">    </span><br><span class="line">    x = np.linspace(xlim[<span class="number">0</span>],xlim[<span class="number">1</span>],<span class="number">30</span>)</span><br><span class="line">    y = np.linspace(ylim[<span class="number">0</span>],ylim[<span class="number">1</span>],<span class="number">30</span>)</span><br><span class="line">    Y,X = np.meshgrid(y,x) </span><br><span class="line">    xy = np.vstack([X.ravel(), Y.ravel()]).T</span><br><span class="line">    P = model.decision_function(xy).reshape(X.shape)</span><br><span class="line">    </span><br><span class="line">    ax.contour(X, Y, P,colors=<span class="string">&quot;k&quot;</span>,levels=[<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span>],alpha=<span class="number">0.5</span>,linestyles=[<span class="string">&quot;--&quot;</span>,<span class="string">&quot;-&quot;</span>,<span class="string">&quot;--&quot;</span>]) </span><br><span class="line">    ax.set_xlim(xlim)</span><br><span class="line">    ax.set_ylim(ylim)</span><br></pre></td></tr></table></figure>
+<h5 id="15-核函数"><a class="markdownIt-Anchor" href="#15-核函数"></a> 1.5 核函数</h5>
+<p>为了让支持向量机分类器处理非线性问题，需更改kernal参数。</p>
+<table>
+<thead>
+<tr>
+<th>输入</th>
+<th>含义</th>
+<th>解决问题</th>
+<th>核函数表达式</th>
+<th>参数gamma</th>
+<th>参数degree</th>
+<th>参数coef0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>linear</td>
+<td>线性核</td>
+<td>线性</td>
+<td>K(x,y)=x^T·y=x·y</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>poly</td>
+<td>多项式核</td>
+<td>偏线性</td>
+<td>K(x,y)=(伽马(x·y)+r)^d</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>sigmoid</td>
+<td>双曲正切核</td>
+<td>非线性</td>
+<td>K(x,y)=tanh(伽马(x·y)+r)</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Ref</td>
+<td>高斯径向基</td>
+<td>偏非线性</td>
+<td>K(x,y)=e<sup>(-伽马||x-y||</sup>2) ,伽马&gt;0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>可以看出，除了选项&quot;linear&quot;之外，其他核函数都可以处理非线性问题。多项式核函数有次数d，当d为1的时候它 就是再处理线性问题，当d为更高次项的时候它就是在处理非线性问题。我们之前画图时使用的是选项“linear&quot;，自 然不能处理环形数据这样非线性的状况。而刚才我们使用的计算r的方法，其实是高斯径向基核函数所对应的功 能，在参数”kernel“中输入”rbf“就可以使用这种核函数。</p>
+<h5 id="16-核函数相关的参数"><a class="markdownIt-Anchor" href="#16-核函数相关的参数"></a> 1.6 核函数相关的参数</h5>
+<p>对于线性核函数，&quot;kernel&quot;是唯一能够影响它的参数。但是对于其他三种非线性核函数，核函数还受到参数gamma，degree以及coef0的影响。 参数gamma就是表达式中的伽马，degree就是多项式核函数的次数 ，参数coef0就是常数项 。其中，高斯径向基核 函数受到gamma的影响，而多项式核函数受到全部三个参数的影响。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>degree</td>
+<td>整数，可不填，默认3 多项式核函数的次数（‘poly’），如果核函数没有选择&quot;poly&quot;，这个参数会被忽略</td>
+</tr>
+<tr>
+<td>gamma</td>
+<td>浮点数，可不填，默认“auto&quot; 核函数的系数，仅在参数Kernel的选项为”rbf&quot;,“poly&quot;和&quot;sigmoid”的时候有效 输入“auto”，自动使用1/(n_features)作为gamma的取值 输入&quot;scale&quot;，则使用1/(n_features * X.std())作为gamma的取值 输入&quot;auto_deprecated&quot;，则表示没有传递明确的gamma值（不推荐使用）</td>
+</tr>
+<tr>
+<td>coef0</td>
+<td>浮点数，可不填，默认=0.0 核函数中的常数项，它只在参数kernel为’poly’和’sigmoid’的时候有效。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="16-硬间隔与软间隔重要参数c"><a class="markdownIt-Anchor" href="#16-硬间隔与软间隔重要参数c"></a> 1.6 硬间隔与软间隔：重要参数C</h5>
+<p>当两组数据是完全线性可分，我们可以找出一个决策边界使得训练集上的分类误差为0，这两种数据就被称为是存在”硬间隔“的。当两组数据几乎是完全线性可分的，但决策边界在训练集上存在较小的训练误差，这两种数据就被称为是存在”软间隔“。</p>
+<p>我们可以通过调整我们对决策边界的定义，将硬间隔时得出的数学结论推广到软间隔的情况上，让决策边界能够忍 受一小部分训练误差。这个时候，我们的决策边界就不是单纯地寻求最大边际了，因为对于软间隔地数据来说，边 际越大被分错的样本也就会越多，因此我们需要找出一个”最大边际“与”被分错的样本数量“之间的平衡。</p>
+<p>参数C用于权衡”训练样本的正确分类“与”决策函数的边际最大化“两个不可同时完成的目标，希望找出一个平衡点来 让模型的效果最佳。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参   数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">C</td>
+<td>浮点数，默认1，必须大于等于0，可不填 松弛系数的惩罚项系数。如果C值设定比较大，那SVC可能会选择边际较小的，能够更好地分类所有训 练点的决策边界，不过模型的训练时间也会更长。如果C的设定值较小，那SVC会尽量最大化边界，决 策功能会更简单，但代价是训练的准确度。换句话说，C在SVM中的影响就像正则化参数对逻辑回归的。</td>
+</tr>
+</tbody>
+</table>
+<p>在实际建模中，C和核函数的相关参数（gamma，degree等等）们搭配，往往是SVM调参的重点。与gamma不 同，C没有在对偶函数中出现，并且是明确了调参目标的，所以我们可以明确我们究竟是否需要训练集上的高精确 度来调整C的方向。默认情况下C为1，通常来说这都是一个合理的参数。 如果我们的数据很嘈杂，那我们往往减小 C。当然，我们也可以使用网格搜索或者学习曲线来调整C的值。</p>
+<h4 id="2-评估指标"><a class="markdownIt-Anchor" href="#2-评估指标"></a> 2. 评估指标</h4>
+<h5 id="21-混淆矩阵"><a class="markdownIt-Anchor" href="#21-混淆矩阵"></a> 2.1 混淆矩阵</h5>
+<p>基于混淆矩阵，有六个不同的模型评估指标，准确率，精确度，召回率，F1 measure，特异度，假正率</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th>预测值</th>
+<th>预测值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>真实值</td>
+<td>1</td>
+<td>11</td>
+<td>10</td>
+</tr>
+<tr>
+<td>真实值</td>
+<td>0</td>
+<td>01</td>
+<td>00</td>
+</tr>
+</tbody>
+</table>
+<p>对角线上11和00是全部预测正确的</p>
+<h6 id="211-准确率"><a class="markdownIt-Anchor" href="#211-准确率"></a> 2.1.1 准确率</h6>
+<p>所有预测正确的样本除以总样本，(11+00)/(10+11+01+00)</p>
+<h6 id="212-捕捉少数类的艺术精确度"><a class="markdownIt-Anchor" href="#212-捕捉少数类的艺术精确度"></a> 2.1.2 捕捉少数类的艺术：精确度</h6>
+<p>又称查准率，真正少数类占被模型预测为少数类的比例，11/(01+11)，换个例子，即真阳/（假阳+真阳）。这个患病例子好理解，之所以让模型做预测，为了找出真正患者占所有被预测为患病的比例。</p>
+<h6 id="213-捕捉少数类的艺术召回率"><a class="markdownIt-Anchor" href="#213-捕捉少数类的艺术召回率"></a> 2.1.3 捕捉少数类的艺术：召回率</h6>
+<p>顾名思义，召回即模型预测出患病样本占真正所有患病的比例，患病即少数类，即11/(11+10)。即真阳/（真阳+假阴）。</p>
+<h6 id="214-捕捉少数类的艺术f1-score"><a class="markdownIt-Anchor" href="#214-捕捉少数类的艺术f1-score"></a> 2.1.4 捕捉少数类的艺术：F1 score</h6>
+<p>因为Precision和Recall是此消彼长的，两者之间的平衡代表了捕捉少数类的需求和尽量不要误伤多数类的需求的平衡。为了同时兼顾精确度和召回率，创造两者调和平均数作为考量两者平衡的综合性指标，称之为F1 measure。</p>
+<p>F1=2/(1/P + 1/R)</p>
+<h6 id="215-假负率"><a class="markdownIt-Anchor" href="#215-假负率"></a> 2.1.5 假负率</h6>
+<p>从Recall延伸出的，False Negative Rate假负率，等于1-Recall。假负二字比较直观，但还不至于记得很清楚。可以看Recall计算式子，Recall=11/(11+10)，则FNR=10/(11+10)。即假阴/（真阳+假阴）。假负率在患病例子里可以理解为假负率。</p>
+<h6 id="216-特异度与假正率"><a class="markdownIt-Anchor" href="#216-特异度与假正率"></a> 2.1.6 特异度与假正率</h6>
+<p>特异度表示所有真实为0的样本，即真实为阴的样本，被正确预测为0(阴)的样本所占的比例。</p>
+<p>Specificity = 00/(00+01) 即真阴/（真阴+假阳）</p>
+<p>假正率=1-S，即01/(00+01)，假阳/（真阴+假阳），FPR False Postive Rate</p>
+<h5 id="22-roc曲线"><a class="markdownIt-Anchor" href="#22-roc曲线"></a> 2.2 ROC曲线</h5>
+<p>全称Receiver Operating Characteristic Curve 受试者操作特性曲线。纵坐标为Recall，横坐标为FPR假正率，以此来衡量模型在尽量多的捕捉少数类时，多数类被误伤的情况变化，或许多判断对一个少数类，多数类并没少判断错一个。</p>
+<h6 id="221-阈值"><a class="markdownIt-Anchor" href="#221-阈值"></a> 2.2.1 阈值</h6>
+<p>个使用阈值0.5，大于0.5的样本被预测为1，小于0.5的样本被预测为0。在不同的阈值下，模型的评估指标会发生变化，利用这一点观察Recall和FPR如何互相影响。</p>
+<h6 id="222-概率"><a class="markdownIt-Anchor" href="#222-概率"></a> 2.2.2 概率</h6>
+<p>SVM实现概率预测，重要参数probability，接口predict_proba以及decision_function。用SVC的接口decision_function，它返回我们输入的特征矩阵中每个样本到划分数据集的超平面的距离。我们在SVM中利用超平面来判断我们的样本，本质上来说，当两个点的距离是相同的符号的时候，越远离超平面的样本点归属于某个标签类的概率就很大。比如说，一个距离超平面0.1的 点，和一个距离超平面100的点，明显是距离为0.1的点更有可能是负类别的点混入了边界。同理一个距离超平面 距离为-0.1的点，和一个离超平面距离为-100的点，明显是-100的点的标签更有可能是负类。所以，到超平面的距离一定程度上反应了样本归属于某个标签类的可能性。接口decision_function返回的值也因此被我们认为是SVM 中的置信度（confidence）。</p>
+<p>不过，置信度始终不是概率，它没有边界，可以无限大，大部分时候也不是以百分比或者小数的形式呈现，而SVC 的判断过程又不像决策树一样可以求解出一个比例。为了解决这个矛盾，SVC有重要参数probability， 默认为False，表示是否启用概率估计。必须在调用fit之前启用它，启用此功能会减慢SVM的运算速度。 设置为True则会启动，启用之后，SVC的接口predict_proba和predict_log_proba将生效。 在二分类情况下，SVC将使用Platt缩放来生成概率，即在decision_function生成的距离上进行Sigmoid压缩，并附 加训练数据的交叉验证拟合，来生成类逻辑回归的SVM分数。</p>
+<h6 id="223-绘制roc曲线"><a class="markdownIt-Anchor" href="#223-绘制roc曲线"></a> 2.2.3 绘制ROC曲线</h6>
+<p>ROC是一条以不同阈值下的假正率FPR为横坐 标，不同阈值下的召回率Recall为纵坐标的曲线。简单地来说，只要我们有数据和模型，我们就可以在python中绘 制出我们的ROC曲线。思考一下，我们要绘制ROC曲线，就必须在我们的数据中去不断调节阈值，不断求解混淆矩阵，然后不断获得我们的横坐标和纵坐标，最后才能够将曲线绘制出来。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">probrange = np.linspace(clf_proba.predict_proba(X)[:,<span class="number">1</span>].min(),clf_proba.predict_proba(X)[:,<span class="number">1</span>].max(),num=<span class="number">50</span>,endpoint=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix <span class="keyword">as</span> CM, recall_score <span class="keyword">as</span> R</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plot</span><br><span class="line"></span><br><span class="line">recall = []</span><br><span class="line">FPR = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> probrange:</span><br><span class="line">    y_predict = []</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(X.shape[<span class="number">0</span>]):</span><br><span class="line">        <span class="keyword">if</span> clf_proba.predict_proba(X)[j,<span class="number">1</span>] &gt; i:</span><br><span class="line">            y_predict.append(<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            y_predict.append(<span class="number">0</span>)</span><br><span class="line">    cm = CM(y,y_predict,labels=[<span class="number">1</span>,<span class="number">0</span>])</span><br><span class="line">    recall.append(cm[<span class="number">0</span>,<span class="number">0</span>]/cm[<span class="number">0</span>,:].sum())</span><br><span class="line">    FPR.append(cm[<span class="number">1</span>,<span class="number">0</span>]/cm[<span class="number">1</span>,:].sum())</span><br><span class="line"></span><br><span class="line">recall.sort()</span><br><span class="line">FPR.sort()</span><br><span class="line"></span><br><span class="line">plt.plot(FPR,recall,c=<span class="string">&quot;red&quot;</span>)</span><br><span class="line">plt.plot(probrange+<span class="number">0.05</span>,probrange+<span class="number">0.05</span>,c=<span class="string">&quot;black&quot;</span>,linestyle=<span class="string">&quot;--&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h5 id="23-auc面积"><a class="markdownIt-Anchor" href="#23-auc面积"></a> 2.3 AUC面积</h5>
+<p>在sklearn中，我们有帮助我们计算ROC曲线的横坐标假正率FPR，纵坐标Recall和对应的阈值的类 sklearn.metrics.roc_curve。同时，我们还有帮助我们计算AUC面积的类sklearn.metrics.roc_auc_score。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_auc_score <span class="keyword">as</span> AUC</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_curve</span><br><span class="line">FPR, recall, thresholds = roc_curve(y,clf_proba.decision_function(X), pos_label=<span class="number">1</span>)</span><br><span class="line">area = AUC(y,clf_proba.decision_function(X))</span><br><span class="line">plt.figure()</span><br><span class="line">plt.plot(FPR, recall, color=<span class="string">&#x27;red&#x27;</span>,</span><br><span class="line">         label=<span class="string">&#x27;ROC curve (area = %0.2f)&#x27;</span> % area)</span><br><span class="line">plt.plot([<span class="number">0</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">1</span>], color=<span class="string">&#x27;black&#x27;</span>,linestyle=<span class="string">&#x27;--&#x27;</span>)</span><br><span class="line">plt.xlim([<span class="number">-0.05</span>, <span class="number">1.05</span>])</span><br><span class="line">plt.ylim([<span class="number">-0.05</span>, <span class="number">1.05</span>])</span><br><span class="line">plt.xlabel(<span class="string">&#x27;False Positive Rate&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Recall&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;Receiver operating characteristic example&#x27;</span>)</span><br><span class="line">plt.legend(loc=<span class="string">&quot;lower right&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h5 id="24-利用roc曲线找出最佳阈值"><a class="markdownIt-Anchor" href="#24-利用roc曲线找出最佳阈值"></a> 2.4 利用ROC曲线找出最佳阈值</h5>
+<p>现在，有了ROC曲线，了解了模型的分类效力，以及面对样本不均衡问题时的效力，那如何求解最佳的阈值呢？想要了解什么样的状况下模型的效果才是最好的。回到对ROC曲线的理解来：ROC曲线反映的是recall增加的时候FPR如何变化，也就是当模型捕获少数类的能力变强的时候，会误伤多数类的情况是否严 重。希望模型在捕获少数类的能力变强的时候，尽量不误伤多数类，也就是说，随着recall的变大，FPR 的值越小越好。所以我们希望找到的最优点，其实是Recall和FPR差距最大的点。这个点又叫做约登指数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">maxindex = (recall - FPR).tolist().index(max(recall - FPR))</span><br><span class="line">plt.scatter(FPR[maxindex],recall[maxindex],c=<span class="string">&quot;black&quot;</span>,s=<span class="number">30</span>)</span><br><span class="line">plt.figure()</span><br><span class="line">plt.plot(FPR, recall, color=<span class="string">&#x27;red&#x27;</span>,</span><br><span class="line">         label=<span class="string">&#x27;ROC curve (area = %0.2f)&#x27;</span> % area)</span><br><span class="line">plt.plot([<span class="number">0</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">1</span>], color=<span class="string">&#x27;black&#x27;</span>, linestyle=<span class="string">&#x27;--&#x27;</span>)</span><br><span class="line">plt.scatter(FPR[maxindex],recall[maxindex],c=<span class="string">&quot;black&quot;</span>,s=<span class="number">30</span>)</span><br><span class="line">plt.xlim([<span class="number">-0.05</span>, <span class="number">1.05</span>])</span><br><span class="line">plt.ylim([<span class="number">-0.05</span>, <span class="number">1.05</span>])</span><br><span class="line">plt.xlabel(<span class="string">&#x27;False Positive Rate&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Recall&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;Receiver operating characteristic example&#x27;</span>)</span><br><span class="line">plt.legend(loc=<span class="string">&quot;lower right&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h4 id="3-总结"><a class="markdownIt-Anchor" href="#3-总结"></a> 3. 总结</h4>
+<p>我学了SVM原理，包括决策边界，损失函数，拉格朗日函数，拉格朗日对偶函数，软间隔硬间隔，核函数以及核函数的各种应用。了解了SVC类的各种重要参数、属性、接口，其中参数包括软间隔的惩罚系数C，核函数kernel，核函数的相关参数gamma，coef0和 degree，解决样本不均衡的参数class_weight，解决多分类问题的参数decision_function_shape，控制概率的参数probability，控制计算内存的参数cache_size，属性主要包括调用支持向量的属性support_vectors_ 和查看特征重要性的属性 coef_。接口中，我们学习了最核心的decision_function。除此之外，学习了分类模型的模型评估指标：混淆矩阵和ROC曲线，还介绍了部分特征工程和数据预处理的思路。</p>
+<h5 id="4"><a class="markdownIt-Anchor" href="#4"></a> 4.</h5>
+<p>上面都是乱写的，或者可以说是写给别人看的，你知道核函数为poly是什么情况使用不？</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python%E7%AE%97%E6%B3%95/" rel="tag"># python算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/03/05/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A2%98%EF%BC%9A%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/" rel="next" title="专题：聚类算法">
+                <i class="fa fa-chevron-left"></i> 专题：聚类算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/03/17/%E7%AE%97%E6%B3%95/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E6%96%B0%E8%A7%A3/" rel="prev" title="专题：逻辑回归新解">
+                专题：逻辑回归新解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">137</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text"> 1. 原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#11-%E5%86%B3%E7%AD%96%E8%BE%B9%E7%95%8C"><span class="nav-number">1.1.</span> <span class="nav-text"> 1.1 决策边界</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#12-%E8%BE%B9%E9%99%85"><span class="nav-number">1.2.</span> <span class="nav-text"> 1.2 边际</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#13-%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.</span> <span class="nav-text"> 1.3 损失函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#14-%E5%A6%82%E4%BD%95%E7%94%BB%E5%87%BA%E5%86%B3%E7%AD%96%E8%BE%B9%E7%95%8C"><span class="nav-number">1.4.</span> <span class="nav-text"> 1.4 如何画出决策边界</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#15-%E6%A0%B8%E5%87%BD%E6%95%B0"><span class="nav-number">1.5.</span> <span class="nav-text"> 1.5 核函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#16-%E6%A0%B8%E5%87%BD%E6%95%B0%E7%9B%B8%E5%85%B3%E7%9A%84%E5%8F%82%E6%95%B0"><span class="nav-number">1.6.</span> <span class="nav-text"> 1.6 核函数相关的参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#16-%E7%A1%AC%E9%97%B4%E9%9A%94%E4%B8%8E%E8%BD%AF%E9%97%B4%E9%9A%94%E9%87%8D%E8%A6%81%E5%8F%82%E6%95%B0c"><span class="nav-number">1.7.</span> <span class="nav-text"> 1.6 硬间隔与软间隔：重要参数C</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87"><span class="nav-number">2.</span> <span class="nav-text"> 2. 评估指标</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#21-%E6%B7%B7%E6%B7%86%E7%9F%A9%E9%98%B5"><span class="nav-number">2.1.</span> <span class="nav-text"> 2.1 混淆矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#211-%E5%87%86%E7%A1%AE%E7%8E%87"><span class="nav-number">2.1.1.</span> <span class="nav-text"> 2.1.1 准确率</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#212-%E6%8D%95%E6%8D%89%E5%B0%91%E6%95%B0%E7%B1%BB%E7%9A%84%E8%89%BA%E6%9C%AF%E7%B2%BE%E7%A1%AE%E5%BA%A6"><span class="nav-number">2.1.2.</span> <span class="nav-text"> 2.1.2 捕捉少数类的艺术：精确度</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#213-%E6%8D%95%E6%8D%89%E5%B0%91%E6%95%B0%E7%B1%BB%E7%9A%84%E8%89%BA%E6%9C%AF%E5%8F%AC%E5%9B%9E%E7%8E%87"><span class="nav-number">2.1.3.</span> <span class="nav-text"> 2.1.3 捕捉少数类的艺术：召回率</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#214-%E6%8D%95%E6%8D%89%E5%B0%91%E6%95%B0%E7%B1%BB%E7%9A%84%E8%89%BA%E6%9C%AFf1-score"><span class="nav-number">2.1.4.</span> <span class="nav-text"> 2.1.4 捕捉少数类的艺术：F1 score</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#215-%E5%81%87%E8%B4%9F%E7%8E%87"><span class="nav-number">2.1.5.</span> <span class="nav-text"> 2.1.5 假负率</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#216-%E7%89%B9%E5%BC%82%E5%BA%A6%E4%B8%8E%E5%81%87%E6%AD%A3%E7%8E%87"><span class="nav-number">2.1.6.</span> <span class="nav-text"> 2.1.6 特异度与假正率</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#22-roc%E6%9B%B2%E7%BA%BF"><span class="nav-number">2.2.</span> <span class="nav-text"> 2.2 ROC曲线</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#221-%E9%98%88%E5%80%BC"><span class="nav-number">2.2.1.</span> <span class="nav-text"> 2.2.1 阈值</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#222-%E6%A6%82%E7%8E%87"><span class="nav-number">2.2.2.</span> <span class="nav-text"> 2.2.2 概率</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#223-%E7%BB%98%E5%88%B6roc%E6%9B%B2%E7%BA%BF"><span class="nav-number">2.2.3.</span> <span class="nav-text"> 2.2.3 绘制ROC曲线</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#23-auc%E9%9D%A2%E7%A7%AF"><span class="nav-number">2.3.</span> <span class="nav-text"> 2.3 AUC面积</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#24-%E5%88%A9%E7%94%A8roc%E6%9B%B2%E7%BA%BF%E6%89%BE%E5%87%BA%E6%9C%80%E4%BD%B3%E9%98%88%E5%80%BC"><span class="nav-number">2.4.</span> <span class="nav-text"> 2.4 利用ROC曲线找出最佳阈值</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text"> 3. 总结</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4"><span class="nav-number">3.1.</span> <span class="nav-text"> 4.</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jueluo 深圳之恋</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

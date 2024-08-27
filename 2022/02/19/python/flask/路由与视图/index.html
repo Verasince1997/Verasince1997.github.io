@@ -1,37 +1,747 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Flask," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="jueluo" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="1.能够创建Py2和Py3版本的虚拟环境   查看虚拟环境版本： virtualenv --version   创建虚拟环境：   mkvirtualenv -p python3 虚拟环境名称(指定python3.x) mkvirtualenv -p python3 py3_flask mkvirtualenv py3_flask   查看虚拟环境：workon   使用虚拟环境：workon 虚">
+<meta property="og:type" content="article">
+<meta property="og:title" content="路由与视图">
+<meta property="og:url" content="https://verasince1997.github.io/2022/02/19/python/flask/%E8%B7%AF%E7%94%B1%E4%B8%8E%E8%A7%86%E5%9B%BE/index.html">
+<meta property="og:site_name" content="jueluo">
+<meta property="og:description" content="1.能够创建Py2和Py3版本的虚拟环境   查看虚拟环境版本： virtualenv --version   创建虚拟环境：   mkvirtualenv -p python3 虚拟环境名称(指定python3.x) mkvirtualenv -p python3 py3_flask mkvirtualenv py3_flask   查看虚拟环境：workon   使用虚拟环境：workon 虚">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-02-19T08:16:18.979Z">
+<meta property="article:modified_time" content="2022-02-20T03:00:33.506Z">
+<meta property="article:author" content="jueluo 深圳之恋">
+<meta property="article:tag" content="Flask">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://verasince1997.github.io/2022/02/19/python/flask/路由与视图/"/>
+
+
+
+
+
+  <title>路由与视图 | jueluo</title>
+  
+
+
+
+
+
+
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jueluo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://verasince1997.github.io/2022/02/19/python/flask/%E8%B7%AF%E7%94%B1%E4%B8%8E%E8%A7%86%E5%9B%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jueluo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">路由与视图</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-02-19T16:16:18+08:00">
+                2022-02-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Flask/" itemprop="url" rel="index">
+                    <span itemprop="name">Flask</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>1.能够创建Py2和Py3版本的虚拟环境</p>
+<ul>
+<li>
+<p>查看虚拟环境版本：<br>
+<code>virtualenv --version</code></p>
+</li>
+<li>
+<p>创建虚拟环境：</p>
+</li>
+</ul>
+<p><code>mkvirtualenv -p python3 虚拟环境名称(指定python3.x)</code><br>
+<code>mkvirtualenv -p python3 py3_flask</code><br>
+<code>mkvirtualenv py3_flask</code></p>
+<ul>
+<li>
+<p>查看虚拟环境：<code>workon</code></p>
+</li>
+<li>
+<p>使用虚拟环境：<code>workon 虚拟环境名称</code></p>
+</li>
+</ul>
+<p>2.能够写出Flask从对象中加载配置的代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Config</span>(<span class="params">object</span>):</span></span><br><span class="line">    DEBUG = <span class="literal">True</span>;</span><br><span class="line">    </span><br><span class="line">app.config.from_object(Config)</span><br></pre></td></tr></table></figure>
+<p>3.能够说出url_for的作用</p>
+<p>通常和redirect一起使用，用以传递参数。url_for反解析：通过视图函数的名称返回地址，格式：<code>url_for('视图函数名称',key=value)</code><span id="more"></span></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(&#x27;/demo5&#x27;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">demo5</span>():</span></span><br><span class="line">    <span class="keyword">return</span> redirect(<span class="string">&#x27;https://ieee_fellow_jueluo.gitee.io/blog/&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(&#x27;/demo1&#x27;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">demo1</span>():</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;demo1&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(&#x27;/demo5&#x27;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">demo5</span>():</span></span><br><span class="line">    <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;demo1&#x27;</span>))  </span><br><span class="line"><span class="comment"># 访问此路径 返回的是demo1</span></span><br></pre></td></tr></table></figure>
+<p>4.能够写出带有参数的路由及视图函数</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(&#x27;/user/&lt;int:user_id&gt;&#x27;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">user_info</span>(<span class="params">user_id</span>):</span>  <span class="comment"># 视图函数user_info</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;the num is %d&#x27;</span> % user_id</span><br><span class="line"> </span><br><span class="line"><span class="meta">@app.route(&#x27;/demo5&#x27;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">demo5</span>():</span></span><br><span class="line">    <span class="comment"># 使用url_for生成指定视图函数所对应的url</span></span><br><span class="line">    <span class="comment"># 格式 url_for(&#x27;视图函数名&#x27;,key=value)</span></span><br><span class="line">    <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;user_info&#x27;</span>, user_id=<span class="number">1997</span>))</span><br></pre></td></tr></table></figure>
+<p>5.能够说出自定义转换器的步骤</p>
+<p>在 web 开发中，可能会出现限制用户访问规则的场景，那么这个时候就需要过滤指定用户, 所以可以使用转换器实现<br>
+转换器的本质:通过正则表达式,匹配路由地址</p>
+<p>系统自带转换器：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">DEFAULT_CONVERTERS = &#123;</span><br><span class="line">    <span class="string">&#x27;default&#x27;</span>:          UnicodeConverter,</span><br><span class="line">    <span class="string">&#x27;string&#x27;</span>:           UnicodeConverter,</span><br><span class="line">    <span class="string">&#x27;any&#x27;</span>:              AnyConverter,</span><br><span class="line">    <span class="string">&#x27;path&#x27;</span>:             PathConverter,</span><br><span class="line">    <span class="string">&#x27;int&#x27;</span>:              IntegerConverter,</span><br><span class="line">    <span class="string">&#x27;float&#x27;</span>:            FloatConverter,</span><br><span class="line">    <span class="string">&#x27;uuid&#x27;</span>:             UUIDConverter,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>自定义转换器,具体实现步骤为：</p>
+<ul>
+<li>导入转换器基类(BaseConverter)：Flask中所有的路由的匹配规则,都是使用转换器实现</li>
+<li>自定义转换器：自定义类继承于转换器基类</li>
+<li>添加转换器到默认的转换器字典中</li>
+<li>使用自定义转换器实现自定义匹配规则</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 自定义转换器</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyRegexConverter</span>(<span class="params">BaseConverter</span>):</span>  <span class="comment"># 继承BaseConverter类</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, url_map, regex</span>):</span>  <span class="comment"># 编写初始方法 接收两个参数</span></span><br><span class="line">        super(MyRegexConverter, self).__init__(url_map)  <span class="comment"># 初始化父类空间</span></span><br><span class="line">        self.regex = regex  <span class="comment"># 初始化子类空间</span></span><br><span class="line"></span><br><span class="line">app.url_map.converters[<span class="string">&#x27;re&#x27;</span>] = MyRegexConverter  <span class="comment"># 将自定义转换器类添加到默认的转换列表中</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(&#x27;/&lt;re(&quot;\d&#123;3&#125;&quot;):num&gt;&#x27;)  # 只接受三位小数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_world</span>(<span class="params">num</span>):</span></span><br><span class="line">    print(<span class="string">&quot;num = %s&quot;</span> % num)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;the num is %s&quot;</span> % num</span><br><span class="line">  </span><br><span class="line"><span class="meta">@app.route(&#x27;/&lt;re(&quot;1[345678]\d&#123;9&#125;&quot;):mobile&gt;&#x27;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_mobile</span>(<span class="params">mobile</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;the mobile is %s&quot;</span> % mobile</span><br></pre></td></tr></table></figure>
+<p>6.能够说出装饰器路由实现的几个关键的类</p>
+<p>7.能够说出实现 HTTP 状态保持的原理</p>
+<p>7.1 http是一种无状态协议，浏览器请求服务器是无状态的。</p>
+<ul>
+<li><strong>无状态</strong>：指一次用户请求时，浏览器、服务器不知道之前这个用户做过什么，每次请求都是一次新的请求。</li>
+<li><strong>无状态原因</strong>：浏览器与服务器是使用 socket 套接字进行通信的，服务器将请求结果返回给浏览器之后，会关闭当前的 socket 连接，而且服务器也会在处理页面完毕之后销毁页面对象。<br>
+有时需要保持下来用户浏览的状态，比如用户是否登录过，浏览过哪些商品等</li>
+</ul>
+<p>7.2 实现状态保持主要有两种方式：</p>
+<ul>
+<li>在客户端存储信息使用<code>Cookie</code></li>
+<li>在服务器端存储信息使用<code>Session</code></li>
+</ul>
+<p>8.能够说出Flask各个上下文对象</p>
+<p>9.能够说出Flask-Script扩展的作用</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Flask/" rel="tag"># Flask</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/02/15/pat_basic/pat_basic_1095/" rel="next" title="PAT_Basic_1095 解码PAT准考证">
+                <i class="fa fa-chevron-left"></i> PAT_Basic_1095 解码PAT准考证
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/02/19/python/flask/%E8%A7%86%E5%9B%BE%E5%86%85%E5%AE%B9%E4%B8%8E%E6%A8%A1%E6%9D%BF/" rel="prev" title="relationship & backref">
+                relationship & backref <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">137</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jueluo 深圳之恋</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
