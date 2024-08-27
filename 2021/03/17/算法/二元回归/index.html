@@ -173,7 +173,7 @@
       
         <h4 id="1二元回归与多元回归重要参数"><a class="markdownIt-Anchor" href="#1二元回归与多元回归重要参数"></a> 1.二元回归与多元回归：重要参数</h4>
 <h5 id="11-solver-multi_class"><a class="markdownIt-Anchor" href="#11-solver-multi_class"></a> 1.1 solver &amp; multi_class</h5>
-<p>之前对逻辑回归的讨论，都是针对二分类的逻辑回归展开，其实sklearn提供了多种可以使用逻辑回归处理多分类问题的选项。比如说，我们可以把某种分类类型都看作1，其余的分类类型都为0值，和”数据预处理“中的二值化的思维类似，这种方法被称为&quot;一对多&quot;(One-vs-rest)，简称OvR，在sklearn中表示为“ovr&quot;。<a id="more"></a>又或者可以把好几个分类类型划为1，剩下的几个分类类型划为0值，这是一种”多对多“(Many-vs-Many)的方法，简称MvM，在 sklearn中表示为&quot;Multinominal&quot;。每种方式都配合L1或L2正则项来使用。 在sklearn中，我们使用参数multi_class来告诉模型，我们的预测标签是什么样的类型。 multi_class 输入&quot;ovr&quot;, “multinomial”, “auto&quot;来告知模型，我们要处理的分类问题的类型。默认是&quot;ovr”。 ‘ovr’:表示分类问题是二分类，或让模型使用&quot;一对多&quot;的形式来处理多分类问题。 ‘multinomial’：表示处理多分类问题，这种输入在参数solver是’liblinear’时不可用。 “auto”：表示会根据数据的分类情况和其他参数来确定模型要处理的分类问题的类型。比如说，如果数据是二分类，或者solver的取值为&quot;liblinear&quot;，“auto&quot;会默认选择&quot;ovr”。反之，则会选择&quot;nultinomial&quot;。</p>
+<p>之前对逻辑回归的讨论，都是针对二分类的逻辑回归展开，其实sklearn提供了多种可以使用逻辑回归处理多分类问题的选项。比如说，我们可以把某种分类类型都看作1，其余的分类类型都为0值，和”数据预处理“中的二值化的思维类似，这种方法被称为&quot;一对多&quot;(One-vs-rest)，简称OvR，在sklearn中表示为“ovr&quot;。<span id="more"></span>又或者可以把好几个分类类型划为1，剩下的几个分类类型划为0值，这是一种”多对多“(Many-vs-Many)的方法，简称MvM，在 sklearn中表示为&quot;Multinominal&quot;。每种方式都配合L1或L2正则项来使用。 在sklearn中，我们使用参数multi_class来告诉模型，我们的预测标签是什么样的类型。 multi_class 输入&quot;ovr&quot;, “multinomial”, “auto&quot;来告知模型，我们要处理的分类问题的类型。默认是&quot;ovr”。 ‘ovr’:表示分类问题是二分类，或让模型使用&quot;一对多&quot;的形式来处理多分类问题。 ‘multinomial’：表示处理多分类问题，这种输入在参数solver是’liblinear’时不可用。 “auto”：表示会根据数据的分类情况和其他参数来确定模型要处理的分类问题的类型。比如说，如果数据是二分类，或者solver的取值为&quot;liblinear&quot;，“auto&quot;会默认选择&quot;ovr”。反之，则会选择&quot;nultinomial&quot;。</p>
 <p>之前提到的梯度下降法，只是求解逻辑回归参数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span></span></span></span> 的一种方法，并且我们只讲解了求解二分类变量的参数时的各种原理。sklearn为我们提供了多种选择，让我们可以使用不同的求解器来计算逻辑回归。求解器的选择，由参数&quot;solver&quot;控制，共有五种选择。其中“liblinear”是二分类专用，也是现在的默认求解器。</p>
 <table>
 <thead>
@@ -460,15 +460,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">人文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -484,6 +476,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
@@ -496,11 +496,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
+                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
             
             <div class="clearfix"></div>

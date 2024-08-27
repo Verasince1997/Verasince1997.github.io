@@ -177,7 +177,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h5 id="1-原理"><a class="markdownIt-Anchor" href="#1-原理"></a> 1. 原理</h5>
-<p>它是一个返回对数几率，在线性数据上表现优异的分类器，它主要被应用在金融领域。其数学目的是求解能够让模型对数据拟合程度最高的参数的值，以此构建预测函数 ，然后将特征矩阵输入预测函数来计算出逻辑回归的结果y。注意，虽然我们熟悉的逻辑回归通常被用于处理二分类问题， 但逻辑回归也可以做多分类。<a id="more"></a></p>
+<p>它是一个返回对数几率，在线性数据上表现优异的分类器，它主要被应用在金融领域。其数学目的是求解能够让模型对数据拟合程度最高的参数的值，以此构建预测函数 ，然后将特征矩阵输入预测函数来计算出逻辑回归的结果y。注意，虽然我们熟悉的逻辑回归通常被用于处理二分类问题， 但逻辑回归也可以做多分类。<span id="more"></span></p>
 <h6 id="11-损失函数"><a class="markdownIt-Anchor" href="#11-损失函数"></a> 1.1 损失函数</h6>
 <p>衡量参数优劣的评估指标，用来求解最优参数的工具 损失函数小，模型在训练集上表现优异，拟合充分，参数优秀 损失函数大，模型在训练集上表现差劲，拟合不足，参数糟糕 我们追求，能够让损失函数最小化的参数组合 注意：没有”求解参数“需求的模型没有损失函数，比如KNN，决策树</p>
 <p>在学习决策树和随机森林时，我们曾经提到过两种模型表现：在训练集上的表现，和在测试集上的表现。我们建 模，是追求模型在测试集上的表现最优，因此模型的评估指标往往是用来衡量模型在测试集上的表现的。然而，逻 辑回归有着基于训练数据求解参数 的需求，并且希望训练出来的模型能够尽可能地拟合训练数据，即模型在训练 集上的预测准确率越靠近100%越好。 因此，我们使用”损失函数“这个评估指标，来衡量参数为 的模型拟合训练集时产生的信息损失的大小，并以此衡 量参数 的优劣。如果用一组参数建模后，模型在训练集上表现良好，那我们就说模型拟合过程中的损失很小，损 失函数的值很小，这一组参数就优秀；相反，如果模型在训练集上表现糟糕，损失函数就会很大，模型就训练不 足，效果较差，这一组参数也就比较差。即是说，我们在求解参数 时，追求损失函数最小，让模型在训练数据上 的拟合效果最优，即预测准确率尽量靠近100%。</p>
@@ -516,15 +516,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">人文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -540,6 +532,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
@@ -552,11 +552,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
+                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
             
             <div class="clearfix"></div>

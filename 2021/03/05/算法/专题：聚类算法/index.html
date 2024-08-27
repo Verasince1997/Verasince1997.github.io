@@ -173,7 +173,7 @@
       
         <p>kmeans 的“损失函数”，打了个引号，说明不太严谨，类似逻辑回归的损失函数</p>
 <p>n_clusters参数，即KMeans的k，默认为8，一般想要小于8的类，如果数据可以可视化，先可视化，然后选择k，这里用make_blobs创建数据，返回特征矩阵X和标签y，make_blobs(n_samples,n_features,)，画子图，plt.subplot() 参数是生成几个子图，返回时画布和对象，记为fig和ax1，对ax1填充scatter散点图，</p>
-<p>kmeans的predict，在数据量大时使用，比如50w行数据，先用2000行数据fit迭代出一个较好的聚类模型，再把剩余数据predict出聚类结果。inertia 整体平方和，对不同的簇找出质心，<a id="more"></a></p>
+<p>kmeans的predict，在数据量大时使用，比如50w行数据，先用2000行数据fit迭代出一个较好的聚类模型，再把剩余数据predict出聚类结果。inertia 整体平方和，对不同的簇找出质心，<span id="more"></span></p>
 <p>KMeans聚类的矢量量化 本质是一种降维运用，但它与我们之前学过的任何一种降维算法的思路都不相同。特征选择的降维是直接选取对模 型贡献最大的特征，PCA的降维是聚合信息，而矢量量化的降维是在同等样本量上压缩信息的大小，即不改变特征 的数目也不改变样本的数目，只改变在这些特征下的样本上的信息量。</p>
 <h5 id="原理"><a class="markdownIt-Anchor" href="#原理"></a> 原理</h5>
 <p>这是最基础的聚类算法，首先说聚类算法，是无监督学习，没有标签。KMeans算法将一组N个样本的特征矩阵X划分为K个无交集的簇，直观上来看是簇是一组一组聚集在一起的数据，在一个簇中的数据就认为是同一类。簇就是聚类的结果表现。 簇中所有数据的均值通常被称为这个簇的“质心”（centroids）。在一个二维平面中，一簇数据点的质心的横坐标就是这一簇数据点的横坐标的均值，质心的纵坐标就是这一簇数据点的纵坐标的均值。同理可推广至高维空间。</p>
@@ -484,15 +484,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">人文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -508,6 +500,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
@@ -520,11 +520,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
+                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
             
             <div class="clearfix"></div>

@@ -172,7 +172,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>写这篇文章时，我思考怎么才算理解掌握了从文档、视频学到的知识，写博客知识将习得的知识外现的一个最基础的步骤，关键看你总结出来的知识是否有体系完整，很有逻辑性，比如今天学到的backref和relationship，本来学的时候就一知半解，感觉懂了，我知道过了几天再看就不懂了，还不如一开始就彻底解决，我觉得这个东西本身就绕，我将通过一个例子，从没有使用这两个方法的查询代码与使用之后的查询代码相比较，从而从根本理解两者什么时候使用，怎么使用。</p>
-<p>假设数据库中有两张表，一张Role表(Admin和User)，一张User表，那么一个角色可能有多个用户，但一个用户只能属于一个角色，所以Role和User是一对多的关系，下面是Role和User的模型类。<a id="more"></a></p>
+<p>假设数据库中有两张表，一张Role表(Admin和User)，一张User表，那么一个角色可能有多个用户，但一个用户只能属于一个角色，所以Role和User是一对多的关系，下面是Role和User的模型类。<span id="more"></span></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Role</span>(<span class="params">db.Model</span>):</span></span><br><span class="line">    __tablename__ = <span class="string">&quot;roles&quot;</span>  <span class="comment"># 指定表名称</span></span><br><span class="line">    <span class="comment"># 参数1:表示整数类型,  参数2:表示主键</span></span><br><span class="line">    id = db.Column(db.Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    <span class="comment"># 角色名唯一的</span></span><br><span class="line">    name = db.Column(db.String(<span class="number">64</span>), unique=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 需要设置关系属性relationship(不会产生字段),设置在一方</span></span><br><span class="line">    <span class="comment"># 给Role添加了users关系属性, 查询格式: role.users</span></span><br><span class="line">    <span class="comment"># 给User添加了role关系属性(反向引用),查询格式: user.role</span></span><br><span class="line">    <span class="comment"># 第一个参数是关联的模型类名称</span></span><br><span class="line">    users = db.relationship(<span class="string">&#x27;User&#x27;</span>, backref=<span class="string">&#x27;role&#x27;</span>)</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="comment"># 为了方便的看到对象输出的内容__repr__, 如果是普通类__str__</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&lt;Role:%s&gt;&quot;</span> % self.name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用户(多方)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span>(<span class="params">db.Model</span>):</span></span><br><span class="line">    __tablename__ = <span class="string">&quot;users&quot;</span>  <span class="comment"># 指定表名称</span></span><br><span class="line">    <span class="comment"># 参数1:表示整数类型,  参数2:表示主键</span></span><br><span class="line">    id = db.Column(db .Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    <span class="comment"># 用户名唯一的</span></span><br><span class="line">    name = db.Column(db.String(<span class="number">64</span>), unique=<span class="literal">True</span>)</span><br><span class="line">    <span class="comment"># 邮箱密码</span></span><br><span class="line">    email = db.Column(db.String(<span class="number">64</span>), unique=<span class="literal">True</span>)</span><br><span class="line">    password = db.Column(db.String(<span class="number">64</span>))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 外键</span></span><br><span class="line">    role_id = db.Column(db.Integer, db.ForeignKey(Role.id))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 为了方便的看到对象输出的内容__repr__, 如果是普通类__str__</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&lt;User:%s,%s,%s,%s&gt;&quot;</span> % (self.id, self.name, self.email, self.password)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>添加外健在多方，添加relationship在一方。</p>
 <p>现有需求如下：</p>
@@ -471,15 +471,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">人文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -495,6 +487,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
@@ -507,11 +507,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
+                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
             
             <div class="clearfix"></div>

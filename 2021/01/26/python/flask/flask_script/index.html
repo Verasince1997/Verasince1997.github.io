@@ -175,7 +175,7 @@
       
         <h5 id="最初的打算"><a class="markdownIt-Anchor" href="#最初的打算"></a> 最初的打算</h5>
 <p>想测试从0到1跑起我一贯的新建的flask项目工程，本来打算跑起来然后执行<code>tree -L 3 &gt; list.md</code>(必须L，not l)导出项目目录树，结果中间遇到的几个问题，解决它们的同时把以前的某个疑惑也顺带solve掉了。</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>先列出最后跑通的目录树:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">|-- __pycache__</span><br><span class="line">|   |-- app.cpython<span class="number">-37.</span>pyc</span><br><span class="line">|   `-- settings.cpython<span class="number">-37.</span>pyc</span><br><span class="line">|-- app.py</span><br><span class="line">|-- apps</span><br><span class="line">|   |-- __init__.py</span><br><span class="line">|   |-- __pycache__</span><br><span class="line">|   |   `-- __init__.cpython<span class="number">-37.</span>pyc</span><br><span class="line">|   |-- product</span><br><span class="line">|   |   |-- __init__.py</span><br><span class="line">|   |   |-- model.py</span><br><span class="line">|   |   `-- view.py</span><br><span class="line">|   `-- user</span><br><span class="line">|       |-- __pycache__</span><br><span class="line">|       |-- model.py</span><br><span class="line">|       `-- view.py</span><br><span class="line">|-- exts</span><br><span class="line">|   |-- __init__.py</span><br><span class="line">|   `-- __pycache__</span><br><span class="line">|       `-- __init__.cpython<span class="number">-37.</span>pyc</span><br><span class="line">|-- list.md</span><br><span class="line">|-- migrations</span><br><span class="line">|   |-- README</span><br><span class="line">|   |-- __pycache__</span><br><span class="line">|   |   `-- env.cpython<span class="number">-37.</span>pyc</span><br><span class="line">|   |-- alembic.ini</span><br><span class="line">|   |-- env.py</span><br><span class="line">|   |-- script.py.mako</span><br><span class="line">|   `-- versions</span><br><span class="line">|       |-- __pycache__</span><br><span class="line">|       `-- ace9c7e92842_.py</span><br><span class="line">|-- settings.py</span><br><span class="line">|-- static</span><br><span class="line">|   |-- css</span><br><span class="line">|   |   `-- images</span><br><span class="line">|   `-- js</span><br><span class="line">|-- templates</span><br><span class="line">|   |-- product</span><br><span class="line">|   `-- user</span><br><span class="line">|       |-- index.html</span><br><span class="line">|       |-- register.html</span><br><span class="line">|       `-- show.html</span><br><span class="line">`-- venv</span><br><span class="line">    |-- bin</span><br><span class="line">    |   |-- activate</span><br><span class="line">    |   |-- activate.csh</span><br><span class="line">    |   |-- activate.fish</span><br><span class="line">    |   |-- alembic</span><br><span class="line">    |   |-- easy_install</span><br><span class="line">    |   |-- easy_install<span class="number">-3.7</span></span><br><span class="line">    |   |-- flask</span><br><span class="line">    |   |-- mako-render</span><br><span class="line">    |   |-- pip</span><br><span class="line">    |   |-- pip3</span><br><span class="line">    |   |-- pip3<span class="number">.7</span></span><br><span class="line">    |   |-- python -&gt; python3</span><br><span class="line">    |   `-- python3 -&gt; /Library/Developer/CommandLineTools/usr/bin/python3</span><br><span class="line">    |-- include</span><br><span class="line">    |-- lib</span><br><span class="line">    |   `-- python3<span class="number">.7</span></span><br><span class="line">    `-- pyvenv.cfg</span><br><span class="line"></span><br><span class="line"><span class="number">24</span> directories, <span class="number">37</span> files</span><br></pre></td></tr></table></figure>
 <p>数据库方面是使用<code>flask_sqlalchemy</code>连接本地<code>mysql</code>数据库，建库在电脑终端命令行建立，<code>flask_sqlalchemy</code>的特色是<code>ORM(Object Relationships Mapping 对象关系映射)</code>（应该都知道吧，<code>python</code>的一个类就相当于数据库中的一个表，类的属性就是表的属性。<code>ORM</code> 使用对象，封装了数据库操作，因此可以不碰<code>SQL</code> 语言。开发者只使用面向对象编程，与数据对象直接交互，不用关心底层数据库。）所以使用它建立一个表是通过定义的类建立的，我遇到报错<code>sqlalchemy.exc.ProgrammingError: (pymysql.err.ProgrammingError) (1146, &quot;Table 'hi.user' doesn't exist&quot;)</code>，加上我使用了<code>flask_script</code>和<code>flask_migrate</code>。</p>
@@ -482,15 +482,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">人文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -506,6 +498,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
@@ -518,11 +518,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
+                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
             
             <div class="clearfix"></div>

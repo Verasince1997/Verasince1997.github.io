@@ -174,7 +174,7 @@
         <h5 id="项目结构搭建"><a class="markdownIt-Anchor" href="#项目结构搭建"></a> 项目结构搭建</h5>
 <p>日志继承，日志信息抽取。配置信息抽取。视图函数抽取。</p>
 <h5 id="具体需求"><a class="markdownIt-Anchor" href="#具体需求"></a> 具体需求</h5>
-<p>china_daily这个项目从manager.py入口，里面的manager是从info下的<code>__init__.py</code>中create_app()的app通过migrate和manager封装的。然后这些都是基础项目架构的配置。现在我还需要，从一个蓝图的视角，<a id="more"></a>比如今天新写的news，这个蓝图，让我们实现了模板的继承，base.html,index.html,detail.html. 这些都属于flask模板的语法，首先分析出index和detail共同部分，即可抽取的是啥。base中有my header ,my script,mycontent,myrank,mycategory,myfooter6大部分。</p>
+<p>china_daily这个项目从manager.py入口，里面的manager是从info下的<code>__init__.py</code>中create_app()的app通过migrate和manager封装的。然后这些都是基础项目架构的配置。现在我还需要，从一个蓝图的视角，<span id="more"></span>比如今天新写的news，这个蓝图，让我们实现了模板的继承，base.html,index.html,detail.html. 这些都属于flask模板的语法，首先分析出index和detail共同部分，即可抽取的是啥。base中有my header ,my script,mycontent,myrank,mycategory,myfooter6大部分。</p>
 <p>index中对myheader，my script,mycontent,mycategory改写，其实改写都是先写好再改？我觉得不是，因为写前就设计好了。知道yaoxie</p>
 <p>index和detail，知道共同部分。detail是改了my header,myscript,myrank,myconytent4个部分。</p>
 <h5 id="index"><a class="markdownIt-Anchor" href="#index"></a> index</h5>
@@ -448,15 +448,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">人文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -472,6 +464,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
@@ -484,11 +484,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
+                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
             
             <div class="clearfix"></div>

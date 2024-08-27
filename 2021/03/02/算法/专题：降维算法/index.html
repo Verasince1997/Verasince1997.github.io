@@ -173,7 +173,7 @@
       
         <p>首先说降维和特征选择中过滤法、嵌入法、包装法的区别。这三种方法是选择原始数据中的某些对模型有效的特征，而降维是将之前的特征压缩成一个新的特征，这些新特征往往不可读，不能从表面看出含义。</p>
 <p>一般流程是先探索数据，将特征矩阵和标签划为X和y，为了找出最佳降维维度，要不断的画图以确定最小范围，pca_line = PCA().fit(X)<br>
-使用pca_line.explained_variance_ratio_作为x轴，explained_variance_ratio_是PCA的可解释方差贡献率属性，查看降维后每个新特征向量所占的信息量占原始数据总信息量的百分比。y是此时x的explained_variance_ratio，x轴是降维后的特征个数。<a id="more"></a></p>
+使用pca_line.explained_variance_ratio_作为x轴，explained_variance_ratio_是PCA的可解释方差贡献率属性，查看降维后每个新特征向量所占的信息量占原始数据总信息量的百分比。y是此时x的explained_variance_ratio，x轴是降维后的特征个数。<span id="more"></span></p>
 <p>通过不断的筛选细分，获得一个最佳的维度，然后使用算法并评估模型得分，即X_dr = PCA(最佳维度).fit_transform(X)<br>
 cross_val_score(RFC(n_estimators=100,random_state=0),X_dr,y,cv=5).mean()。KNeighborsClassifier作为一个计算复杂，耗时大的算法，在降低维度后的数据上也会缩小运算时间，我们通过改变KNN中的参数，查看在最佳维度下，哪个n值能获得最佳得分。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">score = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">    X_dr = PCA(最佳维度).fit_transform(X)</span><br><span class="line">    once = cross_val_score(KNN(i+<span class="number">1</span>),X_dr,y,cv=<span class="number">5</span>).mean()</span><br><span class="line">    score.append(once)</span><br><span class="line">plt.figure(figsize=[<span class="number">20</span>,<span class="number">5</span>])</span><br><span class="line">plt.plot(range(<span class="number">10</span>),score)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
@@ -442,15 +442,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">人文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -466,6 +458,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
@@ -478,11 +478,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
+                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
             
             <div class="clearfix"></div>

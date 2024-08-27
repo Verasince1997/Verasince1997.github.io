@@ -181,7 +181,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">30527</span></span><br><span class="line"><span class="number">06203</span></span><br><span class="line"><span class="number">415</span></span><br></pre></td></tr></table></figure>
 <h4 id="输出样例"><a class="markdownIt-Anchor" href="#输出样例"></a> 输出样例：</h4>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">7201</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
+<span id="more"></span>
 <h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码：</h4>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> s, s1, s2, ans;</span><br><span class="line">    <span class="keyword">int</span> carry = <span class="number">0</span>, flag = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; s &gt;&gt; s1 &gt;&gt; s2;</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">ss1</span><span class="params">(s.length() - s1.length(), <span class="string">&#x27;0&#x27;</span>)</span></span>;</span><br><span class="line">    s1 = ss1 + s1;</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">ss2</span><span class="params">(s.length() - s2.length(), <span class="string">&#x27;0&#x27;</span>)</span></span>;</span><br><span class="line">    s2 = ss2 + s2;</span><br><span class="line">    ans =s2;<span class="comment">//只要确保长度为s的长度就行</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = s.length() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">int</span> mod = s[i] == <span class="string">&#x27;0&#x27;</span> ? <span class="number">10</span> : (s[i] - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">        ans[i] = (s1[i] - <span class="string">&#x27;0&#x27;</span> + s2[i] - <span class="string">&#x27;0&#x27;</span> + carry) % mod + <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">        carry = (s1[i] - <span class="string">&#x27;0&#x27;</span> + s2[i] - <span class="string">&#x27;0&#x27;</span> + carry) / mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (carry != <span class="number">0</span>) ans = <span class="string">&#x27;1&#x27;</span> + ans;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ans.size(); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (ans[i] != <span class="string">&#x27;0&#x27;</span> || flag == <span class="number">1</span>) &#123;</span><br><span class="line">            flag = <span class="number">1</span>;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; ans[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (flag == <span class="number">0</span>) <span class="built_in">cout</span> &lt;&lt; <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -449,15 +449,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">人文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -473,6 +465,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
@@ -485,11 +485,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
+                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
             
             <div class="clearfix"></div>

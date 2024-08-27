@@ -173,7 +173,7 @@
       
         <h5 id="项目概述"><a class="markdownIt-Anchor" href="#项目概述"></a> 项目概述</h5>
 <p>使用flask模板语法实现前端界面的继承，有网站首页和每条新闻详情页，以及热门新闻的展示。接着有用户中心管理界面以及另一个全新板块—管理员板块，管理员登录，管理员首页。以上即本项目的架构，书写思路为按蓝图板块进行。</p>
-<a id="more"></a>
+<span id="more"></span>
 <h5 id="index"><a class="markdownIt-Anchor" href="#index"></a> index</h5>
 <p>China Daily的首页，（其实我也不知道什么时候讲模板的继承，因为你不分析完index和detail，你怎么抽取相同的部分），首页有分类新闻，分类包括（最新，股市，商品，财经）默认显示最新一类，点击其他分类即跳转到查询到的相关新闻。所以首页的第二大板块就是新闻列表展示，并且要做成下拉实现分页加载。第三个板块是热门新闻排行，第四个板块是右上角的用户信息，如果没登录显示登录和注册表单，如果登录了显示用户信息，包括头像、用户名，并且它们上面有跳转至用户中心的超链接。</p>
 <h5 id="news"><a class="markdownIt-Anchor" href="#news"></a> news</h5>
@@ -453,15 +453,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">人文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -477,6 +469,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
@@ -489,11 +489,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
+                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
             
             <div class="clearfix"></div>

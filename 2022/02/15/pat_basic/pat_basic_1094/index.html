@@ -189,7 +189,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10</span> <span class="number">3</span></span><br><span class="line"><span class="number">2468001680</span></span><br></pre></td></tr></table></figure>
 <h4 id="输出样例-2"><a class="markdownIt-Anchor" href="#输出样例-2"></a> 输出样例 2：</h4>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">404</span></span><br></pre></td></tr></table></figure>
-<h4 id="代码-more-"><a class="markdownIt-Anchor" href="#代码-more-"></a> 代码：<a id="more"></a></h4>
+<h4 id="代码-more-"><a class="markdownIt-Anchor" href="#代码-more-"></a> 代码：<span id="more"></span></h4>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//测试点2</span></span><br><span class="line"><span class="number">6</span> <span class="number">4</span></span><br><span class="line"><span class="number">200236</span> </span><br><span class="line"><span class="number">0023</span></span><br></pre></td></tr></table></figure>
 <p>最初提交的代码，卡了测试点2，4，5；测试点2就是上面这个例子，我本来想用<code>printf(&quot;0kd&quot;,num);</code>来保证不足k位的num前面可以补0(让最终输出的num的长度为k)，但是这个语法不对，k要是具体的数值，以前我输出都是<code>printf(&quot;%04d&quot;,n);</code>1019题就这么用的。所以就把<code>int num=stoi(n.substr(i,k));</code>拆成<code>string str=n.substr(i,k);</code> <code>int num=stoi(str);</code>当num判断为素数，输出str就是。</p>
 <p>另外的错误是我以为2不是素数，所以我写的<code>num&gt;2</code> 但是2是素数，所以改成<code>num&gt;=2</code>就AC了。</p>
@@ -462,15 +462,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">人文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -486,6 +478,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
@@ -498,11 +498,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
+                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
             
             <div class="clearfix"></div>

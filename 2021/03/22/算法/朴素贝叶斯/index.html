@@ -173,7 +173,7 @@
       
         <p>联合概率：</p>
 <p>在概率论中，我们可以证明，两个事件的联合概率等于这两个事件任意条件概率 * 这个条件事件本身的概率。</p>
-<p>因为分类算法给出的是“样本标签更可能是某类的可能性”，而不是一种“确定”，比如决策树使用叶子结点占比较多的标签所占的比例（接口predict_prob），逻辑回顾使用sigmoid函数压缩后的似然(接口predict_prob)，SVM使用样本点到决策边界的距离(接口decision_function)，这些指标本质都是一种“类概率”的表示，通过归一化或sigmoid函数将这些指标压缩打0～1之间，让其表示模型对预测结果究竟有多大的把握(置信度)。但希望使用真正的概率来衡量可能性，使用概率算法：朴素贝叶斯。<a id="more"></a></p>
+<p>因为分类算法给出的是“样本标签更可能是某类的可能性”，而不是一种“确定”，比如决策树使用叶子结点占比较多的标签所占的比例（接口predict_prob），逻辑回顾使用sigmoid函数压缩后的似然(接口predict_prob)，SVM使用样本点到决策边界的距离(接口decision_function)，这些指标本质都是一种“类概率”的表示，通过归一化或sigmoid函数将这些指标压缩打0～1之间，让其表示模型对预测结果究竟有多大的把握(置信度)。但希望使用真正的概率来衡量可能性，使用概率算法：朴素贝叶斯。<span id="more"></span></p>
 <h5 id="1-概率论基础知识"><a class="markdownIt-Anchor" href="#1-概率论基础知识"></a> 1. 概率论基础知识</h5>
 <p>假设有两个随机变量X和Y，分别取值为x和y，定义以下两种概率：</p>
 <p>联合概率：X取值为x，Y取值为y这两件事同时发生的概率，表示为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>X</mi><mo>=</mo><mi>x</mi><mo separator="true">,</mo><mi>Y</mi><mo>=</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(X=x,Y=y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span></p>
@@ -480,15 +480,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">人文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,6 +496,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
@@ -516,11 +516,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
+                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
             
             <div class="clearfix"></div>

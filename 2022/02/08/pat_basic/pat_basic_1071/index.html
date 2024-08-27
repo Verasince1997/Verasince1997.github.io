@@ -193,7 +193,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">100</span> <span class="number">4</span></span><br><span class="line"><span class="number">8</span> <span class="number">0</span> <span class="number">100</span> <span class="number">2</span></span><br><span class="line"><span class="number">3</span> <span class="number">1</span> <span class="number">200</span> <span class="number">1</span></span><br><span class="line"><span class="number">5</span> <span class="number">1</span> <span class="number">200</span> <span class="number">6</span></span><br><span class="line"><span class="number">7</span> <span class="number">0</span> <span class="number">200</span> <span class="number">8</span></span><br></pre></td></tr></table></figure>
 <h4 id="输出样例-2"><a class="markdownIt-Anchor" href="#输出样例-2"></a> 输出样例 2：</h4>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Win <span class="number">100</span>!  Total = <span class="number">200.</span></span><br><span class="line">Lose <span class="number">200.</span>  Total = <span class="number">0.</span></span><br><span class="line">Game Over.</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
+<span id="more"></span>
 <h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码：</h4>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T,k;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,&amp;T,&amp;k);</span><br><span class="line">    <span class="keyword">int</span> n1,b,t,n2;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d %d %d %d&quot;</span>,&amp;n1,&amp;b,&amp;t,&amp;n2);</span><br><span class="line">        <span class="keyword">if</span>(T==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;Game Over.\n&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(T&lt;t)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;Not enough tokens.  Total = %d.\n&quot;</span>, T);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(b==<span class="number">0</span> &amp;&amp; n1&lt;n2)&#123; <span class="comment">//玩家赌小 但实际更大 lose</span></span><br><span class="line">        T-=t;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Lose %d.  Total = %d.\n&quot;</span>, t, T);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(b==<span class="number">0</span> &amp;&amp; n1&gt;n2)&#123;<span class="comment">//玩家赌小 实际也小 win</span></span><br><span class="line">        T+=t;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Win %d!  Total = %d.\n&quot;</span>, t, T);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(b==<span class="number">1</span> &amp;&amp; n1&lt;n2)&#123;<span class="comment">//玩家赌大 实际也大 win</span></span><br><span class="line">        T+=t;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Win %d!  Total = %d.\n&quot;</span>, t, T);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(b==<span class="number">1</span> &amp;&amp; n1&gt;n2)&#123;<span class="comment">//玩家赌大 实际更小 lose</span></span><br><span class="line">        T-=t;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Lose %d.  Total = %d.\n&quot;</span>, t, T);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -461,15 +461,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">人文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -485,6 +477,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
@@ -497,11 +497,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
+                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
             
             <div class="clearfix"></div>

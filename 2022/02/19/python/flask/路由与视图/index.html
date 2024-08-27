@@ -195,7 +195,7 @@
 <p>2.能够写出Flask从对象中加载配置的代码</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Config</span>(<span class="params">object</span>):</span></span><br><span class="line">    DEBUG = <span class="literal">True</span>;</span><br><span class="line">    </span><br><span class="line">app.config.from_object(Config)</span><br></pre></td></tr></table></figure>
 <p>3.能够说出url_for的作用</p>
-<p>通常和redirect一起使用，用以传递参数。url_for反解析：通过视图函数的名称返回地址，格式：<code>url_for('视图函数名称',key=value)</code><a id="more"></a></p>
+<p>通常和redirect一起使用，用以传递参数。url_for反解析：通过视图函数的名称返回地址，格式：<code>url_for('视图函数名称',key=value)</code><span id="more"></span></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(&#x27;/demo5&#x27;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">demo5</span>():</span></span><br><span class="line">    <span class="keyword">return</span> redirect(<span class="string">&#x27;https://ieee_fellow_jueluo.gitee.io/blog/&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(&#x27;/demo1&#x27;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">demo1</span>():</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;demo1&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(&#x27;/demo5&#x27;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">demo5</span>():</span></span><br><span class="line">    <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;demo1&#x27;</span>))  </span><br><span class="line"><span class="comment"># 访问此路径 返回的是demo1</span></span><br></pre></td></tr></table></figure>
 <p>4.能够写出带有参数的路由及视图函数</p>
  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(&#x27;/user/&lt;int:user_id&gt;&#x27;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">user_info</span>(<span class="params">user_id</span>):</span>  <span class="comment"># 视图函数user_info</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;the num is %d&#x27;</span> % user_id</span><br><span class="line"> </span><br><span class="line"><span class="meta">@app.route(&#x27;/demo5&#x27;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">demo5</span>():</span></span><br><span class="line">    <span class="comment"># 使用url_for生成指定视图函数所对应的url</span></span><br><span class="line">    <span class="comment"># 格式 url_for(&#x27;视图函数名&#x27;,key=value)</span></span><br><span class="line">    <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;user_info&#x27;</span>, user_id=<span class="number">1997</span>))</span><br></pre></td></tr></table></figure>
@@ -492,15 +492,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">人文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -516,6 +508,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
@@ -528,11 +528,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
+                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
             
             <div class="clearfix"></div>

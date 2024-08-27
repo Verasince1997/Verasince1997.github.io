@@ -180,7 +180,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PAT (Basic)</span><br></pre></td></tr></table></figure>
 <h3 id="输出样例"><a class="markdownIt-Anchor" href="#输出样例"></a> 输出样例：</h3>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span> <span class="number">4</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
+<span id="more"></span>
 <h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码：</h4>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> strs;</span><br><span class="line">    <span class="keyword">int</span> sum=<span class="number">0</span>,count_0=<span class="number">0</span>,count1=<span class="number">0</span>,count=<span class="number">0</span>;</span><br><span class="line">    getline(<span class="built_in">cin</span>,strs);</span><br><span class="line">    <span class="built_in">map</span> &lt;<span class="keyword">char</span>,<span class="keyword">int</span>&gt; m;</span><br><span class="line">    m.insert(&#123;&#123;<span class="string">&#x27;a&#x27;</span>,<span class="number">1</span>&#125;,&#123;<span class="string">&#x27;b&#x27;</span>,<span class="number">2</span>&#125;,&#123;<span class="string">&#x27;c&#x27;</span>,<span class="number">3</span>&#125;,&#123;<span class="string">&#x27;d&#x27;</span>,<span class="number">4</span>&#125;,&#123;<span class="string">&#x27;e&#x27;</span>,<span class="number">5</span>&#125;,&#123;<span class="string">&#x27;f&#x27;</span>,<span class="number">6</span>&#125;,&#123;<span class="string">&#x27;g&#x27;</span>,<span class="number">7</span>&#125;,&#123;<span class="string">&#x27;h&#x27;</span>,<span class="number">8</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&#x27;i&#x27;</span>,<span class="number">9</span>&#125;,&#123;<span class="string">&#x27;j&#x27;</span>,<span class="number">10</span>&#125;,&#123;<span class="string">&#x27;k&#x27;</span>,<span class="number">11</span>&#125;,&#123;<span class="string">&#x27;l&#x27;</span>,<span class="number">12</span>&#125;,&#123;<span class="string">&#x27;m&#x27;</span>,<span class="number">13</span>&#125;,&#123;<span class="string">&#x27;n&#x27;</span>,<span class="number">14</span>&#125;,&#123;<span class="string">&#x27;o&#x27;</span>,<span class="number">15</span>&#125;,&#123;<span class="string">&#x27;p&#x27;</span>,<span class="number">16</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&#x27;q&#x27;</span>,<span class="number">17</span>&#125;,&#123;<span class="string">&#x27;r&#x27;</span>,<span class="number">18</span>&#125;,&#123;<span class="string">&#x27;s&#x27;</span>,<span class="number">19</span>&#125;,&#123;<span class="string">&#x27;t&#x27;</span>,<span class="number">20</span>&#125;,&#123;<span class="string">&#x27;u&#x27;</span>,<span class="number">21</span>&#125;,&#123;<span class="string">&#x27;v&#x27;</span>,<span class="number">22</span>&#125;,&#123;<span class="string">&#x27;w&#x27;</span>,<span class="number">23</span>&#125;,&#123;<span class="string">&#x27;x&#x27;</span>,<span class="number">24</span>&#125;,&#123;<span class="string">&#x27;y&#x27;</span>,<span class="number">25</span>&#125;,&#123;<span class="string">&#x27;z&#x27;</span>,<span class="number">26</span>&#125;&#125;);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;strs.length();i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">isalpha</span>(strs[i]))&#123;</span><br><span class="line">        count++;</span><br><span class="line">        strs[i]=<span class="built_in">tolower</span>(strs[i]);</span><br><span class="line">        sum+=m[strs[i]];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// cout&lt;&lt;&quot;sum:&quot;&lt;&lt;sum&lt;&lt;endl;</span></span><br><span class="line">    <span class="keyword">if</span>(count==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="comment">//此字符串没有字母</span></span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="number">0</span>&lt;&lt;<span class="string">&#x27; &#x27;</span>&lt;&lt;<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//将sum用二进制表示</span></span><br><span class="line">    <span class="keyword">int</span> Q,R;</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        Q=sum/<span class="number">2</span>;</span><br><span class="line">        R=sum%<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(R==<span class="number">1</span>)&#123;</span><br><span class="line">            count1++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(R==<span class="number">0</span>)&#123;</span><br><span class="line">            count_0++;</span><br><span class="line">        &#125;</span><br><span class="line">        sum=Q;</span><br><span class="line">    &#125;<span class="keyword">while</span>(Q!=<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;count_0&lt;&lt;<span class="string">&#x27; &#x27;</span>&lt;&lt;count1;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -448,15 +448,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">人文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -472,6 +464,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
@@ -484,11 +484,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
+                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
             
             <div class="clearfix"></div>
