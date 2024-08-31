@@ -6,7 +6,7 @@
   <link href="https://verasince1997.github.io/atom.xml" rel="self"/>
   
   <link href="https://verasince1997.github.io/"/>
-  <updated>2024-08-26T11:27:24.105Z</updated>
+  <updated>2024-08-31T14:16:51.486Z</updated>
   <id>https://verasince1997.github.io/</id>
   
   <author>
@@ -17,26 +17,58 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>my new doc</title>
-    <link href="https://verasince1997.github.io/2024/08/26/my-new-doc/"/>
-    <id>https://verasince1997.github.io/2024/08/26/my-new-doc/</id>
-    <published>2024-08-26T11:25:41.000Z</published>
-    <updated>2024-08-26T11:27:24.105Z</updated>
+    <title>《一句顶一万句》书评</title>
+    <link href="https://verasince1997.github.io/2024/08/31/%E4%BA%BA%E6%96%87/%E4%B8%80%E5%8F%A5%E9%A1%B6%E4%B8%80%E4%B8%87%E5%8F%A5/"/>
+    <id>https://verasince1997.github.io/2024/08/31/%E4%BA%BA%E6%96%87/%E4%B8%80%E5%8F%A5%E9%A1%B6%E4%B8%80%E4%B8%87%E5%8F%A5/</id>
+    <published>2024-08-31T14:13:25.408Z</published>
+    <updated>2024-08-31T14:16:51.486Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="1-scrapy"><a class="markdownIt-Anchor" href="#1-scrapy"></a> 1. Scrapy</h4><p>我们已经知道如何获取网页源代码，解析数据。现在思考如何提高爬虫的规模，进而提高采集数据的“量”。Scrapy是基于Python的分布式爬虫框架。使用它可以非常方便地实现分布式爬虫。让开发者集中精力在数据的提取上。</p><p>（1）使用Scrapy获取网络源代码。</p><p>（2）在Scrapy中通过BeautifulSoup解析数据。</p><p>（3）在Scrapy中使用MongoDB。</p><p>（4）在Scrapy中使用Redis。<span id="more"></span></p><h5 id="11"><a class="markdownIt-Anchor" href="#11"></a> 1.1</h5><p>使用Scrapy创建工程的命令为：<code>scrapy startproject &lt;Your project name&gt;</code></p><p>比如我创建<code>scrapy startproject firstcrawl</code></p><p>由于Python在导入库的时候，会优先从当前工程文件夹中寻找满足条件的文件或者文件夹，如果工程的名称本身就为scrapy，那么Python就无法找到正常的Scrapy库的文件，这是对project name命名唯一的要求。</p><p>之后 <code>cd &lt;Your project name&gt;</code></p><p><code>scrapy genspider example &lt;url&gt;</code></p><p>在Scrapy genspider命令中，有两个参数，“example”和“url”。其中，第1个参数“example”是爬虫的名字，这个名字可以取英文和数字的组合，但是绝对不能为“scrapy”或者工程的名字。s第2个参数“url”是需要爬取的网址。注意url没有’www’。这是因为在浏览器中直接输入“<a href="http://baidu.com">baidu.com</a>”就可以打开百度的首页，输入’<a href="http://weread.qq.com">weread.qq.com</a>’就可以打开微信读书首页。</p><p>在Pycharm下打开刚生成的爬虫项目，</p>]]></content>
-    
-    
-    <summary type="html">&lt;h4 id=&quot;1-scrapy&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-scrapy&quot;&gt;&lt;/a&gt; 1. Scrapy&lt;/h4&gt;
-&lt;p&gt;我们已经知道如何获取网页源代码，解析数据。现在思考如何提高爬虫的规模，进而提高采集数据的“量”。Scrapy是基于Python的分布式爬虫框架。使用它可以非常方便地实现分布式爬虫。让开发者集中精力在数据的提取上。&lt;/p&gt;
-&lt;p&gt;（1）使用Scrapy获取网络源代码。&lt;/p&gt;
-&lt;p&gt;（2）在Scrapy中通过BeautifulSoup解析数据。&lt;/p&gt;
-&lt;p&gt;（3）在Scrapy中使用MongoDB。&lt;/p&gt;
-&lt;p&gt;（4）在Scrapy中使用Redis。&lt;/p&gt;</summary>
+    <content type="html"><![CDATA[<blockquote><p>这是我为线下读书分享活动准备的稿子，传至个人博客上记录。</p></blockquote><p>刘震云的一个朋友，他的老婆出轨了，刘震云就对他的朋友说，一个女人出轨，那个男人一定是说了一句让她心动的话，这一句话顶过他朋友的一万句话，但是他们都不知道那句话是什么，为了找到那句话，就开始创作这本书。</p><p>主人公叫杨百顺，他的父亲是卖豆腐的老杨，赶着巴结不拿他当朋友的马家庄赶大车的老马，拿他当朋友的，想跟他多说一句话，老杨倒对他爱搭不理。老杨解释这样做的原因呢：”论起事来，同样一件事，我只能看一里，他能看十里，我只能看一个月，他一下能看十年“；又说：“以后遇到事，就想找他商量。”</p><p>其实听明白了，还是想占人便宜，遇事自个儿拿不定主意，想借人一双眼。自打认识老杨，老马给老杨出过不下一百个主意；老马从老杨那里，听到的却全是废话。那既然老马看不上老杨，为啥还跟他来往呢？因为方圆百里，哪儿还有一下看十里和看十年的人呢？老马也是一辈子没朋友。</p><p>老杨都找老马请教什么呢？老杨有三个儿子，大儿子继承家业卖豆腐，剩下两个儿子争着上“延津新学”。但两个儿子到底让谁去呢？卖豆腐的老杨又犯了愁。老杨一犯愁，又跑到马家庄找老马。</p><p>老马说“上学做官是为了啥？是为了回头卖豆腐。老杨家有一人在县政府，世上的豆腐千千万，但在县政府当过差的豆腐，也就老杨一家。再说回让谁去，人就像鸟一样，脑子好使，翅膀一硬就飞了；脑子笨，撒出去才能飞回来。脑子好使的，豆腐拴不住他；脑子笨的，才能飞回豆腐上。老马让老杨抓阄，让脑子笨的去。两张纸都写着“不上”，故意让脑子好使的主人公杨百顺先抓。</p><p>杨百顺接受了命运的安排，安心卖起豆腐，某次在马家庄出摊时，皮匠老吕将老杨和老马共同商议的抓阄的内情，一五一十告诉了杨百顺。老吕不是与卖豆腐的老杨过不去，而是与马家庄赶大车的老马有过节。说起来，杨家上学抓阄的内情，并不是老马传出来的，还是老杨上次到马家庄卖豆腐，给人说了。老杨说这话是为了显示自己跟老马是朋友，常在一起说心腹话。<span id="more"></span></p><p>之后百顺在该起床磨豆腐的时辰，他起床但不磨豆腐，借着上茅房，从后墙扒出去，一个人走了。他终于可以离开家了。或者说，他终于找到了脱离老杨和豆腐的另一个理由。</p><p>之间还有很多的故事，百顺借由舞社火进县政府，进而被丧偶的吴湘湘看中,入赘到了西街馒头铺,不过百顺跟吴香香说不着,到跟吴香香五岁的女儿巧玲说得着,所以当吴香香跟隔壁银匠老高私奔后,百顺本想出门假意寻找几天,就带着巧玲重新过日子,谁想到在路上他竟弄丢了唯一说得着的巧玲,从此假找变成了真找,漂泊半生。</p><p>以上只是书中部分故事，各色人物层出不穷，故事耐人琢磨，值得静下心来去思考他们的处境、做出的选择，进而反观自己已经度过的人生。中国人吵架喜欢翻旧账，原本吵的是这件事，但把陈年烂谷子的事翻出来，总是话里有话,耐人寻味,人都被话拿住了。把一件事绕成了另一件事，把一件事说成了另一件事，一件事能扯出十件事，一件事十条理，到头来，不是最原本的事，中间拐着好几道弯。世上的人遍地都是。说得着的,却千里难寻,能得一个说得着，就是一句顶一万句。</p>]]></content>
     
     
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;这是我为线下读书分享活动准备的稿子，传至个人博客上记录。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;刘震云的一个朋友，他的老婆出轨了，刘震云就对他的朋友说，一个女人出轨，那个男人一定是说了一句让她心动的话，这一句话顶过他朋友的一万句话，但是他们都不知道那句话是什么，为了找到那句话，就开始创作这本书。&lt;/p&gt;
+&lt;p&gt;主人公叫杨百顺，他的父亲是卖豆腐的老杨，赶着巴结不拿他当朋友的马家庄赶大车的老马，拿他当朋友的，想跟他多说一句话，老杨倒对他爱搭不理。老杨解释这样做的原因呢：”论起事来，同样一件事，我只能看一里，他能看十里，我只能看一个月，他一下能看十年“；又说：“以后遇到事，就想找他商量。”&lt;/p&gt;
+&lt;p&gt;其实听明白了，还是想占人便宜，遇事自个儿拿不定主意，想借人一双眼。自打认识老杨，老马给老杨出过不下一百个主意；老马从老杨那里，听到的却全是废话。那既然老马看不上老杨，为啥还跟他来往呢？因为方圆百里，哪儿还有一下看十里和看十年的人呢？老马也是一辈子没朋友。&lt;/p&gt;
+&lt;p&gt;老杨都找老马请教什么呢？老杨有三个儿子，大儿子继承家业卖豆腐，剩下两个儿子争着上“延津新学”。但两个儿子到底让谁去呢？卖豆腐的老杨又犯了愁。老杨一犯愁，又跑到马家庄找老马。&lt;/p&gt;
+&lt;p&gt;老马说“上学做官是为了啥？是为了回头卖豆腐。老杨家有一人在县政府，世上的豆腐千千万，但在县政府当过差的豆腐，也就老杨一家。再说回让谁去，人就像鸟一样，脑子好使，翅膀一硬就飞了；脑子笨，撒出去才能飞回来。脑子好使的，豆腐拴不住他；脑子笨的，才能飞回豆腐上。老马让老杨抓阄，让脑子笨的去。两张纸都写着“不上”，故意让脑子好使的主人公杨百顺先抓。&lt;/p&gt;
+&lt;p&gt;杨百顺接受了命运的安排，安心卖起豆腐，某次在马家庄出摊时，皮匠老吕将老杨和老马共同商议的抓阄的内情，一五一十告诉了杨百顺。老吕不是与卖豆腐的老杨过不去，而是与马家庄赶大车的老马有过节。说起来，杨家上学抓阄的内情，并不是老马传出来的，还是老杨上次到马家庄卖豆腐，给人说了。老杨说这话是为了显示自己跟老马是朋友，常在一起说心腹话。&lt;/p&gt;</summary>
     
-    <category term="爬虫" scheme="https://verasince1997.github.io/categories/%E7%88%AC%E8%99%AB/"/>
     
+    
+    <category term="书籍" scheme="https://verasince1997.github.io/categories/%E4%B9%A6%E7%B1%8D/"/>
+    
+    
+    <category term="人文" scheme="https://verasince1997.github.io/tags/%E4%BA%BA%E6%96%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>道德经系列day1</title>
+    <link href="https://verasince1997.github.io/2024/08/31/%E9%81%93%E5%BE%B7%E7%BB%8F/%E9%81%93%E5%BE%B7%E7%BB%8F%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A01/"/>
+    <id>https://verasince1997.github.io/2024/08/31/%E9%81%93%E5%BE%B7%E7%BB%8F/%E9%81%93%E5%BE%B7%E7%BB%8F%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A01/</id>
+    <published>2024-08-31T13:45:12.571Z</published>
+    <updated>2024-08-31T14:29:47.228Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>初探道德经</p></blockquote><p>人出名后，就有不符合实际的传说，比如老子生下来是老头。传闻老子只是道德经的编辑者，源头是上古时代领导者（尧舜禹）整理的治理国家的方法。老子所处时期时处东周春秋时期，希望后世领导者学习。即人之所教，我亦教之。（公司的领导要学，基本的规律、法则。）</p><p>老子《道德经》中讲了两个道， 【天之道】、 【圣人之道】。老子并没有把道讲得很玄乎，因为市面上教授道德经的有意无意把这两个道混在一起。道德经不是嘉靖帝修炼长生不死，这偏离道德经本质。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">【天之道】：即在人世间之上有一种力量，按照这个力量的存在构成了现在的世界，无法命名，勉强命名为“道”。比如“举头三尺有神明”，宗教就运用这种力量。比如稻盛和夫的“宇宙意志，敬天爱人。”人类好像是一个神秘力量建造的游戏，我们不懂游戏规则，懂规则玩得更开心。</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">【圣人之道】：即领导者法则，有道的国家领导者，去观摩效仿天之道。观察其特点，是制定理解圣人之道的方法。上如何如何，民如何如何。整个世界怎么来的，一个点大爆炸，现在还在爆炸的膨胀中，所有的星系正在远离我们。爆炸之前的宇宙是什么样的？天之道模糊，圣人之道可以由看得到人世间怎么运行，领导者要尽量放下自己的欲望，为你管理的百姓做事。公司的领导者放下自己的名利，专注员工的物质和精神。</span><br></pre></td></tr></table></figure><span id="more"></span><p>道的三个内涵：</p><ul><li>第一个内涵：根本没有永远的事，我们只是其中的一个片段，期间变化不息。烦恼来源于想永远拥有。怎么解决：共同度过。手里的手机，十年前，在山里是金属，几十年后被压碎回收，只不过它现在叫手机，贪官家里的钱长毛了，敢花这些钱吗，怎么体现他永远拥有这些钱，回家点钱，体验拥有的感觉。放下，不要太执着了。较劲，执着，家长这个性格，考第一赚钱买房子，孩子在这种压力下就会生病。找到乐趣，你找到这件事的根本意义所在。沙在手里，轻轻地捧一把，比捏紧它拥有更多。学会放下，不执着于形名，人生会从容。这是道的第一个内涵。</li><li>第二个内涵，世界是一个联系的整体，十个人坐一个圆桌，我不和左边的人说话，如何让他对我笑，我对右边的人笑，依          次传递，就会收获左边人的笑，实际上收获到9个人的笑。<br>我们经历的事情不过就是这一桌子的事。你发出的信息，世界会回馈到你，逃不掉。如果各位我们能够按照这个法则去做事儿，那您人生无往不利，会越来越丰盛的好。</li><li>第三个内涵，我们该怎么做？不计回报。无我利他。尽量放下自己的欲望，不计回报发出善的信息。你天天骂人，别人不可能不回馈你，你80岁还被骂，你愿意这样度过这一生？</li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;初探道德经&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;人出名后，就有不符合实际的传说，比如老子生下来是老头。传闻老子只是道德经的编辑者，源头是上古时代领导者（尧舜禹）整理的治理国家的方法。老子所处时期时处东周春秋时期，希望后世领导者学习。即人之所教，我亦教之。（公司的领导要学，基本的规律、法则。）&lt;/p&gt;
+&lt;p&gt;老子《道德经》中讲了两个道， 【天之道】、 【圣人之道】。老子并没有把道讲得很玄乎，因为市面上教授道德经的有意无意把这两个道混在一起。道德经不是嘉靖帝修炼长生不死，这偏离道德经本质。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;【天之道】：即在人世间之上有一种力量，按照这个力量的存在构成了现在的世界，无法命名，勉强命名为“道”。比如“举头三尺有神明”，宗教就运用这种力量。比如稻盛和夫的“宇宙意志，敬天爱人。”人类好像是一个神秘力量建造的游戏，我们不懂游戏规则，懂规则玩得更开心。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;【圣人之道】：即领导者法则，有道的国家领导者，去观摩效仿天之道。观察其特点，是制定理解圣人之道的方法。上如何如何，民如何如何。整个世界怎么来的，一个点大爆炸，现在还在爆炸的膨胀中，所有的星系正在远离我们。爆炸之前的宇宙是什么样的？天之道模糊，圣人之道可以由看得到人世间怎么运行，领导者要尽量放下自己的欲望，为你管理的百姓做事。公司的领导者放下自己的名利，专注员工的物质和精神。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="书籍" scheme="https://verasince1997.github.io/categories/%E4%B9%A6%E7%B1%8D/"/>
+    
+    
+    <category term="道德经" scheme="https://verasince1997.github.io/tags/%E9%81%93%E5%BE%B7%E7%BB%8F/"/>
     
   </entry>
   
@@ -83,27 +115,6 @@
     
     
     <category term="OJ tricks" scheme="https://verasince1997.github.io/tags/OJ-tricks/"/>
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://verasince1997.github.io/2022/02/19/pat_basic/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E6%8A%80%E5%B7%A7/"/>
-    <id>https://verasince1997.github.io/2022/02/19/pat_basic/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E6%8A%80%E5%B7%A7/</id>
-    <published>2022-02-19T15:27:32.396Z</published>
-    <updated>2022-02-19T15:28:02.157Z</updated>
-    
-    <content type="html"><![CDATA[<p>输入字符串数组 <code>scanf(&quot;%s&quot;,s);</code></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;输入字符串数组 &lt;code&gt;scanf(&amp;quot;%s&amp;quot;,s);&lt;/code&gt;&lt;/p&gt;
-</summary>
-      
-    
-    
-    
     
   </entry>
   
