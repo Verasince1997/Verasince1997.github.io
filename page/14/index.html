@@ -148,6 +148,102 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-pat_basic/pat_basic_1041" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/29/pat_basic/pat_basic_1041/">PAT_Basic_1041 考试座位号</a>
+    </h1>
+  
+
+        
+        <a href="/2022/01/29/pat_basic/pat_basic_1041/" class="archive-article-date">
+  	<time datetime="2022-01-29T04:00:48.934Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>每个 PAT 考生在参加考试时都会被分配两个座位号，一个是试机座位，一个是考试座位。正常情况下，考生在入场时先得到试机座位号码，入座进入试机状态后，系统会显示该考生的考试座位号码，考试时考生需要换到考试座位就座。但有些考生迟到了，试机已经结束，他们只能拿着领到的试机座位号码求助于你，从后台查出他们的考试座位号码。</p>
+<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
+<p>输入第一行给出一个正整数 <em>N</em>（≤1000），随后 <em>N</em> 行，每行给出一个考生的信息：<code>准考证号 试机座位号 考试座位号</code>。其中<code>准考证号</code>由 16 位数字组成，座位从 1 到 <em>N</em> 编号。输入保证每个人的准考证号都不同，并且任何时候都不会把两个人分配到同一个座位上。</p>
+<p>考生信息之后，给出一个正整数 <em>M</em>（≤<em>N</em>），随后一行中给出 <em>M</em> 个待查询的试机座位号码，以空格分隔。</p>
+<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
+<p>对应每个需要查询的试机座位号码，在一行中输出对应考生的准考证号和考试座位号码，中间用 1 个空格分隔。</p>
+<h4 id="输入样例"><a class="markdownIt-Anchor" href="#输入样例"></a> 输入样例：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">3310120150912233</span> <span class="number">2</span> <span class="number">4</span></span><br><span class="line"><span class="number">3310120150912119</span> <span class="number">4</span> <span class="number">1</span></span><br><span class="line"><span class="number">3310120150912126</span> <span class="number">1</span> <span class="number">3</span></span><br><span class="line"><span class="number">3310120150912002</span> <span class="number">3</span> <span class="number">2</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span> <span class="number">4</span></span><br></pre></td></tr></table></figure>
+<h4 id="输出样例"><a class="markdownIt-Anchor" href="#输出样例"></a> 输出样例：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3310120150912002</span> <span class="number">2</span></span><br><span class="line"><span class="number">3310120150912119</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">exam</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="built_in">string</span> id;</span><br><span class="line">    <span class="keyword">int</span> test;</span><br><span class="line">    <span class="keyword">int</span> <span class="keyword">final</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;N;</span><br><span class="line">    <span class="built_in">vector</span> &lt;exam&gt; v;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)&#123;</span><br><span class="line">        exam student;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;student.id&gt;&gt;student.test&gt;&gt;student.<span class="keyword">final</span>;</span><br><span class="line">        v.push_back(student);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> M,num;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;M;</span><br><span class="line">    <span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; v1;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;M;i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;num;</span><br><span class="line">        v1.push_back(num);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;v1.size();j++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;v.size();i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(v[i].test==v1[j])&#123;</span><br><span class="line">                <span class="built_in">cout</span>&lt;&lt;v[i].id&lt;&lt;<span class="string">&#x27; &#x27;</span>&lt;&lt;v[i].<span class="keyword">final</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/29/pat_basic/pat_basic_1041/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-pat_basic/刷题总结/专题:查找元素 11.22.54 AM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -538,105 +634,6 @@
 
 
   
-    <article id="post-pat_basic/pat_basic_1037" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/28/pat_basic/pat_basic_1037/">PAT_Basic_1037 在霍格沃茨找零钱</a>
-    </h1>
-  
-
-        
-        <a href="/2022/01/28/pat_basic/pat_basic_1037/" class="archive-article-date">
-  	<time datetime="2022-01-28T08:27:52.634Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>如果你是哈利·波特迷，你会知道魔法世界有它自己的货币系统 —— 就如海格告诉哈利的：“十七个银西可(Sickle)兑一个加隆(Galleon)，二十九个纳特(Knut)兑一个西可，很容易。”现在，给定哈利应付的价钱 <em>P</em> 和他实付的钱 <em>A</em>，你的任务是写一个程序来计算他应该被找的零钱。</p>
-<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
-<p>输入在 1 行中分别给出 <em>P</em> 和 <em>A</em>，格式为 <code>Galleon.Sickle.Knut</code>，其间用 1 个空格分隔。这里 <code>Galleon</code> 是 [0, 107] 区间内的整数，<code>Sickle</code> 是 [0, 17) 区间内的整数，<code>Knut</code> 是 [0, 29) 区间内的整数。</p>
-<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
-<p>在一行中用与输入同样的格式输出哈利应该被找的零钱。如果他没带够钱，那么输出的应该是负数。</p>
-<h4 id="输入样例-1"><a class="markdownIt-Anchor" href="#输入样例-1"></a> 输入样例 1：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10.16</span><span class="number">.27</span> <span class="number">14.1</span><span class="number">.28</span></span><br></pre></td></tr></table></figure>
-<h4 id="输出样例-1"><a class="markdownIt-Anchor" href="#输出样例-1"></a> 输出样例 1：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3.2</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
-<h4 id="输入样例-2"><a class="markdownIt-Anchor" href="#输入样例-2"></a> 输入样例 2：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">14.1</span><span class="number">.28</span> <span class="number">10.16</span><span class="number">.27</span></span><br></pre></td></tr></table></figure>
-<h4 id="输出样例-2"><a class="markdownIt-Anchor" href="#输出样例-2"></a> 输出样例 2：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">-3.2</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
-<h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> a1,b1,c1,a2,b2,c2,a3,b3,c3;</span><br><span class="line">   <span class="built_in">scanf</span>(<span class="string">&quot;%d.%d.%d&quot;</span>,&amp;a1,&amp;b1,&amp;c1);</span><br><span class="line">   <span class="built_in">scanf</span>(<span class="string">&quot;%d.%d.%d&quot;</span>,&amp;a2,&amp;b2,&amp;c2);</span><br><span class="line">   <span class="keyword">if</span>(a1&gt;a2 || (a1==a2 &amp;&amp; b1&gt;b2) || (a1==a2 &amp;&amp; b1==b2 &amp;&amp; c1&gt;c2))&#123;</span><br><span class="line">       swap(a1,a2);swap(b1,b2);swap(c1,c2);<span class="comment">//确保2的总值最大</span></span><br><span class="line">       <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">   &#125;</span><br><span class="line">    <span class="keyword">int</span> knut_num = c2-c1;</span><br><span class="line">    <span class="keyword">if</span>(knut_num&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">        c3=knut_num;<span class="comment">//28-16=12 够找 不用向第二项借</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        b2-=<span class="number">1</span>;<span class="comment">//借1个sickle 比如1-28=-27 -27+29=2</span></span><br><span class="line">        c3=knut_num + <span class="number">29</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> sickle_num = b2-b1;</span><br><span class="line">    <span class="keyword">if</span>(sickle_num&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">        b3=sickle_num;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        a2-=<span class="number">1</span>;</span><br><span class="line">        b3=sickle_num +<span class="number">17</span>;</span><br><span class="line">    &#125;</span><br><span class="line">   a3=a2-a1;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;%d.%d.%d&quot;</span>,a3,b3,c3);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/28/pat_basic/pat_basic_1037/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/13/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/15/">Next &amp;raquo;</a>
@@ -735,15 +732,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">人文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">人文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">python算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -759,15 +760,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flask</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -779,7 +776,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
+                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
               </li>
             
             <div class="clearfix"></div>

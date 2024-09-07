@@ -148,6 +148,104 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-pat_basic/pat_basic_1015" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/16/pat_basic/pat_basic_1015/">PAT_Basic_1015 德才论</a>
+    </h1>
+  
+
+        
+        <a href="/2022/01/16/pat_basic/pat_basic_1015/" class="archive-article-date">
+  	<time datetime="2022-01-16T13:36:40.770Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="题目详情"><a class="markdownIt-Anchor" href="#题目详情"></a> 题目详情：</h4>
+<p>宋代史学家司马光在《资治通鉴》中有一段著名的“德才论”：“是故才德全尽谓之圣人，才德兼亡谓之愚人，德胜才谓之君子，才胜德谓之小人。凡取人之术，苟不得圣人，君子而与之，与其得小人，不若得愚人。”</p>
+<p>现给出一批考生的德才分数，请根据司马光的理论给出录取排名。</p>
+<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
+<p>输入第一行给出 3 个正整数，分别为：N（≤105），即考生总数（≥60），为录取最低分数线，即德分和才分均不低于 L 的考生才有资格被考虑录取；H（&lt;100），为优先录取线——德分和才分均不低于此线的被定义为“才德全尽”，此类考生按德才总分从高到低排序；才分不到但德分到线的一类考生属于“德胜才”，也按总分排序，但排在第一类考生之后；德才分均低于 H，但是德分不低于才分的考生属于“才德兼亡”但尚有“德胜才”者，按总分排序，但排在第二类考生之后；其他达到最低线 L 的考生也按总分排序，但排在第三类考生之后。</p>
+<p>随后 N 行，每行给出一位考生的信息，包括：准考证号 德分 才分，其中准考证号为 8 位整数，德才分为区间 [0, 100] 内的整数。数字间以空格分隔。</p>
+<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
+<p>输出第一行首先给出达到最低分数线的考生人数 M，随后 M 行，每行按照输入格式输出一位考生的信息，考生按输入中说明的规则从高到低排序。当某类考生中有多人总分相同时，按其德分降序排列；若德分也并列，则按准考证号的升序输出。</p>
+<h4 id="输入样例"><a class="markdownIt-Anchor" href="#输入样例"></a> 输入样例：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">14</span> <span class="number">60</span> <span class="number">80</span></span><br><span class="line"><span class="number">10000001</span> <span class="number">64</span> <span class="number">90</span></span><br><span class="line"><span class="number">10000002</span> <span class="number">90</span> <span class="number">60</span></span><br><span class="line"><span class="number">10000011</span> <span class="number">85</span> <span class="number">80</span></span><br><span class="line"><span class="number">10000003</span> <span class="number">85</span> <span class="number">80</span></span><br><span class="line"><span class="number">10000004</span> <span class="number">80</span> <span class="number">85</span></span><br><span class="line"><span class="number">10000005</span> <span class="number">82</span> <span class="number">77</span></span><br><span class="line"><span class="number">10000006</span> <span class="number">83</span> <span class="number">76</span></span><br><span class="line"><span class="number">10000007</span> <span class="number">90</span> <span class="number">78</span></span><br><span class="line"><span class="number">10000008</span> <span class="number">75</span> <span class="number">79</span></span><br><span class="line"><span class="number">10000009</span> <span class="number">59</span> <span class="number">90</span></span><br><span class="line"><span class="number">10000010</span> <span class="number">88</span> <span class="number">45</span></span><br><span class="line"><span class="number">10000012</span> <span class="number">80</span> <span class="number">100</span></span><br><span class="line"><span class="number">10000013</span> <span class="number">90</span> <span class="number">99</span></span><br><span class="line"><span class="number">10000014</span> <span class="number">66</span> <span class="number">60</span></span><br></pre></td></tr></table></figure>
+<h4 id="输出样例"><a class="markdownIt-Anchor" href="#输出样例"></a> 输出样例：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">12</span></span><br><span class="line"><span class="number">10000013</span> <span class="number">90</span> <span class="number">99</span></span><br><span class="line"><span class="number">10000012</span> <span class="number">80</span> <span class="number">100</span></span><br><span class="line"><span class="number">10000003</span> <span class="number">85</span> <span class="number">80</span></span><br><span class="line"><span class="number">10000011</span> <span class="number">85</span> <span class="number">80</span></span><br><span class="line"><span class="number">10000004</span> <span class="number">80</span> <span class="number">85</span></span><br><span class="line"><span class="number">10000007</span> <span class="number">90</span> <span class="number">78</span></span><br><span class="line"><span class="number">10000006</span> <span class="number">83</span> <span class="number">76</span></span><br><span class="line"><span class="number">10000005</span> <span class="number">82</span> <span class="number">77</span></span><br><span class="line"><span class="number">10000002</span> <span class="number">90</span> <span class="number">60</span></span><br><span class="line"><span class="number">10000014</span> <span class="number">66</span> <span class="number">60</span></span><br><span class="line"><span class="number">10000008</span> <span class="number">75</span> <span class="number">79</span></span><br><span class="line"><span class="number">10000001</span> <span class="number">64</span> <span class="number">90</span></span><br></pre></td></tr></table></figure>
+<h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码：</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">int</span> de;</span><br><span class="line">    <span class="keyword">int</span> cai;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> Student &amp;a,<span class="keyword">const</span> Student &amp;b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>((a.de+a.cai) !=(b.de+b.cai))&#123;</span><br><span class="line">    <span class="keyword">return</span> (a.de+a.cai)&gt;(b.de+b.cai);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(a.de != b.de)&#123;</span><br><span class="line">            <span class="keyword">return</span> a.de &gt; b.de;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a.id &lt; b.id;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N,L,H;</span><br><span class="line">    <span class="built_in">vector</span> &lt;Student&gt; v1,v2,v3,v4,v;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;N&gt;&gt;L&gt;&gt;H;</span><br><span class="line">    Student stu[N];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;stu[i].id&gt;&gt;stu[i].de&gt;&gt;stu[i].cai;</span><br><span class="line">        <span class="keyword">if</span>(stu[i].de &gt;= L &amp;&amp; stu[i].cai&gt;=L)&#123;</span><br><span class="line">            <span class="keyword">if</span>(stu[i].de&gt;=H &amp;&amp; stu[i].cai&gt;=H)&#123;</span><br><span class="line">            v1.push_back(stu[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        		<span class="keyword">else</span> <span class="keyword">if</span>(stu[i].de &gt;=H &amp;&amp; stu[i].cai&lt;H)&#123;</span><br><span class="line">            v2.push_back(stu[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        		<span class="keyword">else</span> <span class="keyword">if</span>(stu[i].de&lt;H &amp;&amp; stu[i].cai&lt;H &amp;&amp; stu[i].de &gt;= stu[i].cai)&#123;</span><br><span class="line">            v3.push_back(stu[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        		<span class="keyword">else</span>&#123;</span><br><span class="line">            v4.push_back(stu[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;v1.<span class="built_in">size</span>()+v2.<span class="built_in">size</span>()+v3.<span class="built_in">size</span>()+v4.<span class="built_in">size</span>()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    sort(v1.<span class="built_in">begin</span>(),v1.<span class="built_in">end</span>(),cmp);</span><br><span class="line">    sort(v2.<span class="built_in">begin</span>(),v2.<span class="built_in">end</span>(),cmp);</span><br><span class="line">    sort(v3.<span class="built_in">begin</span>(),v3.<span class="built_in">end</span>(),cmp);</span><br><span class="line">    sort(v4.<span class="built_in">begin</span>(),v4.<span class="built_in">end</span>(),cmp);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> it=v1.<span class="built_in">begin</span>();it!=v1.<span class="built_in">end</span>();it++)&#123;</span><br><span class="line">        v.push_back(*it);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> it=v2.<span class="built_in">begin</span>();it!=v2.<span class="built_in">end</span>();it++)&#123;</span><br><span class="line">        v.push_back(*it);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> it=v3.<span class="built_in">begin</span>();it!=v3.<span class="built_in">end</span>();it++)&#123;</span><br><span class="line">        v.push_back(*it);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> it=v4.<span class="built_in">begin</span>();it!=v4.<span class="built_in">end</span>();it++)&#123;</span><br><span class="line">        v.push_back(*it);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;v.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;v[i].id&lt;&lt;<span class="string">&#x27; &#x27;</span>&lt;&lt;v[i].de&lt;&lt;<span class="string">&#x27; &#x27;</span>&lt;&lt;v[i].cai&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/16/pat_basic/pat_basic_1015/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-pat_basic/pat_basic_1014" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -542,136 +640,6 @@ d&amp;Hyscvnm<br>
 
 
   
-    <article id="post-python/爬虫/爬虫1 11.23.15 AM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/15/python/%E7%88%AC%E8%99%AB/%E7%88%AC%E8%99%AB1%2011.23.15%20AM/">专题：爬虫：从入门到喜欢（一）</a>
-    </h1>
-  
-
-        
-        <a href="/2021/04/15/python/%E7%88%AC%E8%99%AB/%E7%88%AC%E8%99%AB1%2011.23.15%20AM/" class="archive-article-date">
-  	<time datetime="2021-04-15T01:56:23.345Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-正则表达式"><a class="markdownIt-Anchor" href="#1-正则表达式"></a> 1. 正则表达式</h4>
-<h5 id="11-基本符号"><a class="markdownIt-Anchor" href="#11-基本符号"></a> 1.1 基本符号</h5>
-<table>
-<thead>
-<tr>
-<th>符号</th>
-<th style="text-align:center">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>.</td>
-<td style="text-align:center">一个点号可以代替除了换行符以外的任何一个字符，包括但不限于英文字母、数字、汉字、英文标点符号和中文标点符号</td>
-</tr>
-<tr>
-<td>*</td>
-<td style="text-align:center">一个星号可以表示它前面的一个子表达式（普通字符、另一个或几个正则表达式符号）0次到无限次。</td>
-</tr>
-<tr>
-<td>?</td>
-<td style="text-align:center">问号表示它前面的子表达式0次或者1次。注意，这里的问号是英文问号。</td>
-</tr>
-<tr>
-<td>.*?</td>
-<td style="text-align:center">问号最大的用处是与点号和星号配合起来使用，构成“.*? ”。通过正则表达式来提取信息的时候，是用到最多的组合。</td>
-</tr>
-<tr>
-<td>.* 和.*?</td>
-<td style="text-align:center">. * 是贪婪匹配，获取最长的满足条件的字符串。.*?是非贪婪，匹配一个能满足要求的最短字符串。</td>
-</tr>
-<tr>
-<td>\</td>
-<td style="text-align:center">反斜杠需要和其他的字符配合使用来把特殊符号变成普通符号，把普通符号变成特殊符号。在使用了反斜杠以后，反斜杠和它后面的一个字符构成一个整体，因此应该将“\n”看成一个字符，而不是两个字符。</td>
-</tr>
-<tr>
-<td>\d</td>
-<td style="text-align:center">正则表达式里面使用“\d”来表示一位数字。为什么要用字母d呢？因为d是英文“digital（数字）”的首字母。</td>
-</tr>
-<tr>
-<td>()</td>
-<td style="text-align:center">小括号可以把括号里面的内容提取出来。</td>
-</tr>
-</tbody>
-</table>
-        
-          <a class="article-more-a" href="/2021/04/15/python/%E7%88%AC%E8%99%AB/%E7%88%AC%E8%99%AB1%2011.23.15%20AM/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">python 爬虫</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/爬虫//" class="article-tag-list-link color3">爬虫</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/15/python/%E7%88%AC%E8%99%AB/%E7%88%AC%E8%99%AB1%2011.23.15%20AM/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/21/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><a class="page-number" href="/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/23/">Next &amp;raquo;</a>
@@ -770,15 +738,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">人文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">人文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">python算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -794,15 +766,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">flask</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -814,7 +782,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
+                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
               </li>
             
             <div class="clearfix"></div>
