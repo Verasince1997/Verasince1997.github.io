@@ -148,6 +148,105 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-pat_basic/pat_basic_1037" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/28/pat_basic/pat_basic_1037/">PAT_Basic_1037 在霍格沃茨找零钱</a>
+    </h1>
+  
+
+        
+        <a href="/2022/01/28/pat_basic/pat_basic_1037/" class="archive-article-date">
+  	<time datetime="2022-01-28T08:27:52.634Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如果你是哈利·波特迷，你会知道魔法世界有它自己的货币系统 —— 就如海格告诉哈利的：“十七个银西可(Sickle)兑一个加隆(Galleon)，二十九个纳特(Knut)兑一个西可，很容易。”现在，给定哈利应付的价钱 <em>P</em> 和他实付的钱 <em>A</em>，你的任务是写一个程序来计算他应该被找的零钱。</p>
+<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
+<p>输入在 1 行中分别给出 <em>P</em> 和 <em>A</em>，格式为 <code>Galleon.Sickle.Knut</code>，其间用 1 个空格分隔。这里 <code>Galleon</code> 是 [0, 107] 区间内的整数，<code>Sickle</code> 是 [0, 17) 区间内的整数，<code>Knut</code> 是 [0, 29) 区间内的整数。</p>
+<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
+<p>在一行中用与输入同样的格式输出哈利应该被找的零钱。如果他没带够钱，那么输出的应该是负数。</p>
+<h4 id="输入样例-1"><a class="markdownIt-Anchor" href="#输入样例-1"></a> 输入样例 1：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10.16</span><span class="number">.27</span> <span class="number">14.1</span><span class="number">.28</span></span><br></pre></td></tr></table></figure>
+<h4 id="输出样例-1"><a class="markdownIt-Anchor" href="#输出样例-1"></a> 输出样例 1：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3.2</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
+<h4 id="输入样例-2"><a class="markdownIt-Anchor" href="#输入样例-2"></a> 输入样例 2：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">14.1</span><span class="number">.28</span> <span class="number">10.16</span><span class="number">.27</span></span><br></pre></td></tr></table></figure>
+<h4 id="输出样例-2"><a class="markdownIt-Anchor" href="#输出样例-2"></a> 输出样例 2：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">-3.2</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
+<h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> a1,b1,c1,a2,b2,c2,a3,b3,c3;</span><br><span class="line">   <span class="built_in">scanf</span>(<span class="string">&quot;%d.%d.%d&quot;</span>,&amp;a1,&amp;b1,&amp;c1);</span><br><span class="line">   <span class="built_in">scanf</span>(<span class="string">&quot;%d.%d.%d&quot;</span>,&amp;a2,&amp;b2,&amp;c2);</span><br><span class="line">   <span class="keyword">if</span>(a1&gt;a2 || (a1==a2 &amp;&amp; b1&gt;b2) || (a1==a2 &amp;&amp; b1==b2 &amp;&amp; c1&gt;c2))&#123;</span><br><span class="line">       swap(a1,a2);swap(b1,b2);swap(c1,c2);<span class="comment">//确保2的总值最大</span></span><br><span class="line">       <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">   &#125;</span><br><span class="line">    <span class="keyword">int</span> knut_num = c2-c1;</span><br><span class="line">    <span class="keyword">if</span>(knut_num&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">        c3=knut_num;<span class="comment">//28-16=12 够找 不用向第二项借</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        b2-=<span class="number">1</span>;<span class="comment">//借1个sickle 比如1-28=-27 -27+29=2</span></span><br><span class="line">        c3=knut_num + <span class="number">29</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> sickle_num = b2-b1;</span><br><span class="line">    <span class="keyword">if</span>(sickle_num&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">        b3=sickle_num;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        a2-=<span class="number">1</span>;</span><br><span class="line">        b3=sickle_num +<span class="number">17</span>;</span><br><span class="line">    &#125;</span><br><span class="line">   a3=a2-a1;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;%d.%d.%d&quot;</span>,a3,b3,c3);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/28/pat_basic/pat_basic_1037/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-pat_basic/pat_basic_1036" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -528,108 +627,6 @@
 
 
   
-    <article id="post-pat_basic/pat_basic_1034" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/27/pat_basic/pat_basic_1034/">PAT_Basic_1034 有理数四则运算</a>
-    </h1>
-  
-
-        
-        <a href="/2022/01/27/pat_basic/pat_basic_1034/" class="archive-article-date">
-  	<time datetime="2022-01-27T08:44:48.371Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本题要求编写程序，计算 2 个有理数的和、差、积、商。</p>
-<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
-<p>输入在一行中按照 <code>a1/b1 a2/b2</code> 的格式给出两个分数形式的有理数，其中分子和分母全是整型范围内的整数，负号只可能出现在分子前，分母不为 0。</p>
-<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
-<p>分别在 4 行中按照 <code>有理数1 运算符 有理数2 = 结果</code> 的格式顺序输出 2 个有理数的和、差、积、商。注意输出的每个有理数必须是该有理数的最简形式 <code>k a/b</code>，其中 <code>k</code> 是整数部分，<code>a/b</code> 是最简分数部分；若为负数，则须加括号；若除法分母为 0，则输出 <code>Inf</code>。题目保证正确的输出中没有超过整型范围的整数。</p>
-<h4 id="输入样例-1"><a class="markdownIt-Anchor" href="#输入样例-1"></a> 输入样例 1：</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2&#x2F;3 -4&#x2F;2</span><br></pre></td></tr></table></figure>
-<h4 id="输出样例-1"><a class="markdownIt-Anchor" href="#输出样例-1"></a> 输出样例 1：</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2&#x2F;3 + (-2) &#x3D; (-1 1&#x2F;3)</span><br><span class="line">2&#x2F;3 - (-2) &#x3D; 2 2&#x2F;3</span><br><span class="line">2&#x2F;3 * (-2) &#x3D; (-1 1&#x2F;3)</span><br><span class="line">2&#x2F;3 &#x2F; (-2) &#x3D; (-1&#x2F;3)</span><br></pre></td></tr></table></figure>
-<h4 id="输入样例-2"><a class="markdownIt-Anchor" href="#输入样例-2"></a> 输入样例 2：</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5&#x2F;3 0&#x2F;6</span><br></pre></td></tr></table></figure>
-<h4 id="输出样例-2"><a class="markdownIt-Anchor" href="#输出样例-2"></a> 输出样例 2：</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1 2&#x2F;3 + 0 &#x3D; 1 2&#x2F;3</span><br><span class="line">1 2&#x2F;3 - 0 &#x3D; 1 2&#x2F;3</span><br><span class="line">1 2&#x2F;3 * 0 &#x3D; 0</span><br><span class="line">1 2&#x2F;3 &#x2F; 0 &#x3D; Inf</span><br></pre></td></tr></table></figure>
-<h4 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路：</h4>
-<p>pat乙级题统一思路：模拟题意。这道题我归纳为是繁琐模拟题。考场遇到这种题，只有硬写，关键在于输出标准化分数，即最简化形式的分数，能抽象出功能函数是快速AC1035的必要条件。</p>
-<h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">GCD</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a, <span class="keyword">long</span> <span class="keyword">long</span> b)</span> </span>&#123; <span class="comment">//求最大公约数   </span></span><br><span class="line">    <span class="keyword">return</span> b==<span class="number">0</span> ? a:GCD(b,a%b);</span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintFraction</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a, <span class="keyword">long</span> <span class="keyword">long</span> b)</span> </span>&#123;  <span class="comment">//将一个分数以规定形式输出 </span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> k = <span class="number">1</span>;  </span><br><span class="line">    <span class="keyword">if</span>(b == <span class="number">0</span>) &#123;  <span class="comment">//分母为0</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Inf&quot;</span>);  </span><br><span class="line">        <span class="keyword">return</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">if</span>(a &lt; <span class="number">0</span>) &#123;  <span class="comment">//负号只可能出现在分子前</span></span><br><span class="line">        a = -a;  </span><br><span class="line">        k = <span class="number">-1</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> gcd = GCD(a, b);  </span><br><span class="line">    a /= gcd;                       <span class="comment">//分子分母分别除以最大公约数完成约分 </span></span><br><span class="line">    b /= gcd;  </span><br><span class="line">    <span class="comment">//a不为0又小于b</span></span><br><span class="line">    <span class="keyword">if</span>(a / b == <span class="number">0</span> &amp;&amp; a != <span class="number">0</span>) &#123;      <span class="comment">//因为正负号储存在k里，k为0的时候无法区别，在这一步处理 </span></span><br><span class="line">        <span class="keyword">if</span>(k &gt; <span class="number">0</span>)  <span class="comment">//处理符号</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%lld/%lld&quot;</span>, a, b);  </span><br><span class="line">        <span class="keyword">else</span>  </span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;(-%lld/%lld)&quot;</span>, a, b);  </span><br><span class="line">        <span class="keyword">return</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    k = k * a / b;      <span class="comment">//得到整数部分 </span></span><br><span class="line">    a %= b;             <span class="comment">//得到分子部分 </span></span><br><span class="line">    <span class="keyword">if</span>(b == <span class="number">1</span> &amp;&amp; k &lt; <span class="number">0</span>)  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;(%lld)&quot;</span>, k);  </span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(b == <span class="number">1</span> &amp;&amp; k &gt;= <span class="number">0</span>)    <span class="comment">//分子为0,或者分母为1，结果都是整数，直接输出分子部分（不输出分母） </span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>, k);  </span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(k &lt; <span class="number">0</span>)  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;(%lld %lld/%lld)&quot;</span>, k, a, b);  </span><br><span class="line">    <span class="keyword">else</span>  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%lld %lld/%lld&quot;</span>, k, a, b);  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Print</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a1, <span class="keyword">long</span> <span class="keyword">long</span> b1, <span class="keyword">long</span> <span class="keyword">long</span> a2, <span class="keyword">long</span> <span class="keyword">long</span> b2, <span class="keyword">char</span> ch)</span> </span>&#123;   <span class="comment">//输出一个表达式 </span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> c1, c2;  </span><br><span class="line">    PrintFraction(a1, b1);          <span class="comment">//范式输出第一个操作数 </span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot; %c &quot;</span>, ch);             <span class="comment">//输出操作符 </span></span><br><span class="line">    PrintFraction(a2, b2);          <span class="comment">//范式输出第二个操作数 </span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot; = &quot;</span>);                  <span class="comment">//输出等号 </span></span><br><span class="line">    <span class="keyword">switch</span>(ch) &#123;                    <span class="comment">//范式输出结果 </span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;+&#x27;</span>:  </span><br><span class="line">        c1 = a1 * b2 + a2 * b1;  </span><br><span class="line">        c2 = b1 * b2;  </span><br><span class="line">        PrintFraction(c1, c2);  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);  </span><br><span class="line">        <span class="keyword">break</span>;  </span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;-&#x27;</span>:  </span><br><span class="line">        c1 = a1 * b2 - a2 * b1;  </span><br><span class="line">        c2 = b1 * b2;  </span><br><span class="line">        PrintFraction(c1, c2);  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);  </span><br><span class="line">        <span class="keyword">break</span>;  </span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;*&#x27;</span>:  </span><br><span class="line">        c1 = a1 * a2;  </span><br><span class="line">        c2 = b1 * b2;  </span><br><span class="line">        PrintFraction(c1, c2);  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);  </span><br><span class="line">        <span class="keyword">break</span>;  </span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;/&#x27;</span>:  </span><br><span class="line">        c1 = a1 * b2;  </span><br><span class="line">        c2 = b1 * a2;  </span><br><span class="line">        <span class="keyword">if</span>(c2 &lt; <span class="number">0</span>) &#123;     <span class="comment">//确保PrintFraction函数的b是正数 </span></span><br><span class="line">            c2 = -c2;  </span><br><span class="line">            c1 = -c1;  </span><br><span class="line">        &#125;  </span><br><span class="line">        PrintFraction(c1, c2);  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);  </span><br><span class="line">        <span class="keyword">break</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> a1, b1, a2, b2;  </span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%lld/%lld %lld/%lld&quot;</span>, &amp;a1, &amp;b1, &amp;a2, &amp;b2);  </span><br><span class="line">    Print(a1, b1, a2, b2, <span class="string">&#x27;+&#x27;</span>);  </span><br><span class="line">    Print(a1, b1, a2, b2, <span class="string">&#x27;-&#x27;</span>);  </span><br><span class="line">    Print(a1, b1, a2, b2, <span class="string">&#x27;*&#x27;</span>);  </span><br><span class="line">    Print(a1, b1, a2, b2, <span class="string">&#x27;/&#x27;</span>);  </span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> a, b, c, d;</span><br><span class="line"><span class="comment">//gcd函数 求出t1 t2的最大公约数</span></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">gcd</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> t1, <span class="keyword">long</span> <span class="keyword">long</span> t2)</span> </span>&#123;<span class="comment">// 12 8 gcd(8,4) gcd(4,0)</span></span><br><span class="line">    <span class="keyword">return</span> t2 == <span class="number">0</span> ? t1 : gcd(t2, t1 % t2);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> m, <span class="keyword">long</span> <span class="keyword">long</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (m * n == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>, n == <span class="number">0</span> ? <span class="string">&quot;Inf&quot;</span> : <span class="string">&quot;0&quot;</span>);<span class="comment">//当分子为0 输出0 当分母为0 输出Inf</span></span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">bool</span> flag = ((m &lt; <span class="number">0</span> &amp;&amp; n &gt; <span class="number">0</span>) || (m &gt; <span class="number">0</span> &amp;&amp; n &lt; <span class="number">0</span>));<span class="comment">//flag标记异号</span></span><br><span class="line">    m = <span class="built_in">abs</span>(m); n = <span class="built_in">abs</span>(n);<span class="comment">//取绝对值</span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> x = m / n;<span class="comment">//整数部分</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>, flag ? <span class="string">&quot;(-&quot;</span> : <span class="string">&quot;&quot;</span>);<span class="comment">//如果异号 输出负号</span></span><br><span class="line">    <span class="keyword">if</span> (x != <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>, x);<span class="comment">//输出整数部分</span></span><br><span class="line">    <span class="keyword">if</span> (m % n == <span class="number">0</span>) &#123;<span class="comment">//后面没有小分数 如果是负数 加上右括号</span></span><br><span class="line">        <span class="keyword">if</span>(flag) <span class="built_in">printf</span>(<span class="string">&quot;)&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> ;<span class="comment">//没有小分数 爽歪歪</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (x != <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">&quot; &quot;</span>);</span><br><span class="line">    m = m - x * n;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> t = gcd(m, n);</span><br><span class="line">    m = m / t; n = n / t;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld/%lld%s&quot;</span>, m, n, flag ? <span class="string">&quot;)&quot;</span> : <span class="string">&quot;&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%lld/%lld %lld/%lld&quot;</span>, &amp;a, &amp;b, &amp;c, &amp;d);<span class="comment">// 2/3 -4/2 a=2 b=3 c=-4 d=2</span></span><br><span class="line">    func(a, b); <span class="built_in">printf</span>(<span class="string">&quot; + &quot;</span>); func(c, d); <span class="built_in">printf</span>(<span class="string">&quot; = &quot;</span>); func(a * d + b * c, b * d); <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    func(a, b); <span class="built_in">printf</span>(<span class="string">&quot; - &quot;</span>); func(c, d); <span class="built_in">printf</span>(<span class="string">&quot; = &quot;</span>); func(a * d - b * c, b * d); <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    func(a, b); <span class="built_in">printf</span>(<span class="string">&quot; * &quot;</span>); func(c, d); <span class="built_in">printf</span>(<span class="string">&quot; = &quot;</span>); func(a * c, b * d); <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    func(a, b); <span class="built_in">printf</span>(<span class="string">&quot; / &quot;</span>); func(c, d); <span class="built_in">printf</span>(<span class="string">&quot; = &quot;</span>); func(a * d, b * c);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/27/pat_basic/pat_basic_1034/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/15/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/17/">Next &amp;raquo;</a>
@@ -728,11 +725,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">人文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">产品设计</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">人文</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -748,23 +753,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">道德经</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Flask</a>
+                <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">flask</a>
+                <a href="javascript:void(0)" class="js-tag color1">Flask</a>
               </li>
              
               <li class="article-tag-list-item">
