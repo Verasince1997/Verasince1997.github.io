@@ -148,6 +148,102 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-pat_basic/刷题总结/中期总结 11.22.54 AM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/27/pat_basic/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E4%B8%AD%E6%9C%9F%E6%80%BB%E7%BB%93%2011.22.54%20AM/">刷题中期总结</a>
+    </h1>
+  
+
+        
+        <a href="/2022/01/27/pat_basic/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E4%B8%AD%E6%9C%9F%E6%80%BB%E7%BB%93%2011.22.54%20AM/" class="archive-article-date">
+  	<time datetime="2022-01-27T08:47:00.803Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>虽然pat乙级的灵魂是用代码模拟题意就能AC，但在前34题的训练中，我发现有的地方比如输出格式、素数、字符串处理、hash散列等技巧不熟练，这部分我得类似“多级索引”，把它们再索引出来，让自己加深记忆，下次就能快速反应并完美使用它；另外还有我的代码、我的逻辑能AC，但是有的人的思路值得借鉴，怎么说呢，我持有这种态度也经历了一个过程，反正用我自己的逻辑编写出的代码提交后卡在某个测试点，我一定会想自己哪没考虑完备，反正就修改自己的原始代码，不想看别人之间AC的“佳作”，好了，经过一番消耗时间的折腾，我也过了。这个时候，突然发现这道题和之前的某些题，别人都用的一种方法，代码量小，只要明白这个思想，很快就能解决这道题，我的代码绕了很多弯，而且下次再这么做不划算，还是学别人的好思维。大概就是上述两个原因，加上我的学习观是：一直刷，刷完乙级的110题，还不如中途回顾下，我这段时间通过的这几十道题，相较于我没做它们，到底收获了啥新的知识和技能。很明显，把做过的题按类型归纳分档，然后找到每类题最好的解法，以及自己刷题中卡了的某些小功能，一些方法，把它们“二级索引”，让以后的自己不用大浪淘沙又重刷一遍，之后回顾就直接看这些中期后期总结就能抓住重难点，这不，这才是真正的“卷王”，是动脑子的卷。</p>
+<p>1033 分别输入坏键和应该输入的字符串，输出是实际输入的字符串。当上档键坏了，所有大写字母都不能输入。坏键中的字母键都是以大写字母的形式给出。</p>
+<p>我的1033：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*字符串处理*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> bad,input;</span><br><span class="line">    <span class="keyword">int</span> i,j,flag=<span class="number">0</span>;</span><br><span class="line">    getline(<span class="built_in">cin</span>,bad);</span><br><span class="line">    getline(<span class="built_in">cin</span>,input);</span><br><span class="line">    <span class="keyword">if</span>(bad.length()==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;input;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;bad.length();i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(bad[i]==<span class="string">&#x27;+&#x27;</span>)&#123;</span><br><span class="line">            flag=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;input.length();i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;bad.length();j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(input[i]==bad[j])&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(flag==<span class="number">1</span> &amp;&amp; input[i]&gt;=<span class="string">&#x27;A&#x27;</span> &amp;&amp; input[i]&lt;=<span class="string">&#x27;Z&#x27;</span>)&#123;</span><br><span class="line">                        <span class="keyword">break</span>;    </span><br><span class="line">                    &#125;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">isalpha</span>(input[i]))&#123;</span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">toupper</span>(input[i])==bad[j])&#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(bad[j]==<span class="string">&#x27;\0&#x27;</span>)&#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;input[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>柳婼的1033：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">string</span> bad, should;</span><br><span class="line">  getline(<span class="built_in">cin</span>, bad);</span><br><span class="line">  getline(<span class="built_in">cin</span>, should);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, length = should.length(); i &lt; length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (bad.find(<span class="built_in">toupper</span>(should[i])) != <span class="built_in">string</span>::npos) <span class="keyword">continue</span>;<span class="comment">//字母键坏了，字母键中出现的字母若等于should[i]的大写 输不出</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">isupper</span>(should[i]) &amp;&amp; bad.find(<span class="string">&#x27;+&#x27;</span>) != <span class="built_in">string</span>::npos) <span class="keyword">continue</span>;<span class="comment">//是大写字母且上档键坏了 </span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; should[i];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看了是不是觉得可以学习下思路，在知道她1029也是用很简洁的代码AC后，而且这两道题，她都用的Hash散列这个知识，这个时候，是个人都知道，我一定要学会她的思想！</p>
+<p>1029题意：分别输入理应输入的字符串和实际输入的字符串，输出坏键。</p>
+<p>柳婼的1029：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">string</span> s1, s2, ans;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; s1 &gt;&gt; s2;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s1.length(); i++)</span><br><span class="line">        <span class="keyword">if</span> (s2.find(s1[i]) == <span class="built_in">string</span>::npos &amp;&amp; ans.find(<span class="built_in">toupper</span>(s1[i])) == <span class="built_in">string</span>::npos)<span class="comment">//理应输入的字符没出现在实际输入的字符中，它的大写也不再ans中 加入ans 第二个条件是确保相同坏键只输出一次 比如s1[i]=7 在s2中找不到 它toupper后是55 </span></span><br><span class="line">            ans += <span class="built_in">toupper</span>(s1[i]);<span class="comment">//是坏键的英文字母只输出大写</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我的1029：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> input,real_input;</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">char</span>&gt; s1,s2,s3;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;input&gt;&gt;real_input;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;input.length();i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(input[i] &gt;= <span class="string">&#x27;a&#x27;</span>&amp;&amp; input[i] &lt;=<span class="string">&#x27;z&#x27;</span>)</span><br><span class="line">            input[i] = <span class="built_in">toupper</span>(input[i]);</span><br><span class="line">        s1.insert(input[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;real_input.length();i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(real_input[i] &gt;= <span class="string">&#x27;a&#x27;</span>&amp;&amp; real_input[i] &lt;=<span class="string">&#x27;z&#x27;</span>)</span><br><span class="line">            real_input[i] = <span class="built_in">toupper</span>(real_input[i]);</span><br><span class="line">        s2.insert(real_input[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//找s1有的 而s2没有的</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> it=s1.begin();it!=s1.end();it++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(s2.find(*it)==s2.end())&#123;</span><br><span class="line">            s3.insert(*it);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="built_in">string</span> new_input;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">size_t</span> i=<span class="number">0</span>;i&lt;input.size();i++)&#123;</span><br><span class="line">        <span class="keyword">size_t</span> j=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(;j&lt;new_input.size();j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(new_input[j]==input[i])&#123;<span class="comment">//已经出现过的 不再添加到new_input</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(j==new_input.size())&#123;</span><br><span class="line">            new_input+=input[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword">int</span> count =<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;new_input.length(),count&lt;s3.size();i++)&#123;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">auto</span> it=s3.begin();it!=s3.end();it++)&#123;</span><br><span class="line">           <span class="keyword">if</span>(new_input[i] == *it)&#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;*it;</span><br><span class="line">            count++;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">OJ tricks</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/OJ//" class="article-tag-list-link color3">OJ</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/27/pat_basic/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E4%B8%AD%E6%9C%9F%E6%80%BB%E7%BB%93%2011.22.54%20AM/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-pat_basic/pat_basic_1034" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -549,104 +645,6 @@
 
 
   
-    <article id="post-pat_basic/pat_basic_1030" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/26/pat_basic/pat_basic_1030/">PAT_Basic_1030 完美数列</a>
-    </h1>
-  
-
-        
-        <a href="/2022/01/26/pat_basic/pat_basic_1030/" class="archive-article-date">
-  	<time datetime="2022-01-26T04:26:26.173Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>给定一个正整数数列，和正整数 <em>p</em>，设这个数列中的最大值是 <em>M</em>，最小值是 <em>m</em>，如果 <em>M</em>≤<em>m</em> * <em>p</em>，则称这个数列是完美数列。</p>
-<p>现在给定参数 <em>p</em> 和一些正整数，请你从中选择尽可能多的数构成一个完美数列。</p>
-<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
-<p>输入第一行给出两个正整数 <em>N</em> 和 <em>p</em>，其中 <em>N</em>（≤105）是输入的正整数的个数，<em>p</em>（≤109）是给定的参数。第二行给出 <em>N</em> 个正整数，每个数不超过 109。</p>
-<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
-<p>在一行中输出最多可以选择多少个数可以用它们组成一个完美数列。</p>
-<h4 id="输入样例"><a class="markdownIt-Anchor" href="#输入样例"></a> 输入样例：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10</span> <span class="number">8</span></span><br><span class="line"><span class="number">2</span> <span class="number">3</span> <span class="number">20</span> <span class="number">4</span> <span class="number">5</span> <span class="number">1</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span></span><br></pre></td></tr></table></figure>
-<h4 id="输出样例"><a class="markdownIt-Anchor" href="#输出样例"></a> 输出样例：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">8</span></span><br></pre></td></tr></table></figure>
-<h4 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路:</h4>
-<p>我就不明白，我的做法有何问题？不就是找到最多的个数，使得其满足完美数列的定义。比起用双指针，直接v.front()取最小，v.back()取最大不是更简洁吗？？？我不想看别人的思路，我的没错啊。</p>
-<h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*模拟题*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> p,num,M,m;</span><br><span class="line">    <span class="built_in">vector</span> &lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt; v;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;N&gt;&gt;p;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;num;</span><br><span class="line">        v.push_back(num);</span><br><span class="line">    &#125;</span><br><span class="line">    sort(v.begin(),v.end());</span><br><span class="line">    <span class="keyword">while</span>(v.size()!=<span class="number">0</span>)&#123;</span><br><span class="line">        M=v.back();</span><br><span class="line">        m=v.front();</span><br><span class="line">        <span class="keyword">if</span>(M&lt;=m*p)&#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;v.size();</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        v.pop_back();</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/26/pat_basic/pat_basic_1030/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/16/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/18/">Next &amp;raquo;</a>
@@ -749,10 +747,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">产品设计</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
@@ -774,6 +768,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">道德经</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">产品设计</a>
               </li>
              
               <li class="article-tag-list-item">

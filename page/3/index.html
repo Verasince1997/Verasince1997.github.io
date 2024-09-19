@@ -148,6 +148,92 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-算法/进制转换模板" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/02/20/%E7%AE%97%E6%B3%95/%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E6%A8%A1%E6%9D%BF/">进制转换模板</a>
+    </h1>
+  
+
+        
+        <a href="/2022/02/20/%E7%AE%97%E6%B3%95/%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E6%A8%A1%E6%9D%BF/" class="archive-article-date">
+  	<time datetime="2022-02-20T09:13:13.716Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>直接写上我整理出的x进制转为y进制代码。思路是先将x进制的数转为10进制。比如16进制的A1要转为10进制，对于s[0]=‘A’  <code>ans+=s[0]-'A'+10</code>，然后<code>ans*=x</code>，ans=160，再加上s[1]-‘0’，ans为161。在从10进制到y进制的过程中，当取余值&lt;10时，直接加上字符0；而当其&gt;=10时，又不能打表，所以要减10，再加上字符A(或者加上字符a，看题)。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x,y,ans=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt; v;</span><br><span class="line">    <span class="keyword">char</span> s[<span class="number">105</span>];<span class="comment">//24</span></span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;s&gt;&gt;x&gt;&gt;y;<span class="comment">//x=8 y=10</span></span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in">strlen</span>(s);<span class="comment">//len=2</span></span><br><span class="line">    <span class="comment">//先转为十进制</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)&#123;</span><br><span class="line">        ans*=x;<span class="comment">//8进制转为10进制  8进制的24 4*8^0 + 2*8^1=20  </span></span><br><span class="line">      <span class="comment">//16进制的A1转为10进制 </span></span><br><span class="line">        <span class="keyword">if</span>(s[i]&gt;=<span class="string">&#x27;0&#x27;</span> &amp;&amp; s[i]&lt;=<span class="string">&#x27;9&#x27;</span>) ans+=(s[i]-<span class="string">&#x27;0&#x27;</span>); </span><br><span class="line">        <span class="keyword">else</span> ans+=(s[i]-<span class="string">&#x27;A&#x27;</span>)+<span class="number">10</span>;<span class="comment">// ans=10 ans= 10*16=160 </span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(ans!=<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">int</span> w= ans%y;</span><br><span class="line">        <span class="keyword">if</span>(w&lt;<span class="number">10</span>) v.push_back(w+<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">        <span class="keyword">else</span> v.push_back((w<span class="number">-10</span>)+<span class="string">&#x27;A&#x27;</span>);</span><br><span class="line">        ans/=y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=v.<span class="built_in">size</span>()<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;v[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">OJ tricks</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/OJ-tricks//" class="article-tag-list-link color5">OJ tricks</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/02/20/%E7%AE%97%E6%B3%95/%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E6%A8%A1%E6%9D%BF/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-python/flask/视图内容与模板" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -564,102 +650,6 @@
 
 
   
-    <article id="post-pat_basic/pat_basic_1093" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/15/pat_basic/pat_basic_1093/">PAT_Basic_1093 字符串A+B</a>
-    </h1>
-  
-
-        
-        <a href="/2022/02/15/pat_basic/pat_basic_1093/" class="archive-article-date">
-  	<time datetime="2022-02-15T01:37:14.399Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>给定两个字符串 <em>A</em> 和 <em>B</em>，本题要求你输出 <em>A</em>+<em>B</em>，即两个字符串的并集。要求先输出 <em>A</em>，再输出 <em>B</em>，但<strong>重复的字符必须被剔除</strong>。</p>
-<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
-<p>输入在两行中分别给出 <em>A</em> 和 <em>B</em>，均为长度不超过 106的、由可见 ASCII 字符 (即码值为32~126)和空格组成的、由回车标识结束的非空字符串。</p>
-<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
-<p>在一行中输出题面要求的 <em>A</em> 和 <em>B</em> 的和。</p>
-<h4 id="输入样例"><a class="markdownIt-Anchor" href="#输入样例"></a> 输入样例：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">This is a sample test</span><br><span class="line">to show you_How it works</span><br></pre></td></tr></table></figure>
-<h4 id="输出样例"><a class="markdownIt-Anchor" href="#输出样例"></a> 输出样例：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This ampletowyu_Hrk</span><br></pre></td></tr></table></figure>
-<h4 id="代码-more-"><a class="markdownIt-Anchor" href="#代码-more-"></a> 代码：</h4>
-        
-          <a class="article-more-a" href="/2022/02/15/pat_basic/pat_basic_1093/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/02/15/pat_basic/pat_basic_1093/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
@@ -762,10 +752,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">产品设计</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
@@ -787,6 +773,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">道德经</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">产品设计</a>
               </li>
              
               <li class="article-tag-list-item">
