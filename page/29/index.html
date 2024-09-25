@@ -148,6 +148,185 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-python/基础语法/必须掌握的数据库基础 11.24.12 AM 11.25.54 AM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/27/python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E5%BF%85%E9%A1%BB%E6%8E%8C%E6%8F%A1%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%2011.24.12%20AM%2011.25.54%20AM/">sql基础</a>
+    </h1>
+  
+
+        
+        <a href="/2021/01/27/python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E5%BF%85%E9%A1%BB%E6%8E%8C%E6%8F%A1%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%2011.24.12%20AM%2011.25.54%20AM/" class="archive-article-date">
+  	<time datetime="2021-01-27T01:47:35.360Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="基础功能语句"><a class="markdownIt-Anchor" href="#基础功能语句"></a> 基础功能语句</h5>
+<p>创建数据库 <code>create database db_name charset=utf8;</code></p>
+<p>创建表<code>create table table_name (column1 type(size),column2 type(size));</code></p>
+<p>创建表时忘记设置主键，通过 <code>alter table table_name add primary key (column_name)</code>补上。</p>
+<p>创建表时忘记设置列键值唯一，通过<code>alter table Persons add unique (column_name)</code>完善。</p>
+        
+          <a class="article-more-a" href="/2021/01/27/python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E5%BF%85%E9%A1%BB%E6%8E%8C%E6%8F%A1%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%2011.24.12%20AM%2011.25.54%20AM/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">sql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据库//" class="article-tag-list-link color4">数据库</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/01/27/python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/%E5%BF%85%E9%A1%BB%E6%8E%8C%E6%8F%A1%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%2011.24.12%20AM%2011.25.54%20AM/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-python/flask/flask_script" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/26/python/flask/flask_script/">flask_script   flask_sqlalchemy</a>
+    </h1>
+  
+
+        
+        <a href="/2021/01/26/python/flask/flask_script/" class="archive-article-date">
+  	<time datetime="2021-01-26T07:34:07.334Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="最初的打算"><a class="markdownIt-Anchor" href="#最初的打算"></a> 最初的打算</h5>
+<p>想测试从0到1跑起我一贯的新建的flask项目工程，本来打算跑起来然后执行<code>tree -L 3 &gt; list.md</code>(必须L，not l)导出项目目录树，结果中间遇到的几个问题，解决它们的同时把以前的某个疑惑也顺带solve掉了。</p>
+        
+          <a class="article-more-a" href="/2021/01/26/python/flask/flask_script/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Flask</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Flask//" class="article-tag-list-link color1">Flask</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/01/26/python/flask/flask_script/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-python/flask/我的flask学习 11.24.12 AM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -417,98 +596,9 @@
 
 
   
-    <article id="post-python/基础语法/python实现基本数据结构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/20/python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/python%E5%AE%9E%E7%8E%B0%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">栈 队列 二叉树的python实现</a>
-    </h1>
-  
-
-        
-        <a href="/2021/01/20/python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/python%E5%AE%9E%E7%8E%B0%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="archive-article-date">
-  	<time datetime="2021-01-20T09:06:05.684Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="二叉树"><a class="markdownIt-Anchor" href="#二叉树"></a> 二叉树</h4>
-<h5 id="建立"><a class="markdownIt-Anchor" href="#建立"></a> 建立</h5>
-<p>即通过不断插入节点来建立出一棵二叉树。Node类定义树中每个节点的结构，Tree类定义一棵树，包括根节点和一个表示元素父子关系的队列。当树为空，待插入节点就作为根节点。否则针对当前队首的元素，查看它的左右孩子情况，若队首左孩子为空，待插入节点作为队首左孩子，并将此节点的值加入队列。若队首左孩子不为空，待插入节点作为队首元素的右孩子，同时将此节点的elem加入队列。队首元素被弹出，从而配合下一轮插入时myQueue[0]。</p>
-        
-          <a class="article-more-a" href="/2021/01/20/python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/python%E5%AE%9E%E7%8E%B0%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">python基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构//" class="article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/20/python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/python%E5%AE%9E%E7%8E%B0%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/28/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><a class="page-number" href="/page/28/">28</a><span class="page-number current">29</span>
+      <a class="extend prev" rel="prev" href="/page/28/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><a class="page-number" href="/page/28/">28</a><span class="page-number current">29</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/30/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -608,11 +698,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
+                <a href="javascript:void(0)" class="js-tag color5">产品设计</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -628,11 +714,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">道德经</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">产品设计</a>
+                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">道德经</a>
               </li>
              
               <li class="article-tag-list-item">
