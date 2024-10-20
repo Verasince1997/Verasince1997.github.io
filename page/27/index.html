@@ -148,6 +148,95 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-算法/专题：聚类算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/05/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A2%98%EF%BC%9A%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/">专题：聚类算法</a>
+    </h1>
+  
+
+        
+        <a href="/2021/03/05/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A2%98%EF%BC%9A%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2021-03-05T02:02:41.818Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>kmeans 的“损失函数”，打了个引号，说明不太严谨，类似逻辑回归的损失函数</p>
+<p>n_clusters参数，即KMeans的k，默认为8，一般想要小于8的类，如果数据可以可视化，先可视化，然后选择k，这里用make_blobs创建数据，返回特征矩阵X和标签y，make_blobs(n_samples,n_features,)，画子图，plt.subplot() 参数是生成几个子图，返回时画布和对象，记为fig和ax1，对ax1填充scatter散点图，</p>
+<p>kmeans的predict，在数据量大时使用，比如50w行数据，先用2000行数据fit迭代出一个较好的聚类模型，再把剩余数据predict出聚类结果。inertia 整体平方和，对不同的簇找出质心，</p>
+        
+          <a class="article-more-a" href="/2021/03/05/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A2%98%EF%BC%9A%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">python算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据分析-基础//" class="article-tag-list-link color3">数据分析 基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/03/05/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A2%98%EF%BC%9A%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-算法/专题：评分卡模型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -508,96 +597,6 @@
 
 
   
-    <article id="post-算法/专题：数据预处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/23/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A2%98%EF%BC%9A%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/">专题：数据预处理</a>
-    </h1>
-  
-
-        
-        <a href="/2021/02/23/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A2%98%EF%BC%9A%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/" class="archive-article-date">
-  	<time datetime="2021-02-23T05:38:24.462Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li>
-<p>数据无量纲化</p>
-<p>将不同规格的数据转换到同一规格，将不同分布的数据转换到某个特定分布即数据的无量纲化。线性的无量纲化包括中心化（Zero-centered或者Meansubtraction）处理和缩放处理（Scale）。中心化的本质是让所有记录减去一个固定值，即让数据样本数据平移到某个位置。缩放的本质是通过除以一个固定值，将数据固定在某个范围之中，取对数也算是一种缩放处理。</p></li></ol>
-        
-          <a class="article-more-a" href="/2021/02/23/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A2%98%EF%BC%9A%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">python算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析-基础//" class="article-tag-list-link color3">数据分析 基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/23/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A2%98%EF%BC%9A%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/26/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="page-number" href="/page/26/">26</a><span class="page-number current">27</span><a class="page-number" href="/page/28/">28</a><a class="page-number" href="/page/29/">29</a><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/28/">Next &amp;raquo;</a>
@@ -696,15 +695,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">人文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">产品设计</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">人文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">围棋</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -717,14 +724,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">OJ tricks</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
               </li>
              
               <li class="article-tag-list-item">
