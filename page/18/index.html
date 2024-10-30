@@ -148,6 +148,402 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-pat_basic/pat_basic_1039" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/28/pat_basic/pat_basic_1039/">PAT_Basic_1039 到底买不买</a>
+    </h1>
+  
+
+        
+        <a href="/2022/01/28/pat_basic/pat_basic_1039/" class="archive-article-date">
+  	<time datetime="2022-01-28T11:11:42.737Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>小红想买些珠子做一串自己喜欢的珠串。卖珠子的摊主有很多串五颜六色的珠串，但是不肯把任何一串拆散了卖。于是小红要你帮忙判断一下，某串珠子里是否包含了全部自己想要的珠子？如果是，那么告诉她有多少多余的珠子；如果不是，那么告诉她缺了多少珠子。</p>
+<p>为方便起见，我们用[0-9]、[a-z]、[A-Z]范围内的字符来表示颜色。例如在图1中，第3串是小红想做的珠串；那么第1串可以买，因为包含了全部她想要的珠子，还多了8颗不需要的珠子；第2串不能买，因为没有黑色珠子，并且少了一颗红色的珠子。</p>
+<p><img src="https://images.ptausercontent.com/b7e2ffa6-8819-436d-ad79-a41263abe914.jpg" alt="例图"></p>
+<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
+<p>每个输入包含 1 个测试用例。每个测试用例分别在 2 行中先后给出摊主的珠串和小红想做的珠串，两串都不超过 1000 个珠子。</p>
+<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
+<p>如果可以买，则在一行中输出 <code>Yes</code> 以及有多少多余的珠子；如果不可以买，则在一行中输出 <code>No</code> 以及缺了多少珠子。其间以 1 个空格分隔。</p>
+<h4 id="输入样例-1"><a class="markdownIt-Anchor" href="#输入样例-1"></a> 输入样例 1：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ppRYYGrrYBR2258</span><br><span class="line">YrR8RrY</span><br></pre></td></tr></table></figure>
+<h4 id="输出样例-1"><a class="markdownIt-Anchor" href="#输出样例-1"></a> 输出样例 1：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Yes <span class="number">8</span></span><br></pre></td></tr></table></figure>
+<h4 id="输入样例-2"><a class="markdownIt-Anchor" href="#输入样例-2"></a> 输入样例 2：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ppRYYGrrYB225</span><br><span class="line">YrR8RrY</span><br></pre></td></tr></table></figure>
+<h4 id="输出样例-2"><a class="markdownIt-Anchor" href="#输出样例-2"></a> 输出样例 2：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">No <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h4 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路：</h4>
+<p>我觉得快速AC这题和上一题对hash散列这个好办法的深入理解脱不了关系。这个技巧很适合做题。</p>
+<h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> s1,s2;</span><br><span class="line">    <span class="built_in">map</span> &lt;<span class="keyword">char</span>,<span class="keyword">int</span>&gt; m;</span><br><span class="line">    <span class="keyword">int</span> flag=<span class="number">0</span>,count=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;s1&gt;&gt;s2;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s1.length();i++)&#123;</span><br><span class="line">        m[s1[i]]++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s2.length();i++)&#123;</span><br><span class="line">        m[s2[i]]--;</span><br><span class="line">    &#125;</span><br><span class="line">     <span class="comment">//缺少珠子</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> it=m.begin();it!=m.end();it++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(it-&gt;second&lt;<span class="number">0</span>)&#123;</span><br><span class="line">            flag=<span class="number">1</span>;</span><br><span class="line">            count+=<span class="built_in">abs</span>(it-&gt;second);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;No&quot;</span>&lt;&lt;<span class="string">&#x27; &#x27;</span>&lt;&lt;count;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//多了或者刚好</span></span><br><span class="line">    <span class="keyword">int</span> many=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> it=m.begin();it!=m.end();it++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(it-&gt;second&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            many+=it-&gt;second;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;Yes&quot;</span>&lt;&lt;<span class="string">&#x27; &#x27;</span>&lt;&lt;many;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/28/pat_basic/pat_basic_1039/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-pat_basic/pat_basic_1038" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/28/pat_basic/pat_basic_1038/">PAT_Basic_1038 统计同成绩学生</a>
+    </h1>
+  
+
+        
+        <a href="/2022/01/28/pat_basic/pat_basic_1038/" class="archive-article-date">
+  	<time datetime="2022-01-28T10:34:14.944Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本题要求读入 <em>N</em> 名学生的成绩，将获得某一给定分数的学生人数输出。</p>
+<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
+<p>输入在第 1 行给出不超过 105 的正整数 <em>N</em>，即学生总人数。随后一行给出 <em>N</em> 名学生的百分制整数成绩，中间以空格分隔。最后一行给出要查询的分数个数 <em>K</em>（不超过 <em>N</em> 的正整数），随后是 <em>K</em> 个分数，中间以空格分隔。</p>
+<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
+<p>在一行中按查询顺序给出得分等于指定分数的学生人数，中间以空格分隔，但行末不得有多余空格。</p>
+<h4 id="输入样例"><a class="markdownIt-Anchor" href="#输入样例"></a> 输入样例：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10</span></span><br><span class="line"><span class="number">60</span> <span class="number">75</span> <span class="number">90</span> <span class="number">55</span> <span class="number">75</span> <span class="number">99</span> <span class="number">82</span> <span class="number">90</span> <span class="number">75</span> <span class="number">50</span></span><br><span class="line"><span class="number">3</span> <span class="number">75</span> <span class="number">90</span> <span class="number">88</span></span><br></pre></td></tr></table></figure>
+<h4 id="输出样例"><a class="markdownIt-Anchor" href="#输出样例"></a> 输出样例：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span> <span class="number">2</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<h4 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路：</h4>
+<p>我自己写的测试点3超时，后知后觉发现很多题出现的超时都可以用一个通法解决。下面是我的代码。</p>
+<h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N,score,num,select_score,count=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;N);</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;v1,v2;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;score);</span><br><span class="line">        v1.push_back(score);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;num;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;num;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;select_score);</span><br><span class="line">        v2.push_back(select_score);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">map</span> &lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; m;<span class="comment">//这样会导致没有出现的select_score不会收入m</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;num;j++)&#123;</span><br><span class="line">        <span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(v1[i]==v2[j])&#123;</span><br><span class="line">                m[j]++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                cnt++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(cnt==N)&#123;</span><br><span class="line">            m[j]=<span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> it=m.begin();it!=m.end();it++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(count==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,it-&gt;second);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot; %d&quot;</span>,it-&gt;second);</span><br><span class="line">        &#125;</span><br><span class="line">        count++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我之后都采取hash散列的思想：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N,num,score;</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">v</span><span class="params">(<span class="number">101</span>)</span></span>;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;N;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;score);</span><br><span class="line">        v[score]++;<span class="comment">//这种思想出现了很多次了 请务必掌握</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;num;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;num;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;score);</span><br><span class="line">        <span class="keyword">if</span>(i!=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot; %d&quot;</span>,v[score]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,v[score]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/28/pat_basic/pat_basic_1038/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-pat_basic/pat_basic_1037" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/28/pat_basic/pat_basic_1037/">PAT_Basic_1037 在霍格沃茨找零钱</a>
+    </h1>
+  
+
+        
+        <a href="/2022/01/28/pat_basic/pat_basic_1037/" class="archive-article-date">
+  	<time datetime="2022-01-28T08:27:52.634Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如果你是哈利·波特迷，你会知道魔法世界有它自己的货币系统 —— 就如海格告诉哈利的：“十七个银西可(Sickle)兑一个加隆(Galleon)，二十九个纳特(Knut)兑一个西可，很容易。”现在，给定哈利应付的价钱 <em>P</em> 和他实付的钱 <em>A</em>，你的任务是写一个程序来计算他应该被找的零钱。</p>
+<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
+<p>输入在 1 行中分别给出 <em>P</em> 和 <em>A</em>，格式为 <code>Galleon.Sickle.Knut</code>，其间用 1 个空格分隔。这里 <code>Galleon</code> 是 [0, 107] 区间内的整数，<code>Sickle</code> 是 [0, 17) 区间内的整数，<code>Knut</code> 是 [0, 29) 区间内的整数。</p>
+<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
+<p>在一行中用与输入同样的格式输出哈利应该被找的零钱。如果他没带够钱，那么输出的应该是负数。</p>
+<h4 id="输入样例-1"><a class="markdownIt-Anchor" href="#输入样例-1"></a> 输入样例 1：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10.16</span><span class="number">.27</span> <span class="number">14.1</span><span class="number">.28</span></span><br></pre></td></tr></table></figure>
+<h4 id="输出样例-1"><a class="markdownIt-Anchor" href="#输出样例-1"></a> 输出样例 1：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3.2</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
+<h4 id="输入样例-2"><a class="markdownIt-Anchor" href="#输入样例-2"></a> 输入样例 2：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">14.1</span><span class="number">.28</span> <span class="number">10.16</span><span class="number">.27</span></span><br></pre></td></tr></table></figure>
+<h4 id="输出样例-2"><a class="markdownIt-Anchor" href="#输出样例-2"></a> 输出样例 2：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">-3.2</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
+<h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> a1,b1,c1,a2,b2,c2,a3,b3,c3;</span><br><span class="line">   <span class="built_in">scanf</span>(<span class="string">&quot;%d.%d.%d&quot;</span>,&amp;a1,&amp;b1,&amp;c1);</span><br><span class="line">   <span class="built_in">scanf</span>(<span class="string">&quot;%d.%d.%d&quot;</span>,&amp;a2,&amp;b2,&amp;c2);</span><br><span class="line">   <span class="keyword">if</span>(a1&gt;a2 || (a1==a2 &amp;&amp; b1&gt;b2) || (a1==a2 &amp;&amp; b1==b2 &amp;&amp; c1&gt;c2))&#123;</span><br><span class="line">       swap(a1,a2);swap(b1,b2);swap(c1,c2);<span class="comment">//确保2的总值最大</span></span><br><span class="line">       <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">   &#125;</span><br><span class="line">    <span class="keyword">int</span> knut_num = c2-c1;</span><br><span class="line">    <span class="keyword">if</span>(knut_num&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">        c3=knut_num;<span class="comment">//28-16=12 够找 不用向第二项借</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        b2-=<span class="number">1</span>;<span class="comment">//借1个sickle 比如1-28=-27 -27+29=2</span></span><br><span class="line">        c3=knut_num + <span class="number">29</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> sickle_num = b2-b1;</span><br><span class="line">    <span class="keyword">if</span>(sickle_num&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">        b3=sickle_num;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        a2-=<span class="number">1</span>;</span><br><span class="line">        b3=sickle_num +<span class="number">17</span>;</span><br><span class="line">    &#125;</span><br><span class="line">   a3=a2-a1;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;%d.%d.%d&quot;</span>,a3,b3,c3);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/28/pat_basic/pat_basic_1037/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-pat_basic/pat_basic_1036" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/28/pat_basic/pat_basic_1036/">PAT_Basic_1036 跟奥巴马一起编程</a>
+    </h1>
+  
+
+        
+        <a href="/2022/01/28/pat_basic/pat_basic_1036/" class="archive-article-date">
+  	<time datetime="2022-01-28T07:50:43.438Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>美国总统奥巴马不仅呼吁所有人都学习编程，甚至以身作则编写代码，成为美国历史上首位编写计算机代码的总统。2014 年底，为庆祝“计算机科学教育周”正式启动，奥巴马编写了很简单的计算机代码：在屏幕上画一个正方形。现在你也跟他一起画吧！</p>
+<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
+<p>输入在一行中给出正方形边长 <em>N</em>（3≤<em>N</em>≤20）和组成正方形边的某种字符 C，间隔一个空格。</p>
+<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
+<p>输出由给定字符 C 画出的正方形。但是注意到行间距比列间距大，所以为了让结果看上去更像正方形，我们输出的行数实际上是列数的 50%（四舍五入取整）。</p>
+<h4 id="输入样例"><a class="markdownIt-Anchor" href="#输入样例"></a> 输入样例：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10</span> a</span><br></pre></td></tr></table></figure>
+<h4 id="输出样例"><a class="markdownIt-Anchor" href="#输出样例"></a> 输出样例：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">aaaaaaaaaa</span><br><span class="line">a        a</span><br><span class="line">a        a</span><br><span class="line">a        a</span><br><span class="line">aaaaaaaaaa</span><br></pre></td></tr></table></figure>
+<h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Head_Rail</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">char</span> c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;c;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">float</span> N;</span><br><span class="line">    <span class="keyword">char</span> C;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;N&gt;&gt;C;</span><br><span class="line">    <span class="comment">//行是N个c 然后列是N/2 当N为奇数时 对N/2四舍五入取证 那不就是向上取整</span></span><br><span class="line">    Head_Rail(N,C);</span><br><span class="line">    <span class="keyword">int</span> num = round(N/<span class="number">2</span>);<span class="comment">//10/2=5 num=5 </span></span><br><span class="line">    <span class="comment">//num-2 行  每行</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;num<span class="number">-2</span>;i++)&#123;</span><br><span class="line">        <span class="comment">//每列</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;N;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(j==<span class="number">0</span> || j==N<span class="number">-1</span>)&#123;</span><br><span class="line">                <span class="built_in">cout</span>&lt;&lt;C;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="built_in">cout</span>&lt;&lt;<span class="string">&#x27; &#x27;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Head_Rail(N,C);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/28/pat_basic/pat_basic_1036/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-pat_basic/pat_basic_1035" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -221,389 +617,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/01/28/pat_basic/pat_basic_1035/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-人文/瓦解懦弱 " class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/27/%E4%BA%BA%E6%96%87/%E7%93%A6%E8%A7%A3%E6%87%A6%E5%BC%B1%20/">瓦解懦弱</a>
-    </h1>
-  
-
-        
-        <a href="/2022/01/27/%E4%BA%BA%E6%96%87/%E7%93%A6%E8%A7%A3%E6%87%A6%E5%BC%B1%20/" class="archive-article-date">
-  	<time datetime="2022-01-27T14:13:40.952Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我是一个懦弱的人，也可以往大了说，我是一个心智不成熟的女生。在一知半解，迷迷糊糊的知道自己很垃圾、有很多低效之处，我经常做的事：浅浅地分析出我较peer的劣势，然后觉得太难太麻烦体系庞大要解决太复杂(这是一个需要长期坚持和积累才能改变的事)，我在这个时候会先去上个厕所或者找点事做，然后就麻痹自己，说太麻烦了，在chrome地址栏键入bilibili.com多爽，键入youtube.com多爽，其实我深深体验到b站、抖音、知乎、youtube带来的负面影响与无聊。这些软件和网站给我推送的视频或者问答，在我的大脑简单粗暴的归纳下，大体可以分为：(1)这事压根不需要你关心吧(比如某乎上的<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/504681013"><em>陈梦</em>在东京奥运会后，为何一冠<em>难求</em>呢？</a>，<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/471278703/answer/2095604162"><em>如何看待江歌妈妈带货</em>卖山东农家鸽子肉的<em>行为</em>?</a>，<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/513048452/answer/2325796218"><em>国足</em>将在27日迎战日本，大家觉得<em>国足</em>会赢得比赛给全国人民拜年吗？</a>)，我之前不就是过的行尸走肉的生活嘛，真的，打开知乎，根本刷不下去，啥问题啊，咸吃萝卜淡操心，要你管啊。(2)吓退一波不明真相菜狗的焦虑贴(<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/324237748/answer/718114287"><em>如何看待</em>2020届<em>算法</em>岗一片<em>红海</em>？</a>，<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/453325429/answer/1989541657"><em>如何看待</em> 2022 年秋招<em>算法</em>岗人间地狱？</a>，<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/406974583/answer/1504162754"><em>如何看待</em>2021年秋招<em>算法</em>岗灰飞烟灭？</a>，<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/485416860/answer/2108757013"><em>如何看待</em>2023年秋招<em>算法</em>岗一片<em>红海</em>?</a>)我对这些问题的提问者，只能呵呵一句。你不需要用诸如“红海”、“灰飞烟灭”来形容，你tm学就是了啊，整天啥新的东西都没往脑子里灌输，全想着怎么可以省力走捷径，走过路过都要吐口口水给它们。然后抖音上的视频，我下回抖音是为了关注孙海洋的三个孩子：孙悦孙卓孙辉，但是如果以他们一天两个视频算，我1min就可以看完，但我实际会逗留几min，我归纳了下我刷到过的视频：电视剧《家有儿女》的剪辑，一些做美食的视频，一些不知道为什么要拍出来的摆拍。我虽然很想去字节跳动上班，我们都知道Byte Dance创始人张一鸣先生是一个拒绝即刻满足的人，更过分的传说是人家根本不看手机，一个在延迟满足方面做到极致的人却创造出一款消磨人麻木人的产品，我觉得抖音可以一周看一次这周你关注的人有啥更新。然后b站，也没啥看的，因为1月份我看了玲娜贝儿和《那年夏天》这部韩剧，所以b站给我推了这两个相关的视频，其余频率高的诸如减肥、健身环、分手厨房、java、python、深度学习，我都没点进去看。在得到的日报上了解到跟李沐学AI，去b站看沐神的《实用机器学习》，十几天过去了，这门很优质的课程我只看到了第2p，你说吧，我完全不能合理使用资源。</p>
-        
-          <a class="article-more-a" href="/2022/01/27/%E4%BA%BA%E6%96%87/%E7%93%A6%E8%A7%A3%E6%87%A6%E5%BC%B1%20/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">人文</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/书籍//" class="article-tag-list-link color3">书籍</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/27/%E4%BA%BA%E6%96%87/%E7%93%A6%E8%A7%A3%E6%87%A6%E5%BC%B1%20/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-pat_basic/刷题总结/中期总结 11.22.54 AM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/27/pat_basic/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E4%B8%AD%E6%9C%9F%E6%80%BB%E7%BB%93%2011.22.54%20AM/">刷题中期总结</a>
-    </h1>
-  
-
-        
-        <a href="/2022/01/27/pat_basic/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E4%B8%AD%E6%9C%9F%E6%80%BB%E7%BB%93%2011.22.54%20AM/" class="archive-article-date">
-  	<time datetime="2022-01-27T08:47:00.803Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>虽然pat乙级的灵魂是用代码模拟题意就能AC，但在前34题的训练中，我发现有的地方比如输出格式、素数、字符串处理、hash散列等技巧不熟练，这部分我得类似“多级索引”，把它们再索引出来，让自己加深记忆，下次就能快速反应并完美使用它；另外还有我的代码、我的逻辑能AC，但是有的人的思路值得借鉴，怎么说呢，我持有这种态度也经历了一个过程，反正用我自己的逻辑编写出的代码提交后卡在某个测试点，我一定会想自己哪没考虑完备，反正就修改自己的原始代码，不想看别人之间AC的“佳作”，好了，经过一番消耗时间的折腾，我也过了。这个时候，突然发现这道题和之前的某些题，别人都用的一种方法，代码量小，只要明白这个思想，很快就能解决这道题，我的代码绕了很多弯，而且下次再这么做不划算，还是学别人的好思维。大概就是上述两个原因，加上我的学习观是：一直刷，刷完乙级的110题，还不如中途回顾下，我这段时间通过的这几十道题，相较于我没做它们，到底收获了啥新的知识和技能。很明显，把做过的题按类型归纳分档，然后找到每类题最好的解法，以及自己刷题中卡了的某些小功能，一些方法，把它们“二级索引”，让以后的自己不用大浪淘沙又重刷一遍，之后回顾就直接看这些中期后期总结就能抓住重难点，这不，这才是真正的“卷王”，是动脑子的卷。</p>
-<p>1033 分别输入坏键和应该输入的字符串，输出是实际输入的字符串。当上档键坏了，所有大写字母都不能输入。坏键中的字母键都是以大写字母的形式给出。</p>
-<p>我的1033：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*字符串处理*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> bad,input;</span><br><span class="line">    <span class="keyword">int</span> i,j,flag=<span class="number">0</span>;</span><br><span class="line">    getline(<span class="built_in">cin</span>,bad);</span><br><span class="line">    getline(<span class="built_in">cin</span>,input);</span><br><span class="line">    <span class="keyword">if</span>(bad.length()==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;input;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;bad.length();i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(bad[i]==<span class="string">&#x27;+&#x27;</span>)&#123;</span><br><span class="line">            flag=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;input.length();i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;bad.length();j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(input[i]==bad[j])&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(flag==<span class="number">1</span> &amp;&amp; input[i]&gt;=<span class="string">&#x27;A&#x27;</span> &amp;&amp; input[i]&lt;=<span class="string">&#x27;Z&#x27;</span>)&#123;</span><br><span class="line">                        <span class="keyword">break</span>;    </span><br><span class="line">                    &#125;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">isalpha</span>(input[i]))&#123;</span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">toupper</span>(input[i])==bad[j])&#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(bad[j]==<span class="string">&#x27;\0&#x27;</span>)&#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;input[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>柳婼的1033：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">string</span> bad, should;</span><br><span class="line">  getline(<span class="built_in">cin</span>, bad);</span><br><span class="line">  getline(<span class="built_in">cin</span>, should);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, length = should.length(); i &lt; length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (bad.find(<span class="built_in">toupper</span>(should[i])) != <span class="built_in">string</span>::npos) <span class="keyword">continue</span>;<span class="comment">//字母键坏了，字母键中出现的字母若等于should[i]的大写 输不出</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">isupper</span>(should[i]) &amp;&amp; bad.find(<span class="string">&#x27;+&#x27;</span>) != <span class="built_in">string</span>::npos) <span class="keyword">continue</span>;<span class="comment">//是大写字母且上档键坏了 </span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; should[i];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>看了是不是觉得可以学习下思路，在知道她1029也是用很简洁的代码AC后，而且这两道题，她都用的Hash散列这个知识，这个时候，是个人都知道，我一定要学会她的思想！</p>
-<p>1029题意：分别输入理应输入的字符串和实际输入的字符串，输出坏键。</p>
-<p>柳婼的1029：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">string</span> s1, s2, ans;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; s1 &gt;&gt; s2;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s1.length(); i++)</span><br><span class="line">        <span class="keyword">if</span> (s2.find(s1[i]) == <span class="built_in">string</span>::npos &amp;&amp; ans.find(<span class="built_in">toupper</span>(s1[i])) == <span class="built_in">string</span>::npos)<span class="comment">//理应输入的字符没出现在实际输入的字符中，它的大写也不再ans中 加入ans 第二个条件是确保相同坏键只输出一次 比如s1[i]=7 在s2中找不到 它toupper后是55 </span></span><br><span class="line">            ans += <span class="built_in">toupper</span>(s1[i]);<span class="comment">//是坏键的英文字母只输出大写</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我的1029：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> input,real_input;</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">char</span>&gt; s1,s2,s3;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;input&gt;&gt;real_input;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;input.length();i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(input[i] &gt;= <span class="string">&#x27;a&#x27;</span>&amp;&amp; input[i] &lt;=<span class="string">&#x27;z&#x27;</span>)</span><br><span class="line">            input[i] = <span class="built_in">toupper</span>(input[i]);</span><br><span class="line">        s1.insert(input[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;real_input.length();i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(real_input[i] &gt;= <span class="string">&#x27;a&#x27;</span>&amp;&amp; real_input[i] &lt;=<span class="string">&#x27;z&#x27;</span>)</span><br><span class="line">            real_input[i] = <span class="built_in">toupper</span>(real_input[i]);</span><br><span class="line">        s2.insert(real_input[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//找s1有的 而s2没有的</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> it=s1.begin();it!=s1.end();it++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(s2.find(*it)==s2.end())&#123;</span><br><span class="line">            s3.insert(*it);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="built_in">string</span> new_input;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">size_t</span> i=<span class="number">0</span>;i&lt;input.size();i++)&#123;</span><br><span class="line">        <span class="keyword">size_t</span> j=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(;j&lt;new_input.size();j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(new_input[j]==input[i])&#123;<span class="comment">//已经出现过的 不再添加到new_input</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(j==new_input.size())&#123;</span><br><span class="line">            new_input+=input[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword">int</span> count =<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;new_input.length(),count&lt;s3.size();i++)&#123;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">auto</span> it=s3.begin();it!=s3.end();it++)&#123;</span><br><span class="line">           <span class="keyword">if</span>(new_input[i] == *it)&#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;*it;</span><br><span class="line">            count++;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">OJ tricks</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/OJ//" class="article-tag-list-link color3">OJ</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/27/pat_basic/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E4%B8%AD%E6%9C%9F%E6%80%BB%E7%BB%93%2011.22.54%20AM/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-pat_basic/pat_basic_1034" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/27/pat_basic/pat_basic_1034/">PAT_Basic_1034 有理数四则运算</a>
-    </h1>
-  
-
-        
-        <a href="/2022/01/27/pat_basic/pat_basic_1034/" class="archive-article-date">
-  	<time datetime="2022-01-27T08:44:48.371Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本题要求编写程序，计算 2 个有理数的和、差、积、商。</p>
-<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
-<p>输入在一行中按照 <code>a1/b1 a2/b2</code> 的格式给出两个分数形式的有理数，其中分子和分母全是整型范围内的整数，负号只可能出现在分子前，分母不为 0。</p>
-<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
-<p>分别在 4 行中按照 <code>有理数1 运算符 有理数2 = 结果</code> 的格式顺序输出 2 个有理数的和、差、积、商。注意输出的每个有理数必须是该有理数的最简形式 <code>k a/b</code>，其中 <code>k</code> 是整数部分，<code>a/b</code> 是最简分数部分；若为负数，则须加括号；若除法分母为 0，则输出 <code>Inf</code>。题目保证正确的输出中没有超过整型范围的整数。</p>
-<h4 id="输入样例-1"><a class="markdownIt-Anchor" href="#输入样例-1"></a> 输入样例 1：</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2&#x2F;3 -4&#x2F;2</span><br></pre></td></tr></table></figure>
-<h4 id="输出样例-1"><a class="markdownIt-Anchor" href="#输出样例-1"></a> 输出样例 1：</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2&#x2F;3 + (-2) &#x3D; (-1 1&#x2F;3)</span><br><span class="line">2&#x2F;3 - (-2) &#x3D; 2 2&#x2F;3</span><br><span class="line">2&#x2F;3 * (-2) &#x3D; (-1 1&#x2F;3)</span><br><span class="line">2&#x2F;3 &#x2F; (-2) &#x3D; (-1&#x2F;3)</span><br></pre></td></tr></table></figure>
-<h4 id="输入样例-2"><a class="markdownIt-Anchor" href="#输入样例-2"></a> 输入样例 2：</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5&#x2F;3 0&#x2F;6</span><br></pre></td></tr></table></figure>
-<h4 id="输出样例-2"><a class="markdownIt-Anchor" href="#输出样例-2"></a> 输出样例 2：</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1 2&#x2F;3 + 0 &#x3D; 1 2&#x2F;3</span><br><span class="line">1 2&#x2F;3 - 0 &#x3D; 1 2&#x2F;3</span><br><span class="line">1 2&#x2F;3 * 0 &#x3D; 0</span><br><span class="line">1 2&#x2F;3 &#x2F; 0 &#x3D; Inf</span><br></pre></td></tr></table></figure>
-<h4 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路：</h4>
-<p>pat乙级题统一思路：模拟题意。这道题我归纳为是繁琐模拟题。考场遇到这种题，只有硬写，关键在于输出标准化分数，即最简化形式的分数，能抽象出功能函数是快速AC1035的必要条件。</p>
-<h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">GCD</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a, <span class="keyword">long</span> <span class="keyword">long</span> b)</span> </span>&#123; <span class="comment">//求最大公约数   </span></span><br><span class="line">    <span class="keyword">return</span> b==<span class="number">0</span> ? a:GCD(b,a%b);</span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintFraction</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a, <span class="keyword">long</span> <span class="keyword">long</span> b)</span> </span>&#123;  <span class="comment">//将一个分数以规定形式输出 </span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> k = <span class="number">1</span>;  </span><br><span class="line">    <span class="keyword">if</span>(b == <span class="number">0</span>) &#123;  <span class="comment">//分母为0</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Inf&quot;</span>);  </span><br><span class="line">        <span class="keyword">return</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">if</span>(a &lt; <span class="number">0</span>) &#123;  <span class="comment">//负号只可能出现在分子前</span></span><br><span class="line">        a = -a;  </span><br><span class="line">        k = <span class="number">-1</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> gcd = GCD(a, b);  </span><br><span class="line">    a /= gcd;                       <span class="comment">//分子分母分别除以最大公约数完成约分 </span></span><br><span class="line">    b /= gcd;  </span><br><span class="line">    <span class="comment">//a不为0又小于b</span></span><br><span class="line">    <span class="keyword">if</span>(a / b == <span class="number">0</span> &amp;&amp; a != <span class="number">0</span>) &#123;      <span class="comment">//因为正负号储存在k里，k为0的时候无法区别，在这一步处理 </span></span><br><span class="line">        <span class="keyword">if</span>(k &gt; <span class="number">0</span>)  <span class="comment">//处理符号</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%lld/%lld&quot;</span>, a, b);  </span><br><span class="line">        <span class="keyword">else</span>  </span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;(-%lld/%lld)&quot;</span>, a, b);  </span><br><span class="line">        <span class="keyword">return</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    k = k * a / b;      <span class="comment">//得到整数部分 </span></span><br><span class="line">    a %= b;             <span class="comment">//得到分子部分 </span></span><br><span class="line">    <span class="keyword">if</span>(b == <span class="number">1</span> &amp;&amp; k &lt; <span class="number">0</span>)  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;(%lld)&quot;</span>, k);  </span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(b == <span class="number">1</span> &amp;&amp; k &gt;= <span class="number">0</span>)    <span class="comment">//分子为0,或者分母为1，结果都是整数，直接输出分子部分（不输出分母） </span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>, k);  </span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(k &lt; <span class="number">0</span>)  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;(%lld %lld/%lld)&quot;</span>, k, a, b);  </span><br><span class="line">    <span class="keyword">else</span>  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%lld %lld/%lld&quot;</span>, k, a, b);  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Print</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a1, <span class="keyword">long</span> <span class="keyword">long</span> b1, <span class="keyword">long</span> <span class="keyword">long</span> a2, <span class="keyword">long</span> <span class="keyword">long</span> b2, <span class="keyword">char</span> ch)</span> </span>&#123;   <span class="comment">//输出一个表达式 </span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> c1, c2;  </span><br><span class="line">    PrintFraction(a1, b1);          <span class="comment">//范式输出第一个操作数 </span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot; %c &quot;</span>, ch);             <span class="comment">//输出操作符 </span></span><br><span class="line">    PrintFraction(a2, b2);          <span class="comment">//范式输出第二个操作数 </span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot; = &quot;</span>);                  <span class="comment">//输出等号 </span></span><br><span class="line">    <span class="keyword">switch</span>(ch) &#123;                    <span class="comment">//范式输出结果 </span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;+&#x27;</span>:  </span><br><span class="line">        c1 = a1 * b2 + a2 * b1;  </span><br><span class="line">        c2 = b1 * b2;  </span><br><span class="line">        PrintFraction(c1, c2);  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);  </span><br><span class="line">        <span class="keyword">break</span>;  </span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;-&#x27;</span>:  </span><br><span class="line">        c1 = a1 * b2 - a2 * b1;  </span><br><span class="line">        c2 = b1 * b2;  </span><br><span class="line">        PrintFraction(c1, c2);  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);  </span><br><span class="line">        <span class="keyword">break</span>;  </span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;*&#x27;</span>:  </span><br><span class="line">        c1 = a1 * a2;  </span><br><span class="line">        c2 = b1 * b2;  </span><br><span class="line">        PrintFraction(c1, c2);  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);  </span><br><span class="line">        <span class="keyword">break</span>;  </span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;/&#x27;</span>:  </span><br><span class="line">        c1 = a1 * b2;  </span><br><span class="line">        c2 = b1 * a2;  </span><br><span class="line">        <span class="keyword">if</span>(c2 &lt; <span class="number">0</span>) &#123;     <span class="comment">//确保PrintFraction函数的b是正数 </span></span><br><span class="line">            c2 = -c2;  </span><br><span class="line">            c1 = -c1;  </span><br><span class="line">        &#125;  </span><br><span class="line">        PrintFraction(c1, c2);  </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);  </span><br><span class="line">        <span class="keyword">break</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> a1, b1, a2, b2;  </span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%lld/%lld %lld/%lld&quot;</span>, &amp;a1, &amp;b1, &amp;a2, &amp;b2);  </span><br><span class="line">    Print(a1, b1, a2, b2, <span class="string">&#x27;+&#x27;</span>);  </span><br><span class="line">    Print(a1, b1, a2, b2, <span class="string">&#x27;-&#x27;</span>);  </span><br><span class="line">    Print(a1, b1, a2, b2, <span class="string">&#x27;*&#x27;</span>);  </span><br><span class="line">    Print(a1, b1, a2, b2, <span class="string">&#x27;/&#x27;</span>);  </span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> a, b, c, d;</span><br><span class="line"><span class="comment">//gcd函数 求出t1 t2的最大公约数</span></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">gcd</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> t1, <span class="keyword">long</span> <span class="keyword">long</span> t2)</span> </span>&#123;<span class="comment">// 12 8 gcd(8,4) gcd(4,0)</span></span><br><span class="line">    <span class="keyword">return</span> t2 == <span class="number">0</span> ? t1 : gcd(t2, t1 % t2);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> m, <span class="keyword">long</span> <span class="keyword">long</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (m * n == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>, n == <span class="number">0</span> ? <span class="string">&quot;Inf&quot;</span> : <span class="string">&quot;0&quot;</span>);<span class="comment">//当分子为0 输出0 当分母为0 输出Inf</span></span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">bool</span> flag = ((m &lt; <span class="number">0</span> &amp;&amp; n &gt; <span class="number">0</span>) || (m &gt; <span class="number">0</span> &amp;&amp; n &lt; <span class="number">0</span>));<span class="comment">//flag标记异号</span></span><br><span class="line">    m = <span class="built_in">abs</span>(m); n = <span class="built_in">abs</span>(n);<span class="comment">//取绝对值</span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> x = m / n;<span class="comment">//整数部分</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>, flag ? <span class="string">&quot;(-&quot;</span> : <span class="string">&quot;&quot;</span>);<span class="comment">//如果异号 输出负号</span></span><br><span class="line">    <span class="keyword">if</span> (x != <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>, x);<span class="comment">//输出整数部分</span></span><br><span class="line">    <span class="keyword">if</span> (m % n == <span class="number">0</span>) &#123;<span class="comment">//后面没有小分数 如果是负数 加上右括号</span></span><br><span class="line">        <span class="keyword">if</span>(flag) <span class="built_in">printf</span>(<span class="string">&quot;)&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> ;<span class="comment">//没有小分数 爽歪歪</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (x != <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">&quot; &quot;</span>);</span><br><span class="line">    m = m - x * n;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> t = gcd(m, n);</span><br><span class="line">    m = m / t; n = n / t;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld/%lld%s&quot;</span>, m, n, flag ? <span class="string">&quot;)&quot;</span> : <span class="string">&quot;&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%lld/%lld %lld/%lld&quot;</span>, &amp;a, &amp;b, &amp;c, &amp;d);<span class="comment">// 2/3 -4/2 a=2 b=3 c=-4 d=2</span></span><br><span class="line">    func(a, b); <span class="built_in">printf</span>(<span class="string">&quot; + &quot;</span>); func(c, d); <span class="built_in">printf</span>(<span class="string">&quot; = &quot;</span>); func(a * d + b * c, b * d); <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    func(a, b); <span class="built_in">printf</span>(<span class="string">&quot; - &quot;</span>); func(c, d); <span class="built_in">printf</span>(<span class="string">&quot; = &quot;</span>); func(a * d - b * c, b * d); <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    func(a, b); <span class="built_in">printf</span>(<span class="string">&quot; * &quot;</span>); func(c, d); <span class="built_in">printf</span>(<span class="string">&quot; = &quot;</span>); func(a * c, b * d); <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    func(a, b); <span class="built_in">printf</span>(<span class="string">&quot; / &quot;</span>); func(c, d); <span class="built_in">printf</span>(<span class="string">&quot; = &quot;</span>); func(a * d, b * c);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/27/pat_basic/pat_basic_1034/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-pat_basic/pat_basic_1033" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/26/pat_basic/pat_basic_1033/">PAT_Basic_1033 旧键盘打字</a>
-    </h1>
-  
-
-        
-        <a href="/2022/01/26/pat_basic/pat_basic_1033/" class="archive-article-date">
-  	<time datetime="2022-01-26T12:47:10.513Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>旧键盘上坏了几个键，于是在敲一段文字的时候，对应的字符就不会出现。现在给出应该输入的一段文字、以及坏掉的那些键，打出的结果文字会是怎样？</p>
-<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
-<p>输入在 2 行中分别给出坏掉的那些键、以及应该输入的文字。其中对应英文字母的坏键以大写给出；每段文字是不超过 105 个字符的串。可用的字符包括字母 [<code>a</code>-<code>z</code>, <code>A</code>-<code>Z</code>]、数字 <code>0</code>-<code>9</code>、以及下划线 <code>_</code>（代表空格）、<code>,</code>、<code>.</code>、<code>-</code>、<code>+</code>（代表上档键）。题目保证第 2 行输入的文字串非空。</p>
-<p>注意：如果上档键坏掉了，那么大写的英文字母无法被打出。</p>
-<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
-<p>在一行中输出能够被打出的结果文字。如果没有一个字符能被打出，则输出空行。</p>
-<h4 id="输入样例"><a class="markdownIt-Anchor" href="#输入样例"></a> 输入样例：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">7</span>+IE.</span><br><span class="line"><span class="number">7</span>_This_is_a_test.</span><br></pre></td></tr></table></figure>
-<h4 id="输出样例"><a class="markdownIt-Anchor" href="#输出样例"></a> 输出样例：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_hs_s_a_tst</span><br></pre></td></tr></table></figure>
-<h4 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路：</h4>
-<p>将坏键以字符串输入，记为bad，应该输入的字符串记为input。当bad字符串为空，直接输出input就完事。否则首先判断bad字符串中是否含有上档键<code>+</code>,用flag标记其存在。对input中每个字符考察，其内层嵌套对坏键字符串各字符的for循环。一个字符与bad[j]相等则无法输出；如果flag为1，即上档键坏了，若此时input[i]为大写字母，则无法输出；若input[i]是字母且它toupper()变成大写字母后与bad[j]相等则无法输出。熬过这三关，此input[i]可以输出。</p>
-<h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*字符串处理*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> bad,input;</span><br><span class="line">    <span class="keyword">int</span> i,j,flag=<span class="number">0</span>;</span><br><span class="line">    getline(<span class="built_in">cin</span>,bad);</span><br><span class="line">    getline(<span class="built_in">cin</span>,input);</span><br><span class="line">    <span class="keyword">if</span>(bad.length()==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;input;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;bad.length();i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(bad[i]==<span class="string">&#x27;+&#x27;</span>)&#123;</span><br><span class="line">            flag=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;input.length();i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;bad.length();j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(input[i]==bad[j])&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(flag==<span class="number">1</span> &amp;&amp; input[i]&gt;=<span class="string">&#x27;A&#x27;</span> &amp;&amp; input[i]&lt;=<span class="string">&#x27;Z&#x27;</span>)&#123;</span><br><span class="line">                        <span class="keyword">break</span>;    </span><br><span class="line">                    &#125;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">isalpha</span>(input[i]))&#123;</span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">toupper</span>(input[i])==bad[j])&#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(bad[j]==<span class="string">&#x27;\0&#x27;</span>)&#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;input[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/26/pat_basic/pat_basic_1033/">展开全文 >></a>
         </p>
       
 
@@ -735,11 +748,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">人文</a>
+                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color3">人文</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -747,11 +760,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">PAT (Basic Level) Practice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">自我发展</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -767,15 +776,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">自我发展</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">道德经</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">flask</a>
+                <a href="javascript:void(0)" class="js-tag color1">Flask</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Flask</a>
+                <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
               <li class="article-tag-list-item">
