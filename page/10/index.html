@@ -148,6 +148,213 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-pat_basic/pat_basic_1080" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/02/12/pat_basic/pat_basic_1080/">PAT_Basic_1080 MOOC期终成绩</a>
+    </h1>
+  
+
+        
+        <a href="/2022/02/12/pat_basic/pat_basic_1080/" class="archive-article-date">
+  	<time datetime="2022-02-12T08:50:56.814Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>对于在中国大学MOOC（<a target="_blank" rel="noopener" href="http://www.icourse163.org/">http://www.icourse163.org/</a> ）学习“数据结构”课程的学生，想要获得一张合格证书，必须首先获得不少于200分的在线编程作业分，然后总评获得不少于60分（满分100）。总评成绩的计算公式为 <em>G</em>=(<em>G<strong>mi</strong>d</em>−<em>t<strong>er</strong>m</em>×40%+<em>G<strong>f</strong>ina**l</em>×60%)，如果 <em>G<strong>mi</strong>d</em>−<em>t<strong>er</strong>m</em>&gt;<em>G<strong>f</strong>ina**l</em>；否则总评 <em>G</em> 就是 <em>G<strong>f</strong>ina**l</em>。这里 <em>G<strong>mi</strong>d</em>−<em>t<strong>er</strong>m</em> 和 <em>G<strong>f</strong>ina**l</em> 分别为学生的期中和期末成绩。</p>
+<p>现在的问题是，每次考试都产生一张独立的成绩单。本题就请你编写程序，把不同的成绩单合为一张。</p>
+<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
+<p>输入在第一行给出3个整数，分别是 P（做了在线编程作业的学生数）、M（参加了期中考试的学生数）、N（参加了期末考试的学生数）。每个数都不超过10000。</p>
+<p>接下来有三块输入。第一块包含 P 个在线编程成绩 <em>G**p</em>；第二块包含 M 个期中考试成绩 <em>G<strong>mi</strong>d</em>−<em>t<strong>er</strong>m</em>；第三块包含 N 个期末考试成绩 <em>G<strong>f</strong>ina**l</em>。每个成绩占一行，格式为：<code>学生学号 分数</code>。其中<code>学生学号</code>为不超过20个字符的英文字母和数字；<code>分数</code>是非负整数（编程总分最高为900分，期中和期末的最高分为100分）。</p>
+<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
+<p>打印出获得合格证书的学生名单。每个学生占一行，格式为：</p>
+<p><code>学生学号</code> <em>G**p</em> <em>G<strong>mi</strong>d</em>−<em>t<strong>er</strong>m</em> <em>G<strong>f</strong>ina**l</em> <em>G</em></p>
+<p>如果有的成绩不存在（例如某人没参加期中考试），则在相应的位置输出“−1”。输出顺序为按照总评分数（四舍五入精确到整数）递减。若有并列，则按学号递增。题目保证学号没有重复，且至少存在1个合格的学生。</p>
+<h4 id="输入样例"><a class="markdownIt-Anchor" href="#输入样例"></a> 输入样例：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">6</span> <span class="number">6</span> <span class="number">7</span></span><br><span class="line"><span class="number">01234</span> <span class="number">880</span></span><br><span class="line">a1903 <span class="number">199</span></span><br><span class="line">ydjh2 <span class="number">200</span></span><br><span class="line">wehu8 <span class="number">300</span></span><br><span class="line">dx86w <span class="number">220</span></span><br><span class="line">missing <span class="number">400</span></span><br><span class="line">ydhfu77 <span class="number">99</span></span><br><span class="line">wehu8 <span class="number">55</span></span><br><span class="line">ydjh2 <span class="number">98</span></span><br><span class="line">dx86w <span class="number">88</span></span><br><span class="line">a1903 <span class="number">86</span></span><br><span class="line"><span class="number">01234</span> <span class="number">39</span></span><br><span class="line">ydhfu77 <span class="number">88</span></span><br><span class="line">a1903 <span class="number">66</span></span><br><span class="line"><span class="number">01234</span> <span class="number">58</span></span><br><span class="line">wehu8 <span class="number">84</span></span><br><span class="line">ydjh2 <span class="number">82</span></span><br><span class="line">missing <span class="number">99</span></span><br><span class="line">dx86w <span class="number">81</span></span><br></pre></td></tr></table></figure>
+<h4 id="输出样例"><a class="markdownIt-Anchor" href="#输出样例"></a> 输出样例：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">missing <span class="number">400</span> <span class="number">-1</span> <span class="number">99</span> <span class="number">99</span></span><br><span class="line">ydjh2 <span class="number">200</span> <span class="number">98</span> <span class="number">82</span> <span class="number">88</span></span><br><span class="line">dx86w <span class="number">220</span> <span class="number">88</span> <span class="number">81</span> <span class="number">84</span></span><br><span class="line">wehu8 <span class="number">300</span> <span class="number">55</span> <span class="number">84</span> <span class="number">84</span></span><br></pre></td></tr></table></figure>
+<h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码：</h4>
+<p>我提交的代码，测试点3超时。但是我学到了一些知识，比如map按value的大小排序，我认为找到怎么为map的value赋初值，我的代码就可以AC了。</p>
+        
+          <a class="article-more-a" href="/2022/02/12/pat_basic/pat_basic_1080/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/02/12/pat_basic/pat_basic_1080/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-pat_basic/pat_basic_1079" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/02/12/pat_basic/pat_basic_1079/">PAT_Basic_1079 延迟的回文数</a>
+    </h1>
+  
+
+        
+        <a href="/2022/02/12/pat_basic/pat_basic_1079/" class="archive-article-date">
+  	<time datetime="2022-02-12T03:39:18.220Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>给定一个 <em>k</em>+1 位的正整数 <em>N</em>，写成 <em>a**k</em>⋯<em>a</em>1<em>a</em>0 的形式，其中对所有 <em>i</em> 有 0≤<em>a**i</em>&lt;10 且 <em>a**k</em>&gt;0。<em>N</em> 被称为一个<strong>回文数</strong>，当且仅当对所有 <em>i</em> 有 <em>a**i</em>=<em>a**k</em>−<em>i</em>。零也被定义为一个回文数。</p>
+<p>非回文数也可以通过一系列操作变出回文数。首先将该数字逆转，再将逆转数与该数相加，如果和还不是一个回文数，就重复这个逆转再相加的操作，直到一个回文数出现。如果一个非回文数可以变出回文数，就称这个数为<strong>延迟的回文数</strong>。（定义翻译自 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Palindromic_number">https://en.wikipedia.org/wiki/Palindromic_number</a> ）</p>
+<p>给定任意一个正整数，本题要求你找到其变出的那个回文数。</p>
+<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
+<p>输入在一行中给出一个不超过1000位的正整数。</p>
+<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
+<p>对给定的整数，一行一行输出其变出回文数的过程。每行格式如下</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A + B = C</span><br></pre></td></tr></table></figure>
+<p>其中 <code>A</code> 是原始的数字，<code>B</code> 是 <code>A</code> 的逆转数，<code>C</code> 是它们的和。<code>A</code> 从输入的整数开始。重复操作直到 <code>C</code> 在 10 步以内变成回文数，这时在一行中输出 <code>C is a palindromic number.</code>；或者如果 10 步都没能得到回文数，最后就在一行中输出 <code>Not found in 10 iterations.</code>。</p>
+<h4 id="输入样例-1"><a class="markdownIt-Anchor" href="#输入样例-1"></a> 输入样例 1：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">97152</span></span><br></pre></td></tr></table></figure>
+<h4 id="输出样例-1"><a class="markdownIt-Anchor" href="#输出样例-1"></a> 输出样例 1：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">97152</span> + <span class="number">25179</span> = <span class="number">122331</span></span><br><span class="line"><span class="number">122331</span> + <span class="number">133221</span> = <span class="number">255552</span></span><br><span class="line"><span class="number">255552</span> is a palindromic number.</span><br></pre></td></tr></table></figure>
+<h4 id="输入样例-2"><a class="markdownIt-Anchor" href="#输入样例-2"></a> 输入样例 2：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">196</span></span><br></pre></td></tr></table></figure>
+<h4 id="输出样例-2"><a class="markdownIt-Anchor" href="#输出样例-2"></a> 输出样例 2：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">196</span> + <span class="number">691</span> = <span class="number">887</span></span><br><span class="line"><span class="number">887</span> + <span class="number">788</span> = <span class="number">1675</span></span><br><span class="line"><span class="number">1675</span> + <span class="number">5761</span> = <span class="number">7436</span></span><br><span class="line"><span class="number">7436</span> + <span class="number">6347</span> = <span class="number">13783</span></span><br><span class="line"><span class="number">13783</span> + <span class="number">38731</span> = <span class="number">52514</span></span><br><span class="line"><span class="number">52514</span> + <span class="number">41525</span> = <span class="number">94039</span></span><br><span class="line"><span class="number">94039</span> + <span class="number">93049</span> = <span class="number">187088</span></span><br><span class="line"><span class="number">187088</span> + <span class="number">880781</span> = <span class="number">1067869</span></span><br><span class="line"><span class="number">1067869</span> + <span class="number">9687601</span> = <span class="number">10755470</span></span><br><span class="line"><span class="number">10755470</span> + <span class="number">07455701</span> = <span class="number">18211171</span></span><br><span class="line">Not found in <span class="number">10</span> iterations.</span><br></pre></td></tr></table></figure>
+<h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码：</h4>
+<p>最初提交的代码，测试点6显示运行时错误。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//判断回文</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isPlalindrome</span><span class="params">(<span class="built_in">string</span> A)</span></span>&#123;</span><br><span class="line"> <span class="keyword">int</span> n=A.length();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(A[i]!=A[n-i<span class="number">-1</span>])&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;<span class="comment">//不是回文数</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> A;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;A;</span><br><span class="line">    <span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(isPlalindrome(A))&#123;</span><br><span class="line">        <span class="comment">//A不是回文数</span></span><br><span class="line">        <span class="built_in">string</span> B=A;<span class="comment">//A本身</span></span><br><span class="line">        reverse(A.begin(),A.end());<span class="comment">//A成了自己的逆序 </span></span><br><span class="line">        <span class="keyword">int</span> numA=stoi(B),numB=stoi(A);</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;numA&lt;&lt;<span class="string">&quot; + &quot;</span>&lt;&lt;numB&lt;&lt;<span class="string">&quot; = &quot;</span>&lt;&lt;numA+numB&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        A=to_string(numA+numB);</span><br><span class="line">        cnt++;</span><br><span class="line">        <span class="keyword">if</span>(cnt==<span class="number">10</span>)&#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;Not found in 10 iterations.&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;A&lt;&lt;<span class="string">&quot; is a palindromic number.&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>优化后的代码，值得注意的是，字符串相加这个功能第二次出现，上道题是1074，进制相加，所以这个功能要记住并熟练。我上个代码过不了测试点6应该是大数相加导致数组越界。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isPlalindrome</span><span class="params">(<span class="built_in">string</span> num)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>, j = num.size() - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>( i &lt;= j )</span><br><span class="line">		<span class="keyword">if</span>( num[i++] != num[j--] )</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//是回文数</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">add</span><span class="params">(<span class="built_in">string</span> s1, <span class="built_in">string</span> s2)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">string</span> s = s1;</span><br><span class="line">    <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = s1.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;<span class="comment">//1074同样的逻辑</span></span><br><span class="line">        s[i] = (s1[i] - <span class="string">&#x27;0&#x27;</span> + s2[i] - <span class="string">&#x27;0&#x27;</span> + carry) % <span class="number">10</span> + <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">        carry = (s1[i] - <span class="string">&#x27;0&#x27;</span> + s2[i] - <span class="string">&#x27;0&#x27;</span> + carry) / <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (carry &gt; <span class="number">0</span>) s = <span class="string">&quot;1&quot;</span> + s;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> A;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;A;</span><br><span class="line">    <span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(isPlalindrome(A))&#123;</span><br><span class="line">        <span class="comment">//A不是回文数</span></span><br><span class="line">        <span class="built_in">string</span> B=A;<span class="comment">//A本身</span></span><br><span class="line">        reverse(A.begin(),A.end());<span class="comment">//A成了自己的逆序 </span></span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;B&lt;&lt;<span class="string">&quot; + &quot;</span>&lt;&lt;A&lt;&lt;<span class="string">&quot; = &quot;</span>&lt;&lt;add(A,B)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        A=add(A,B);</span><br><span class="line">        cnt++;</span><br><span class="line">        <span class="keyword">if</span>(cnt==<span class="number">10</span>)&#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;Not found in 10 iterations.&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;A&lt;&lt;<span class="string">&quot; is a palindromic number.&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/02/12/pat_basic/pat_basic_1079/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-pat_basic/pat_basic_1078" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -439,200 +646,6 @@
 
 
   
-    <article id="post-pat_basic/pat_basic_1075" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/11/pat_basic/pat_basic_1075/">PAT_Basic_1075 链表元素分类</a>
-    </h1>
-  
-
-        
-        <a href="/2022/02/11/pat_basic/pat_basic_1075/" class="archive-article-date">
-  	<time datetime="2022-02-11T13:52:52.567Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>给定一个单链表，请编写程序将链表元素进行分类排列，使得所有负值元素都排在非负值元素的前面，而 [0, K] 区间内的元素都排在大于 K 的元素前面。但每一类内部元素的顺序是不能改变的。例如：给定链表为 18→7→-4→0→5→-6→10→11→-2，K 为 10，则输出应该为 -4→-6→-2→7→0→5→10→18→11。</p>
-<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
-<p>每个输入包含一个测试用例。每个测试用例第 1 行给出：第 1 个结点的地址；结点总个数，即正整数N (≤105)；以及正整数K (≤103)。结点的地址是 5 位非负整数，NULL 地址用 −1 表示。</p>
-<p>接下来有 N 行，每行格式为：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Address Data Next</span><br></pre></td></tr></table></figure>
-<p>其中 <code>Address</code> 是结点地址；<code>Data</code> 是该结点保存的数据，为 [−105,105] 区间内的整数；<code>Next</code> 是下一结点的地址。题目保证给出的链表不为空。</p>
-<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
-<p>对每个测试用例，按链表从头到尾的顺序输出重排后的结果链表，其上每个结点占一行，格式与输入相同。</p>
-<h4 id="输入样例"><a class="markdownIt-Anchor" href="#输入样例"></a> 输入样例：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">00100</span> <span class="number">9</span> <span class="number">10</span></span><br><span class="line"><span class="number">23333</span> <span class="number">10</span> <span class="number">27777</span></span><br><span class="line"><span class="number">00000</span> <span class="number">0</span> <span class="number">99999</span></span><br><span class="line"><span class="number">00100</span> <span class="number">18</span> <span class="number">12309</span></span><br><span class="line"><span class="number">68237</span> <span class="number">-6</span> <span class="number">23333</span></span><br><span class="line"><span class="number">33218</span> <span class="number">-4</span> <span class="number">00000</span></span><br><span class="line"><span class="number">48652</span> <span class="number">-2</span> <span class="number">-1</span></span><br><span class="line"><span class="number">99999</span> <span class="number">5</span> <span class="number">68237</span></span><br><span class="line"><span class="number">27777</span> <span class="number">11</span> <span class="number">48652</span></span><br><span class="line"><span class="number">12309</span> <span class="number">7</span> <span class="number">33218</span></span><br></pre></td></tr></table></figure>
-<h3 id="输出样例"><a class="markdownIt-Anchor" href="#输出样例"></a> 输出样例：</h3>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">33218</span> <span class="number">-4</span> <span class="number">68237</span></span><br><span class="line"><span class="number">68237</span> <span class="number">-6</span> <span class="number">48652</span></span><br><span class="line"><span class="number">48652</span> <span class="number">-2</span> <span class="number">12309</span></span><br><span class="line"><span class="number">12309</span> <span class="number">7</span> <span class="number">00000</span></span><br><span class="line"><span class="number">00000</span> <span class="number">0</span> <span class="number">99999</span></span><br><span class="line"><span class="number">99999</span> <span class="number">5</span> <span class="number">23333</span></span><br><span class="line"><span class="number">23333</span> <span class="number">10</span> <span class="number">00100</span></span><br><span class="line"><span class="number">00100</span> <span class="number">18</span> <span class="number">27777</span></span><br><span class="line"><span class="number">27777</span> <span class="number">11</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2022/02/11/pat_basic/pat_basic_1075/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/02/11/pat_basic/pat_basic_1075/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-pat_basic/pat_basic_1074" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/11/pat_basic/pat_basic_1074/">PAT_Basic_1074 宇宙无敌加法器</a>
-    </h1>
-  
-
-        
-        <a href="/2022/02/11/pat_basic/pat_basic_1074/" class="archive-article-date">
-  	<time datetime="2022-02-11T12:15:47.040Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>地球人习惯使用十进制数，并且默认一个数字的每一位都是十进制的。而在 PAT 星人开挂的世界里，每个数字的每一位都是不同进制的，这种神奇的数字称为“PAT数”。每个 PAT 星人都必须熟记各位数字的进制表，例如“……0527”就表示最低位是 7 进制数、第 2 位是 2 进制数、第 3 位是 5 进制数、第 4 位是 10 进制数，等等。每一位的进制 d 或者是 0（表示十进制）、或者是 [2，9] 区间内的整数。理论上这个进制表应该包含无穷多位数字，但从实际应用出发，PAT 星人通常只需要记住前 20 位就够用了，以后各位默认为 10 进制。</p>
-<p>在这样的数字系统中，即使是简单的加法运算也变得不简单。例如对应进制表“0527”，该如何计算“6203 + 415”呢？我们得首先计算最低位：3 + 5 = 8；因为最低位是 7 进制的，所以我们得到 1 和 1 个进位。第 2 位是：0 + 1 + 1（进位）= 2；因为此位是 2 进制的，所以我们得到 0 和 1 个进位。第 3 位是：2 + 4 + 1（进位）= 7；因为此位是 5 进制的，所以我们得到 2 和 1 个进位。第 4 位是：6 + 1（进位）= 7；因为此位是 10 进制的，所以我们就得到 7。最后我们得到：6203 + 415 = 7201。</p>
-<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
-<p>输入首先在第一行给出一个 N 位的进制表（0 &lt; N ≤ 20），以回车结束。 随后两行，每行给出一个不超过 N 位的非负的 PAT 数。</p>
-<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
-<p>在一行中输出两个 PAT 数之和。</p>
-<h4 id="输入样例"><a class="markdownIt-Anchor" href="#输入样例"></a> 输入样例：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">30527</span></span><br><span class="line"><span class="number">06203</span></span><br><span class="line"><span class="number">415</span></span><br></pre></td></tr></table></figure>
-<h4 id="输出样例"><a class="markdownIt-Anchor" href="#输出样例"></a> 输出样例：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">7201</span></span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2022/02/11/pat_basic/pat_basic_1074/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/02/11/pat_basic/pat_basic_1074/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/9/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/32/">32</a><a class="extend next" rel="next" href="/page/11/">Next &amp;raquo;</a>
@@ -731,6 +744,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">产品设计</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">人文</a>
               </li>
              
@@ -739,11 +756,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">产品设计</a>
+                <a href="javascript:void(0)" class="js-tag color3">围棋</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">围棋</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">自我发展</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">道德经</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -759,23 +784,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">道德经</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">自我发展</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
+                <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -783,11 +792,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">flask</a>
+                <a href="javascript:void(0)" class="js-tag color2">Flask-SQLAlchemy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Flask-SQLAlchemy</a>
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
               </li>
             
             <div class="clearfix"></div>
