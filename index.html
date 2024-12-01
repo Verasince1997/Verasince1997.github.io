@@ -148,6 +148,148 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-人人都是产品经理/ERP订单管理中的数量问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/12/01/%E4%BA%BA%E4%BA%BA%E9%83%BD%E6%98%AF%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/ERP%E8%AE%A2%E5%8D%95%E7%AE%A1%E7%90%86%E4%B8%AD%E7%9A%84%E6%95%B0%E9%87%8F%E9%97%AE%E9%A2%98/">ERP订单管理中的数量问题</a>
+    </h1>
+  
+
+        
+        <a href="/2024/12/01/%E4%BA%BA%E4%BA%BA%E9%83%BD%E6%98%AF%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/ERP%E8%AE%A2%E5%8D%95%E7%AE%A1%E7%90%86%E4%B8%AD%E7%9A%84%E6%95%B0%E9%87%8F%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2024-12-01T04:41:58.782Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-12-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>第一版流程：客户向上游供应商推送订单，供应商接单后（本文只探讨对客户的订单不做任何修改的接单）做配送，客户验收时可以接收或拒收，如果拒收会与上游供应商哪些表单交互？客户接收后入库后，做退货，推送到上游供应商「采购退货」，供应商做签收后，对配送单、订单如何交互？</p>
+</blockquote>
+<ol>
+<li>
+<p>订单中包含已配送数量、已验收数量、已退货数量；</p>
+</li>
+<li>
+<p>配送单中包含已配送数量、已验收数量、已退货数量。在新增配送单时有未配送数量，作为本次配送的参考，提交后的配送单没有未配送数量；</p>
+</li>
+<li>
+<p>采购退货单包含退货数量。</p>
+</li>
+<li>
+<p>数量回写表格及时序图</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>数量名称/表单名称</th>
+<th>订单</th>
+<th>配送单</th>
+<th>退货单</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>未配送数量</td>
+<td>/</td>
+<td>只在新增配送单时出现，值为所选订单的实时未配送数量；</td>
+<td>/</td>
+</tr>
+<tr>
+<td>已配送数量</td>
+<td>1.配送单生效时，已配送数量+=本次配送数量；<br>2.客户拒收时，已配送数量-=本次拒收数量；</td>
+<td>该配送单本次配送数量；且该数量不会做任何更改；</td>
+<td>/</td>
+</tr>
+<tr>
+<td>已验收数量</td>
+<td>1. 客户验收时接收，已验收数量+=本次接收数量；<br>2.客户入库后退货，已验收数量-=本次退货数量；</td>
+<td>客户验收时接收，已验收数量+=本次接收数量；</td>
+<td>/</td>
+</tr>
+<tr>
+<td>已退货数量</td>
+<td>客户入库后退货，已退货数量+=本次退货数量；</td>
+<td>客户入库后退货，已退货数量+=本次退货数量；</td>
+<td>客户退货传来的退货数量；</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td></tr></tbody></table>
+        
+          <a class="article-more-a" href="/2024/12/01/%E4%BA%BA%E4%BA%BA%E9%83%BD%E6%98%AF%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/ERP%E8%AE%A2%E5%8D%95%E7%AE%A1%E7%90%86%E4%B8%AD%E7%9A%84%E6%95%B0%E9%87%8F%E9%97%AE%E9%A2%98/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">大话产品</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/大话产品//" class="article-tag-list-link color5">大话产品</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/12/01/%E4%BA%BA%E4%BA%BA%E9%83%BD%E6%98%AF%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/ERP%E8%AE%A2%E5%8D%95%E7%AE%A1%E7%90%86%E4%B8%AD%E7%9A%84%E6%95%B0%E9%87%8F%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-人人都是产品经理/聊聊用户分类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -660,103 +802,6 @@ YouTube的价值不仅来自视频创作者的内容，也来自观众的观看�
 
 
   
-    <article id="post-人人都是产品经理/产品：某个解决问题的东西" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/11/30/%E4%BA%BA%E4%BA%BA%E9%83%BD%E6%98%AF%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/%E4%BA%A7%E5%93%81%EF%BC%9A%E6%9F%90%E4%B8%AA%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%E7%9A%84%E4%B8%9C%E8%A5%BF/">产品：某个解决问题的东西</a>
-    </h1>
-  
-
-        
-        <a href="/2024/11/30/%E4%BA%BA%E4%BA%BA%E9%83%BD%E6%98%AF%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/%E4%BA%A7%E5%93%81%EF%BC%9A%E6%9F%90%E4%B8%AA%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%E7%9A%84%E4%B8%9C%E8%A5%BF/" class="archive-article-date">
-  	<time datetime="2024-11-30T05:07:05.788Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-11-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>给产品下个定义，解决某个问题的东西。某个是指任何一个产品都无法解决所有问题，特别是在产品早期，要有针对性地满足某些用户的某些需求，还要有明确的定位；问题是指用户预期效果与实际效果有差距。东西指有形的实物或无形的服务，一般是一个有目标的解决方案。</p>
-<p>问题包含了3个关键词，用户、需求、场景；用户即这个问题是谁的问题；需求即问题的核心是什么；场景即用户在什么情况下，以及何时碰到这个问题。</p>
-<h5 id="用户"><a class="markdownIt-Anchor" href="#用户"></a> 用户</h5>
-<p>任何产品的用户都是多种多样的，但有主次之分，不要为了次要用户的需求干扰核心用户。当然，满足核心用户之余也可去照顾次要用户。用户，更多指角色，而不是自然人。自然人是指生物意义上的人，角色是指社会意义上的人。比如说，你可以既是爸爸又是儿子，那么我们说你是爸爸的时候，应该涉及一个有你儿女的场景，说你是儿子的时候，就涉及一个有你父母的场景。再举一个能够有助于加深对“用户”理解的综合案例。以最常见的一对用户角色——客户和终端用户为例。客户（customer），指付钱买产品的人；终端用户（end user），指最终使用产品的人。对于玩具来说，当成年人购买智力玩具时，客户和终端用户这两个角色通常是重叠的，背后是同一个自然人。但给小朋友购买玩具时，角色就分离了——客户是小朋友的父母，终端用户是小朋友。所以，在设计这类产品的功能和卖点时，一般都有对应的目的。玩具强调材质安全、环保、无毒，宣称对小朋友的智力开发有益，这是指向客户的；而外形设计得可爱、颜色鲜艳，则是指向终端用户的。</p>
-<h5 id="需求"><a class="markdownIt-Anchor" href="#需求"></a> 需求</h5>
-<p>需求即“问题”的核心，它是分深浅的。</p>
-<p>最浅的一层是需求的表象，包含各种要求和欲望，就是经常听到用户说的“我要A”“我想B”这样一些反映用户需求的观点和行为。</p>
-<p>第二层是观点与行为背后的目标和动机，对应用户要达成的一个愿望或要完成面，但影响深远。</p>
-<p>第三，每一个需求挖到最后，都可以归结到人性层面，比较常见的马斯洛需求层次理论有非常精确的阐述。还有其他一些或正面或负面的人性需求，各举一例：公益众筹类的产品，把握住了人们的“大爱”；微信里的“标题党”文章，如“活不到一百岁是你的错”“人生十大忌，千万不能犯”，则利用了老人的恐惧和从众心理。</p>
-<p>第四，满足需求其实有3种办法：提高现实、降低期望、转移需求。抛出这样一个问题来加以说明：大家觉得物质生活水平太低时怎么办？1、提高现实：自己努力、公司加薪。2、降低期望：忆苦思甜、比下有余。3、转移需求：寻找新关注点、转移注意力。</p>
-<p>降低期望的方法虽然可以暂时解决需求，但对产品的美誉度有负面影响，要慎用。转移需求也可以暂时解决问题，但其实在把用户往外推，用得太多用户就和我们没关系了。做产品在大多数情况下是在提高现实，是一种很累的方式，但这种累也是值得的，它最容易与用户建立长期的良性关系。</p>
-        
-          <a class="article-more-a" href="/2024/11/30/%E4%BA%BA%E4%BA%BA%E9%83%BD%E6%98%AF%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/%E4%BA%A7%E5%93%81%EF%BC%9A%E6%9F%90%E4%B8%AA%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%E7%9A%84%E4%B8%9C%E8%A5%BF/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">大话产品</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/大话产品//" class="article-tag-list-link color5">大话产品</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2024/11/30/%E4%BA%BA%E4%BA%BA%E9%83%BD%E6%98%AF%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/%E4%BA%A7%E5%93%81%EF%BC%9A%E6%9F%90%E4%B8%AA%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%E7%9A%84%E4%B8%9C%E8%A5%BF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -855,19 +900,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">产品设计</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">大话产品</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">围棋</a>
+                <a href="javascript:void(0)" class="js-tag color5">产品设计</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">人文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">围棋</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -887,10 +936,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">道德经</a>
               </li>
              
@@ -899,15 +944,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">flask</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Flask</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Flask-SQLAlchemy</a>
+                <a href="javascript:void(0)" class="js-tag color1">flask</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -916,6 +957,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Flask-SQLAlchemy</a>
               </li>
             
             <div class="clearfix"></div>
