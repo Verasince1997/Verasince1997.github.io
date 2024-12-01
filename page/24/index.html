@@ -148,6 +148,105 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-pat_basic/pat_basic_1006" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/20/pat_basic/pat_basic_1006/">PAT_Basic_1006 换个格式输出整数</a>
+    </h1>
+  
+
+        
+        <a href="/2022/01/20/pat_basic/pat_basic_1006/" class="archive-article-date">
+  	<time datetime="2022-01-20T09:53:49.830Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>让我们用字母 <code>B</code> 来表示“百”、字母 <code>S</code> 表示“十”，用 <code>12...n</code> 来表示不为零的个位数字 <code>n</code>（&lt;10），换个格式来输出任一个不超过 3 位的正整数。例如 <code>234</code> 应该被输出为 <code>BBSSS1234</code>，因为它有 2 个“百”、3 个“十”、以及个位的 4。</p>
+<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
+<p>每个测试输入包含 1 个测试用例，给出正整数 <em>n</em>（&lt;1000）。</p>
+<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
+<p>每个测试用例的输出占一行，用规定的格式输出 <em>n</em>。</p>
+<h4 id="输入样例-1"><a class="markdownIt-Anchor" href="#输入样例-1"></a> 输入样例 1：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">234</span></span><br></pre></td></tr></table></figure>
+<h4 id="输出样例-1"><a class="markdownIt-Anchor" href="#输出样例-1"></a> 输出样例 1：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BBSSS1234</span><br></pre></td></tr></table></figure>
+<h4 id="输入样例-2"><a class="markdownIt-Anchor" href="#输入样例-2"></a> 输入样例 2：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">23</span></span><br></pre></td></tr></table></figure>
+<h4 id="输出样例-2"><a class="markdownIt-Anchor" href="#输出样例-2"></a> 输出样例 2：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SS123</span><br></pre></td></tr></table></figure>
+<h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">gewei</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">shiwei</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">&#x27;S&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">baiwei</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;B&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">while</span>(n&gt;<span class="number">0</span>)&#123;</span><br><span class="line">        v.push_back(n%<span class="number">10</span>);</span><br><span class="line">        n=n/<span class="number">10</span>;<span class="comment">//这样得到的向量v[0] v[1] v[2]，分别是个位 十位 百位</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (v.size()==<span class="number">3</span>)&#123;</span><br><span class="line">        baiwei(v[<span class="number">2</span>]);</span><br><span class="line">        shiwei(v[<span class="number">1</span>]);</span><br><span class="line">        gewei(v[<span class="number">0</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(v.size()==<span class="number">2</span>)&#123;</span><br><span class="line">        shiwei(v[<span class="number">1</span>]);</span><br><span class="line">        gewei(v[<span class="number">0</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        gewei(v[<span class="number">0</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">现在要分析一个数 首先分析一个不超过3位的数 那设置三个变量 分别得到百位、十位、个位的个数，然后按规则表示</span></span><br><span class="line"><span class="comment"> while(num&gt;0)&#123;</span></span><br><span class="line"><span class="comment">        v2.push_back(num%10);</span></span><br><span class="line"><span class="comment">        num = num/10;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/20/pat_basic/pat_basic_1006/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-pat_basic/pat_basic_1005" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -539,103 +638,6 @@
 
 
   
-    <article id="post-pat_basic/pat_basic_1001" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/20/pat_basic/pat_basic_1001/">PAT_Basic_1001 (3n+1)猜想</a>
-    </h1>
-  
-
-        
-        <a href="/2022/01/20/pat_basic/pat_basic_1001/" class="archive-article-date">
-  	<time datetime="2022-01-20T09:52:31.474Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>卡拉兹(Callatz)猜想：</p>
-<p>对任何一个正整数 <em>n</em>，如果它是偶数，那么把它砍掉一半；如果它是奇数，那么把 (3<em>n</em>+1) 砍掉一半。这样一直反复砍下去，最后一定在某一步得到 <em>n</em>=1。卡拉兹在 1950 年的世界数学家大会上公布了这个猜想，传说当时耶鲁大学师生齐动员，拼命想证明这个貌似很傻很天真的命题，结果闹得学生们无心学业，一心只证 (3<em>n</em>+1)，以至于有人说这是一个阴谋，卡拉兹是在蓄意延缓美国数学界教学与科研的进展……</p>
-<p>我们今天的题目不是证明卡拉兹猜想，而是对给定的任一不超过 1000 的正整数 <em>n</em>，简单地数一下，需要多少步（砍几下）才能得到 <em>n</em>=1？</p>
-<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
-<p>每个测试输入包含 1 个测试用例，即给出正整数 <em>n</em> 的值。</p>
-<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
-<p>输出从 <em>n</em> 计算到 1 需要的步数。</p>
-<h4 id="输入样例"><a class="markdownIt-Anchor" href="#输入样例"></a> 输入样例：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
-<h4 id="输出样例"><a class="markdownIt-Anchor" href="#输出样例"></a> 输出样例：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span></span><br></pre></td></tr></table></figure>
-<h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">while</span>(n!=<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span> (n%<span class="number">2</span>==<span class="number">0</span>)&#123;</span><br><span class="line">            n = n/<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            n = (<span class="number">3</span>*n+<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        count+=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; count &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/20/pat_basic/pat_basic_1001/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/23/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="page-number" href="/page/23/">23</a><span class="page-number current">24</span><a class="page-number" href="/page/25/">25</a><a class="page-number" href="/page/26/">26</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/25/">Next &amp;raquo;</a>
@@ -734,14 +736,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">人文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">围棋</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">产品设计</a>
               </li>
              
@@ -750,11 +744,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color3">围棋</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">人文</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">自我发展</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -790,11 +792,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
+                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
             
             <div class="clearfix"></div>

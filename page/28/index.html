@@ -148,6 +148,106 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-pat_basic/pat_basic_1014" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/16/pat_basic/pat_basic_1014/">PAT_Basic_1014 福尔摩斯的约会</a>
+    </h1>
+  
+
+        
+        <a href="/2022/01/16/pat_basic/pat_basic_1014/" class="archive-article-date">
+  	<time datetime="2022-01-16T06:27:16.505Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>大侦探福尔摩斯接到一张奇怪的字条：“我们约会吧！</p>
+<p>3485djDkxh4hhGE<br>
+2984akDfkkkkggEdsb<br>
+s&amp;hgsfdk<br>
+d&amp;Hyscvnm<br>
+大侦探很快就明白了，字条上奇怪的乱码实际上就是约会的时间“星期四 14:04”，因为前面两字符串中第1对相同的大写英文字母（大小写有区分）是第4个字母’D’，代表星期四；第2对相同的字符是’E’，那是第5个英文字母，代表一天里的第14个钟头（于是一天的0点到23点由数字0到9、以及大写字母A到N表示）；后面两字符串第1对相同的英文字母’s’出现在第4个位置（从0开始计数）上，代表第4分钟。现给定两对字符串，请帮助福尔摩斯解码得到约会的时间。</p>
+<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
+<p>输入在4行中分别给出4个非空、不包含空格、且长度不超过60的字符串。</p>
+<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式:</h4>
+<p>在一行中输出约会的时间，格式为“DAY HH:MM”，其中“DAY”是某星期的3字符缩写,即MON表示星期一，TUE表示星期二，WED表示星期三，THU表示星期四，FRI表示星期五，SAT表示星期六，SUN表示星期日。题目输入保证每个测试存在唯一解。</p>
+<h4 id="输入样例"><a class="markdownIt-Anchor" href="#输入样例"></a> 输入样例：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3485</span>djDkxh4hhGE</span><br><span class="line"><span class="number">2984</span>akDfkkkkggEdsb</span><br><span class="line">s&amp;hgsfdk</span><br><span class="line">d&amp;Hyscvnm</span><br></pre></td></tr></table></figure>
+<h4 id="输出样例"><a class="markdownIt-Anchor" href="#输出样例"></a> 输出样例：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">THU <span class="number">14</span>:<span class="number">00</span></span><br></pre></td></tr></table></figure>
+<h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码：</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> ss;</span><br><span class="line">    <span class="keyword">int</span> counts=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">vector</span> &lt;<span class="built_in">string</span>&gt; v;</span><br><span class="line">    <span class="built_in">vector</span> &lt;<span class="keyword">char</span>&gt; v1,v3;</span><br><span class="line">    <span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; v2;</span><br><span class="line">    <span class="built_in">map</span> &lt;<span class="keyword">char</span>,<span class="built_in">string</span>&gt; m=&#123;&#123;<span class="string">&#x27;A&#x27;</span>,<span class="string">&quot;MON&quot;</span>&#125;,&#123;<span class="string">&#x27;B&#x27;</span>,<span class="string">&quot;TUE&quot;</span>&#125;,&#123;<span class="string">&#x27;C&#x27;</span>,<span class="string">&quot;WED&quot;</span>&#125;,&#123;<span class="string">&#x27;D&#x27;</span>,<span class="string">&quot;THU&quot;</span>&#125;,&#123;<span class="string">&#x27;E&#x27;</span>,<span class="string">&quot;FRI&quot;</span>&#125;,&#123;<span class="string">&#x27;F&#x27;</span>,<span class="string">&quot;SAT&quot;</span>&#125;,&#123;<span class="string">&#x27;G&#x27;</span>,<span class="string">&quot;SUN&quot;</span>&#125;&#125;;</span><br><span class="line">    <span class="built_in">map</span> &lt;<span class="keyword">char</span>,<span class="keyword">int</span>&gt; m1=&#123;&#123;<span class="string">&#x27;0&#x27;</span>,<span class="number">0</span>&#125;,&#123;<span class="string">&#x27;1&#x27;</span>,<span class="number">1</span>&#125;,&#123;<span class="string">&#x27;2&#x27;</span>,<span class="number">2</span>&#125;,&#123;<span class="string">&#x27;3&#x27;</span>,<span class="number">3</span>&#125;,&#123;<span class="string">&#x27;4&#x27;</span>,<span class="number">4</span>&#125;,&#123;<span class="string">&#x27;5&#x27;</span>,<span class="number">5</span>&#125;,&#123;<span class="string">&#x27;6&#x27;</span>,<span class="number">6</span>&#125;,&#123;<span class="string">&#x27;7&#x27;</span>,<span class="number">7</span>&#125;,&#123;<span class="string">&#x27;8&#x27;</span>,<span class="number">8</span>&#125;,&#123;<span class="string">&#x27;9&#x27;</span>,<span class="number">9</span>&#125;,&#123;<span class="string">&#x27;A&#x27;</span>,<span class="number">10</span>&#125;,&#123;<span class="string">&#x27;B&#x27;</span>,<span class="number">11</span>&#125;,&#123;<span class="string">&#x27;C&#x27;</span>,<span class="number">12</span>&#125;,&#123;<span class="string">&#x27;D&#x27;</span>,<span class="number">13</span>&#125;,&#123;<span class="string">&#x27;E&#x27;</span>,<span class="number">14</span>&#125;,&#123;<span class="string">&#x27;F&#x27;</span>,<span class="number">15</span>&#125;,&#123;<span class="string">&#x27;G&#x27;</span>,<span class="number">16</span>&#125;,&#123;<span class="string">&#x27;H&#x27;</span>,<span class="number">17</span>&#125;,&#123;<span class="string">&#x27;I&#x27;</span>,<span class="number">18</span>&#125;,&#123;<span class="string">&#x27;J&#x27;</span>,<span class="number">19</span>&#125;,&#123;<span class="string">&#x27;K&#x27;</span>,<span class="number">20</span>&#125;,&#123;<span class="string">&#x27;L&#x27;</span>,<span class="number">21</span>&#125;,&#123;<span class="string">&#x27;M&#x27;</span>,<span class="number">22</span>&#125;,&#123;<span class="string">&#x27;N&#x27;</span>,<span class="number">23</span>&#125;&#125;;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;ss;</span><br><span class="line">        v.push_back(ss);</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="built_in">string</span> ss1 = v[<span class="number">0</span>];</span><br><span class="line">   <span class="built_in">string</span> ss2 = v[<span class="number">1</span>];</span><br><span class="line">   <span class="built_in">string</span> ss3 = v[<span class="number">2</span>];</span><br><span class="line">   <span class="built_in">string</span> ss4 =  v[<span class="number">3</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>,j=<span class="number">0</span>; i &lt; ss1.length(),j&lt;ss2.length(); ++i,++j) &#123;</span><br><span class="line">        <span class="comment">//第一个相同的字符一定是A到G之间的大写字母，第二个相同的字符可能是A到N之间的大写字母也可以是数字0-9</span></span><br><span class="line">      <span class="keyword">if</span>(ss1[i]==ss2[j])&#123;</span><br><span class="line">          <span class="keyword">if</span>(counts==<span class="number">0</span> &amp;&amp; ss1[i]&gt;=<span class="string">&#x27;A&#x27;</span> &amp;&amp; ss1[i]&lt;=<span class="string">&#x27;G&#x27;</span>)&#123;</span><br><span class="line">              v1.push_back(ss1[i]);</span><br><span class="line">              counts++;</span><br><span class="line">          &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> ((ss1[i]&gt;=<span class="string">&#x27;A&#x27;</span> &amp;&amp; ss1[i]&lt;=<span class="string">&#x27;N&#x27;</span>) || (ss1[i]&gt;=<span class="string">&#x27;0&#x27;</span> &amp;&amp; ss1[i]&lt;=<span class="string">&#x27;9&#x27;</span>))&#123;</span><br><span class="line">                <span class="keyword">if</span>(counts == <span class="number">1</span>)&#123;</span><br><span class="line">                v1.push_back(ss1[i]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>; i&lt;ss3.length(),j&lt;ss4.length(); ++i,++j)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">isalpha</span>(ss3[i]) &amp;&amp; ss3[i]==ss4[j])</span><br><span class="line">        &#123;</span><br><span class="line">            v2.push_back(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;m[v1[<span class="number">0</span>]]&lt;&lt;<span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    <span class="built_in">cout</span>.<span class="built_in">fill</span>(<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">    <span class="built_in">cout</span>.<span class="built_in">width</span>(<span class="number">2</span>);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;m1[v1[<span class="number">1</span>]]&lt;&lt;<span class="string">&#x27;:&#x27;</span>;</span><br><span class="line">    <span class="built_in">cout</span>.<span class="built_in">fill</span>(<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">    <span class="built_in">cout</span>.<span class="built_in">width</span>(<span class="number">2</span>);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;v2[<span class="number">0</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/16/pat_basic/pat_basic_1014/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-pat_basic/pat_basic_1009" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -572,149 +672,6 @@
 
 
   
-    <article id="post-算法/XGBoost" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/31/%E7%AE%97%E6%B3%95/XGBoost/">XGBoost</a>
-    </h1>
-  
-
-        
-        <a href="/2021/03/31/%E7%AE%97%E6%B3%95/XGBoost/" class="archive-article-date">
-  	<time datetime="2021-03-31T01:16:34.780Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="1-网格搜索"><a class="markdownIt-Anchor" href="#1-网格搜索"></a> 1. 网格搜索</h5>
-<p>交叉验证只能导入没训练过的模型，</p>
-<p>方差：稳定性</p>
-<p>偏差：准确性</p>
-<p>类StratifiedShuffleSplit</p>
-<p>其创建的每一组划分将保证每组类比比例相同。即第一组训练数据类别比例为2:1，则后面每组类别都满足这个比例</p>
-<h5 id="2-xgboost库与xgb的sklearn-api"><a class="markdownIt-Anchor" href="#2-xgboost库与xgb的sklearn-api"></a> 2. xgboost库与XGB的sklearn API</h5>
-<h6 id="21-使用xgboost库"><a class="markdownIt-Anchor" href="#21-使用xgboost库"></a> 2.1 使用xgboost库</h6>
-<p><code>import xgboost as xgb</code></p>
-<h6 id="22-使用sklearn中的api"><a class="markdownIt-Anchor" href="#22-使用sklearn中的api"></a> 2.2 使用sklearn中的API</h6>
-<p><code>from xgboost import XGBRegressor as XGBR</code></p>
-<p>使用xgboost中设定的建模流程来建模，和使用sklearnAPI中的类来建模，模型效果是比较相似的，但是xgboost库本身的运算速度（尤其是交叉验证）以及调参手段比sklearn要简单。</p>
-<h5 id="3-目标函数"><a class="markdownIt-Anchor" href="#3-目标函数"></a> 3. 目标函数</h5>
-<p>XGBoost的目标函数=传统损失函数+模型复杂度</p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mi>b</mi><mi>j</mi><mo>=</mo><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></msubsup><mrow><mi>l</mi><mo stretchy="false">(</mo><msub><mi>y</mi><mi>i</mi></msub><mo separator="true">,</mo><mover accent="true"><msub><mi>y</mi><mi>i</mi></msub><mo>^</mo></mover><mo stretchy="false">)</mo></mrow><mo>+</mo><msubsup><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>K</mi></msubsup><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">(</mo><msub><mi>f</mi><mi>k</mi></msub><mo stretchy="false">)</mo></mrow><mspace width="2em"><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mspace></mrow><annotation encoding="application/x-tex">Obj=\sum_{i=1}^{m}{l(y_i,\hat{y_i})}+\sum_{k=1}^{K}{\Omega(f_k)}\qquad (1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.104002em;vertical-align:-0.29971000000000003em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.804292em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;">^</span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span><span class="mclose">)</span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.2809409999999999em;vertical-align:-0.29971000000000003em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.981231em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.07153em;">K</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord">Ω</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span><span class="mspace" style="margin-right:2em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></p>
-<p>其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>代表数据集中的第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>个样本，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>表示导入第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>棵树的数据总量，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span></span></span></span>代表建立的所有树，当只建立了<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">t</span></span></span></span>棵树时，式子应当为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>t</mi></msubsup><mrow><mi mathvariant="normal">Ω</mi><msub><mi>f</mi><mi>k</mi></msub></mrow></mrow><annotation encoding="application/x-tex">\sum_{i=1}^{t}{\Omega{f_k}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.233166em;vertical-align:-0.29971000000000003em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.933456em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord">Ω</span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></span>。(1)中第一项代表传统的损失函数，衡量真实标签<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>y</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">y_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>与预测标签<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><msub><mi>y</mi><mi>i</mi></msub><mo>^</mo></mover></mrow><annotation encoding="application/x-tex">\hat{y_i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;">^</span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span></span></span></span>之间的差异，通常是RMSE，调节后的均方误差。(1)中第二项代表模型的复杂度，使用树模型的某种变换<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">Ω</mi></mrow><annotation encoding="application/x-tex">\Omega</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Ω</span></span></span></span>表示，这个变化代表了一个从树的结构来衡量树模型的复杂度的式子。通过最小化<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mi>b</mi><mi>j</mi></mrow><annotation encoding="application/x-tex">Obj</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span>求得最优的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><msub><mi>y</mi><mi>i</mi></msub><mo>^</mo></mover></mrow><annotation encoding="application/x-tex">\hat{y_i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;">^</span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span></span></span></span>。</p>
-<p>在编程中，使用参数’objective’来确定目标函数第一部分中的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mo stretchy="false">(</mo><msub><mi>y</mi><mi>i</mi></msub><mo separator="true">,</mo><mover accent="true"><msub><mi>y</mi><mi>i</mi></msub><mo>^</mo></mover><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">l(y_i,\hat{y_i})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;">^</span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，也就是衡量损失的部分。</p>
-<table>
-<thead>
-<tr>
-<th>Xib.train()</th>
-<th>Xib.XGBRegressor()</th>
-<th>Xib.XGBClassifier</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Obj:默认binary:logistic</td>
-<td>objective:默认reg:linear</td>
-<td>objective:默认binary:logistic</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>输入</th>
-<th>选用的损失函数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>reg:linear</td>
-<td>使用线性回归的损失函数，均方误差，回归时使用</td>
-</tr>
-<tr>
-<td>binary:logistic</td>
-<td>使用逻辑回归的损失函数，对数损失log_loss，二分类时使用</td>
-</tr>
-<tr>
-<td>binary:hinge</td>
-<td>使用支持向量机的损失函数，Hinge Loss，二分类时使用</td>
-</tr>
-<tr>
-<td>multi:softmax</td>
-<td>使用softmax损失函数，多分类时使用</td>
-</tr>
-</tbody>
-</table>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">python算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析-基础//" class="article-tag-list-link color3">数据分析 基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/03/31/%E7%AE%97%E6%B3%95/XGBoost/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/27/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="page-number" href="/page/27/">27</a><span class="page-number current">28</span><a class="page-number" href="/page/29/">29</a><a class="page-number" href="/page/30/">30</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/29/">Next &amp;raquo;</a>
@@ -813,14 +770,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">人文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">围棋</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">产品设计</a>
               </li>
              
@@ -829,11 +778,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color3">围棋</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">人文</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">自我发展</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -869,11 +826,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
+                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
             
             <div class="clearfix"></div>

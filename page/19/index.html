@@ -148,6 +148,112 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-pat_basic/pat_basic_1045" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/30/pat_basic/pat_basic_1045/">PAT_Basic_1045 快速排序</a>
+    </h1>
+  
+
+        
+        <a href="/2022/01/30/pat_basic/pat_basic_1045/" class="archive-article-date">
+  	<time datetime="2022-01-29T21:06:06.375Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>著名的快速排序算法里有一个经典的划分过程：我们通常采用某种方法取一个元素作为主元，通过交换，把比主元小的元素放到它的左边，比主元大的元素放到它的右边。 给定划分后的 <em>N</em> 个互不相同的正整数的排列，请问有多少个元素可能是划分前选取的主元？</p>
+<p>例如给定 <em>N</em>=5, 排列是1、3、2、4、5。则：</p>
+<ul>
+<li>1 的左边没有元素，右边的元素都比它大，所以它可能是主元；</li>
+<li>尽管 3 的左边元素都比它小，但其右边的 2 比它小，所以它不能是主元；</li>
+<li>尽管 2 的右边元素都比它大，但其左边的 3 比它大，所以它不能是主元；</li>
+<li>类似原因，4 和 5 都可能是主元。</li>
+</ul>
+<p>因此，有 3 个元素可能是主元。</p>
+<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
+<p>输入在第 1 行中给出一个正整数 <em>N</em>（≤105）； 第 2 行是空格分隔的 <em>N</em> 个不同的正整数，每个数不超过 109。</p>
+<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
+<p>在第 1 行中输出有可能是主元的元素个数；在第 2 行中按递增顺序输出这些元素，其间以 1 个空格分隔，行首尾不得有多余空格。</p>
+<h4 id="输入样例"><a class="markdownIt-Anchor" href="#输入样例"></a> 输入样例：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">1</span> <span class="number">3</span> <span class="number">2</span> <span class="number">4</span> <span class="number">5</span></span><br></pre></td></tr></table></figure>
+<h4 id="输出样例"><a class="markdownIt-Anchor" href="#输出样例"></a> 输出样例：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">1</span> <span class="number">4</span> <span class="number">5</span></span><br></pre></td></tr></table></figure>
+<h4 id="分析"><a class="markdownIt-Anchor" href="#分析"></a> 分析：</h4>
+<p>名字很友好，告诉你的主元，其实就是快排思想，排序前后元素位置不变，且左边的最大值比自己小，即为本题所求的主元。</p>
+<h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码：</h4>
+<p>我很害怕。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">100005</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N,num,k=<span class="number">0</span>,max=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;N;</span><br><span class="line">    <span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; v(N),v1(N);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;v[i];</span><br><span class="line">       v1[i]=v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    sort(v.begin(),v.end());</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)&#123;</span><br><span class="line">         <span class="keyword">if</span>(v[i]==v1[i] &amp;&amp; v1[i]&gt;max)&#123;</span><br><span class="line">            a[k++]=v1[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(v1[i]&gt;max)&#123;</span><br><span class="line">            max=v1[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, k);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i != <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/30/pat_basic/pat_basic_1045/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-pat_basic/pat_basic_1044" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -536,98 +642,6 @@
 
 
   
-    <article id="post-pat_basic/刷题总结/专题:查找元素 11.22.54 AM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/28/pat_basic/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E4%B8%93%E9%A2%98:%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%2011.22.54%20AM/">专题:查找元素</a>
-    </h1>
-  
-
-        
-        <a href="/2022/01/28/pat_basic/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E4%B8%93%E9%A2%98:%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%2011.22.54%20AM/" class="archive-article-date">
-  	<time datetime="2022-01-28T15:28:46.034Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这就是体现高效的学习方法，试想在未来，你在更高一阶的求学或者求职时遇到的机试题，要想很快AC，首先你得判断出这是我以前归纳过得哪种题型，然后这类题你知道一种技巧，或者可以称作是一种通法，你就比别人有优势。那么为了达到这种水平，不仅得刷题，还要“多级索引”，把精华再提炼，不断强化弱项。</p>
-<p>首先看1028题，给出有效年龄范围，在输入数据中找出有效数据。</p>
-<p>以下为我的代码，我是做成“繁琐模拟题”，这道题最佳做法是把它归为“查找元素”一类题。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span>  <span class="title">birth</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">   <span class="built_in">string</span> name;</span><br><span class="line">   <span class="built_in">string</span> date;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;N;</span><br><span class="line">    <span class="built_in">vector</span> &lt;birth&gt; v,v4;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)&#123;</span><br><span class="line">        birth man;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;man.name&gt;&gt;man.date;</span><br><span class="line">        v.push_back(man);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; v1,v2,v3;</span><br><span class="line">    <span class="comment">// 获取年月日 分别加入三个vector</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;N;i++)&#123;</span><br><span class="line">        v1.push_back(stoi(v[i].date.substr(<span class="number">0</span>,<span class="number">4</span>)));</span><br><span class="line">        v2.push_back(stoi(v[i].date.substr(<span class="number">5</span>,<span class="number">2</span>)));</span><br><span class="line">        v3.push_back(stoi(v[i].date.substr(<span class="number">8</span>,<span class="number">2</span>)));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//要把所有情况都包含 先想好办法 </span></span><br><span class="line">    <span class="comment">//2014 9 6 必须大于1814 9 6   最大是2014 9 6</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(v1[i]&gt;<span class="number">1814</span> &amp;&amp; v1[i]&lt;<span class="number">2014</span>)&#123;</span><br><span class="line">            v4.push_back(v[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(v1[i]==<span class="number">1814</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(v2[i]&gt;<span class="number">9</span>)&#123;</span><br><span class="line">                v4.push_back(v[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(v2[i]==<span class="number">9</span> &amp;&amp; v3[i]&gt;=<span class="number">6</span>)&#123;</span><br><span class="line">                v4.push_back(v[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(v1[i]==<span class="number">2014</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(v2[i]&lt;<span class="number">9</span>)&#123;</span><br><span class="line">                v4.push_back(v[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(v2[i]==<span class="number">9</span> &amp;&amp; v3[i]&lt;=<span class="number">6</span>)&#123;</span><br><span class="line">                v4.push_back(v[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">int</span>(v4.size())==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    v1.clear();</span><br><span class="line">    v2.clear();</span><br><span class="line">    v3.clear();</span><br><span class="line"></span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;v4.size();i++)&#123;</span><br><span class="line">        v1.push_back(stoi(v4[i].date.substr(<span class="number">0</span>,<span class="number">4</span>)));</span><br><span class="line">        v2.push_back(stoi(v4[i].date.substr(<span class="number">5</span>,<span class="number">2</span>)));</span><br><span class="line">        v3.push_back(stoi(v4[i].date.substr(<span class="number">8</span>,<span class="number">2</span>)));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> max_year=v1[<span class="number">0</span>],min_year=v1[<span class="number">0</span>],max_mon=v2[<span class="number">0</span>],min_mon=v2[<span class="number">0</span>],max_day=v3[<span class="number">0</span>],min_day=v3[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">int</span> mark_max=<span class="number">0</span>,mark_min=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;v4.size();i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(v1[i]&gt;max_year)&#123;</span><br><span class="line">            max_year=v1[i];</span><br><span class="line">            max_mon=v2[i];</span><br><span class="line">            max_day=v3[i];</span><br><span class="line">            mark_max=i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(v1[i]==max_year)&#123;</span><br><span class="line">            <span class="keyword">if</span>(v2[i]&gt;max_mon)&#123;</span><br><span class="line">                max_mon=v2[i];</span><br><span class="line">                max_day=v3[i];</span><br><span class="line">                mark_max=i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(v2[i]==max_mon)&#123;</span><br><span class="line">                <span class="keyword">if</span>(v3[i]&gt;max_day)&#123;</span><br><span class="line">                    max_day=v3[i];</span><br><span class="line">                    mark_max=i;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;v4.size();i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(v1[i]&lt;min_year)&#123;</span><br><span class="line">            min_year=v1[i];</span><br><span class="line">            min_mon=v2[i];</span><br><span class="line">            min_day=v3[i];</span><br><span class="line">            mark_min=i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(v1[i]==min_year)&#123;</span><br><span class="line">            <span class="keyword">if</span>(v2[i]&lt;min_mon)&#123;</span><br><span class="line">                min_mon=v2[i];</span><br><span class="line">                min_day=v3[i];</span><br><span class="line">                mark_min=i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(v2[i]==min_mon)&#123;</span><br><span class="line">                <span class="keyword">if</span>(v3[i]&lt;min_day)&#123;</span><br><span class="line">                    min_day=v3[i];</span><br><span class="line">                    mark_min=i;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;v4.size()&lt;&lt;<span class="string">&#x27; &#x27;</span>&lt;&lt;v4[mark_min].name&lt;&lt;<span class="string">&#x27; &#x27;</span>&lt;&lt;v4[mark_max].name&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>用查找元素做：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">string</span> name, birth, maxname, minname, maxbirth = <span class="string">&quot;1814/09/06&quot;</span>, minbirth = <span class="string">&quot;2014/09/06&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; name &gt;&gt; birth;</span><br><span class="line">        <span class="keyword">if</span> (birth &gt;= <span class="string">&quot;1814/09/06&quot;</span> &amp;&amp; birth &lt;= <span class="string">&quot;2014/09/06&quot;</span>) &#123;</span><br><span class="line">            cnt++;</span><br><span class="line">            <span class="keyword">if</span> (birth &gt;= maxbirth) &#123;</span><br><span class="line">                maxbirth = birth;</span><br><span class="line">                maxname = name;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (birth &lt;= minbirth) &#123;</span><br><span class="line">                minbirth = birth;</span><br><span class="line">                minname = name;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; cnt;</span><br><span class="line">    <span class="keyword">if</span> (cnt != <span class="number">0</span>) <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; minname &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; maxname;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>说实话，在这之前我都不知道字符串还可以直接比，因为我不会这个知识，我就把把年月日拆分，然后通过对年月日的判断，把无效数据筛掉，接着再大兴土木找最大和最小，整麻烦了。</p>
-<p>还有输入方式，在今下午做1037时我再次体会到了scanf虽然没cin那么清爽，但是对于1037的输入格式 <code>10.16.27</code>   <code>scanf(&quot;%d.%d.%d&quot;,&amp;a1,&amp;b1,&amp;c1);</code>是比<code>cin&gt;&gt;字符串</code>然后再将每部分的int取出来方便了一个量级吧！所以要因地制宜，适时选择最佳方案。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">OJ tricks</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/OJ//" class="article-tag-list-link color3">OJ</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/28/pat_basic/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/%E4%B8%93%E9%A2%98:%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%2011.22.54%20AM/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/18/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/20/">Next &amp;raquo;</a>
@@ -726,14 +740,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">人文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">围棋</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">产品设计</a>
               </li>
              
@@ -742,11 +748,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color3">围棋</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">人文</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">自我发展</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -782,11 +796,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
+                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">python 爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
             
             <div class="clearfix"></div>
