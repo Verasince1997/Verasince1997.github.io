@@ -148,6 +148,60 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-pat_basic/刷题总结/1085 &amp;&amp; 1080" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>套路总结：</p>
+<p>善用结构体；收获了题目要求的比较函数写法；map的it-&gt;second可以是结构体形式。<algorithm>头文件的sort函数不能直接对map排序，把map中的元素转移到vector中，这个时候vector的类型一般是结构体，比较函数cmp也是按照结构体的各类元素的关系写的。这两道题好好掌握，以后遇到同类型题，秒杀。</algorithm></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v.push_back(Node&#123;x,x,x&#125;);<span class="comment">//注意</span></span><br></pre></td></tr></table></figure>
+<p>1085:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">    <span class="built_in">string</span> school;</span><br><span class="line">    <span class="keyword">int</span> score;</span><br><span class="line">    <span class="keyword">int</span> cnt;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(Node a,Node b)</span></span>&#123;<span class="comment">//对map m的排序</span></span><br><span class="line">    <span class="keyword">if</span>(a.score!=b.score)&#123;</span><br><span class="line">        <span class="keyword">return</span> a.score&gt;b.score;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(a.cnt!=b.cnt)&#123;</span><br><span class="line">        <span class="keyword">return</span> a.cnt&lt;b.cnt;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a.school&lt;b.school;</span><br><span class="line">&#125;   </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">string</span> id,school;</span><br><span class="line">    <span class="keyword">int</span> score;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="built_in">unordered_map</span> &lt;<span class="built_in">string</span>,<span class="keyword">double</span>&gt; m;</span><br><span class="line">    <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>,<span class="keyword">int</span>&gt;m1;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;id&gt;&gt;score&gt;&gt;school;</span><br><span class="line">        transform(school.begin(),school.end(),school.begin(),::<span class="built_in">tolower</span>);</span><br><span class="line">        <span class="keyword">if</span>(id[<span class="number">0</span>]==<span class="string">&#x27;T&#x27;</span>)&#123;</span><br><span class="line">            m[school]+=score*<span class="number">1.5</span>;<span class="comment">// m 学校 分数</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(id[<span class="number">0</span>]==<span class="string">&#x27;A&#x27;</span>)&#123;</span><br><span class="line">            m[school]+=score;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(id[<span class="number">0</span>]==<span class="string">&#x27;B&#x27;</span>)&#123;</span><br><span class="line">            m[school]+=score/<span class="number">1.5</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        m1[school]++;<span class="comment">//m1 学校 人数</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//通过构造v对m排序 按照value 分数 从大到小</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;Node&gt; v;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> it=m.begin();it!=m.end();it++)&#123;</span><br><span class="line">        v.push_back(Node&#123;it-&gt;first, (<span class="keyword">int</span>)m[it-&gt;first], m1[it-&gt;first]&#125;);<span class="comment">//学校名 总分 人数</span></span><br><span class="line">    &#125;</span><br><span class="line">    sort(v.begin(),v.end(),cmp);</span><br><span class="line">    <span class="comment">//输出模块</span></span><br><span class="line">    <span class="keyword">int</span> rank = <span class="number">0</span>, pres = <span class="number">-1</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, (<span class="keyword">int</span>)v.size());</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; v.size(); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (pres != v[i].score) rank = i + <span class="number">1</span>;</span><br><span class="line">        pres = v[i].score;<span class="comment">//for循环 i++后 pres和下一个ans[i]总分相等 则rank不变 不等 则rank+1</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, rank);</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; v[i].school;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot; %d %d\n&quot;</span>, v[i].score, v[i].cnt);<span class="comment">// tws总分 ns人数</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1080:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">grade</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> gp = <span class="number">-1</span>, gm = <span class="number">-1</span>, gf = <span class="number">-1</span>, g;	<span class="comment">//注意初始化</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">    <span class="built_in">string</span> id;</span><br><span class="line">    <span class="keyword">int</span> gp,gm,gf,g;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(Node a,Node b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a.g!=b.g)&#123;</span><br><span class="line">        <span class="keyword">return</span> a.g&gt;b.g;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a.id&lt;b.id;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">map</span> &lt;<span class="built_in">string</span>,struct grade&gt; mp;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p,m,n;</span><br><span class="line">    <span class="built_in">string</span> id;</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="built_in">string</span>&gt;ids;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;p&gt;&gt;m&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;p;i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;id&gt;&gt;mp[id].gp;</span><br><span class="line">        ids.insert(id);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;id&gt;&gt;mp[id].gm;</span><br><span class="line">        ids.insert(id);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;id&gt;&gt;mp[id].gf;</span><br><span class="line">        ids.insert(id);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> it=ids.begin();it!=ids.end();it++)&#123;</span><br><span class="line">        <span class="comment">//计算总评成绩</span></span><br><span class="line">        <span class="keyword">if</span>(mp[*it].gm &gt; mp[*it].gf)&#123;</span><br><span class="line">            mp[*it].g=round(mp[*it].gm*<span class="number">0.4</span>+mp[*it].gf*<span class="number">0.6</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            mp[*it].g=mp[*it].gf;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//转移到vector中以排序</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;Node&gt; v;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> it=mp.begin();it!=mp.end();it++)&#123;</span><br><span class="line">        v.push_back(Node&#123;it-&gt;first, mp[it-&gt;first].gp, mp[it-&gt;first].gm,</span><br><span class="line">        mp[it-&gt;first].gf,mp[it-&gt;first].g&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    sort(v.begin(),v.end(),cmp);</span><br><span class="line">    <span class="comment">//输出模块</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;v.size();i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(v[i].g&gt;=<span class="number">60</span> &amp;&amp; v[i].gp&gt;=<span class="number">200</span>)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;v[i].id&lt;&lt;<span class="string">&#x27; &#x27;</span>&lt;&lt;v[i].gp&lt;&lt;<span class="string">&#x27; &#x27;</span>&lt;&lt;v[i].gm&lt;&lt;<span class="string">&#x27; &#x27;</span>&lt;&lt;v[i].gf&lt;&lt;<span class="string">&#x27; &#x27;</span>&lt;&lt;v[i].g&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/02/13/pat_basic/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/1085%20&&%201080/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-pat_basic/pat_basic_1085" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -542,113 +596,9 @@
 
 
   
-    <article id="post-pat_basic/刷题总结/getline" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/12/pat_basic/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/getline/">getline()相关知识</a>
-    </h1>
-  
-
-        
-        <a href="/2022/02/12/pat_basic/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/getline/" class="archive-article-date">
-  	<time datetime="2022-02-12T13:58:46.992Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>getline()：用于读入一整行的数据。在C++中，有两种getline函数。第一种定义在头文件<istream>中，是istream类的成员函数；第二种定义在头文件<string>中，是普通函数。ios</string></istream></p>
-<p>第一种： 在<istream>中的getline()函数有两种重载形式：数组</istream></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">istream&amp; <span class="title">getline</span> <span class="params">(<span class="keyword">char</span>* s, streamsize n )</span></span>;</span><br><span class="line"><span class="function">istream&amp; <span class="title">getline</span> <span class="params">(<span class="keyword">char</span>* s, streamsize n, <span class="keyword">char</span> delim )</span></span>;</span><br></pre></td></tr></table></figure>
-<p>做用是： 从istream中读取至多n个字符(包含结束标记符)保存在s对应的数组中。即便还没读够n个字符，若是遇到delim标识符或字数达到限制，则读取终止。delim标识符会被读取，可是不会被保存进s对应的数组中。注意，delim标识符在指定最大字符数n的时候才有效。函数</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">256</span>], wolds[<span class="number">256</span>];</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;Input your name: &quot;</span>;</span><br><span class="line">    <span class="built_in">cin</span>.getline(name,<span class="number">256</span>);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;name&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;Input your wolds: &quot;</span>;</span><br><span class="line">    <span class="built_in">cin</span>.getline(wolds,<span class="number">256</span>,<span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;wolds&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cin</span>.getline(wolds,<span class="number">256</span>,<span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;wolds&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>输入</strong>spa</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Kevin</span><br><span class="line">Hi,Kevin,morning</span><br></pre></td></tr></table></figure>
-<p><strong>输出</strong>code</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Kevin</span><br><span class="line">Hi</span><br><span class="line">Kevin</span><br></pre></td></tr></table></figure>
-<p>第二种： 在<string>中的getline函数有四种重载形式：blog</string></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">istream&amp; <span class="title">getline</span> <span class="params">(istream&amp;  is, <span class="built_in">string</span>&amp; str, <span class="keyword">char</span> delim)</span></span>;</span><br><span class="line"><span class="function">istream&amp; <span class="title">getline</span> <span class="params">(istream&amp;&amp; is, <span class="built_in">string</span>&amp; str, <span class="keyword">char</span> delim)</span></span>;</span><br><span class="line"><span class="function">istream&amp; <span class="title">getline</span> <span class="params">(istream&amp;  is, <span class="built_in">string</span>&amp; str)</span></span>;</span><br><span class="line"><span class="function">istream&amp; <span class="title">getline</span> <span class="params">(istream&amp;&amp; is, <span class="built_in">string</span>&amp; str)</span></span>;</span><br></pre></td></tr></table></figure>
-<p>用法和上第一种相似，可是读取的istream是做为参数is传进函数的。读取的字符串保存在string类型的str中。ci</p>
-<p>is：表示一个输入流，例如cin。字符串</p>
-<p>str：string类型的引用，用来存储输入流中的流信息。get</p>
-<p>delim：char类型的变量，所设置的截断字符；在不自定义设置的状况下，遇到’\n’，则终止输入。string</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> str;</span><br><span class="line">    getline(<span class="built_in">cin</span>, str, <span class="string">&#x27;A&#x27;</span>);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;The string we have gotten is :&quot;</span>&lt;&lt;str&lt;&lt;<span class="string">&#x27;.&#x27;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    getline(<span class="built_in">cin</span>, str, <span class="string">&#x27;B&#x27;</span>);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;The string we have gotten is :&quot;</span>&lt;&lt;str&lt;&lt;<span class="string">&#x27;.&#x27;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>输入</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i_am_A_student_from_Beijing</span><br></pre></td></tr></table></figure>
-<p><strong>输出</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">The <span class="built_in">string</span> we have gotten is :i_am_.</span><br><span class="line">The <span class="built_in">string</span> we have gotten is :_student_from_.</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">OJ tricks</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/OJ//" class="article-tag-list-link color3">OJ</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/02/12/pat_basic/%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/getline/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/10/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/12/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/10/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/">35</a><a class="extend next" rel="next" href="/page/12/">Next &amp;raquo;</a>
     </nav>
   
 
