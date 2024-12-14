@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://verasince1997.github.io">
-  <title>jueluo</title>
+  <title>把时间当作朋友01 | jueluo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="jueluo">
-<meta property="og:url" content="https://verasince1997.github.io/page/18/index.html">
+  <meta name="description" content="现状处境 如果你和我一样，是一名互联网公司的产品经理，你目前处于一个从0-1的供应链ERP系统项目的中期，具体来说是需要设计多级供应商之间订单、配送、退货、库存管理。你需要保证项目组每两周进行一次迭代，所以你在交付一次迭代给研发后，需要陪同他们理解本迭代模块里的流程、状态、时序、原型、prd；此外，你还需并行设计下一轮迭代的新模块，怎么办？没有完整不被打扰的时间去做系统的设计。处境就是这样，如果">
+<meta property="og:type" content="article">
+<meta property="og:title" content="把时间当作朋友01">
+<meta property="og:url" content="https://verasince1997.github.io/2024/12/14/%E5%B7%A5%E5%85%B7/%E6%8A%8A%E6%97%B6%E9%97%B4%E5%BD%93%E4%BD%9C%E6%9C%8B%E5%8F%8B01/index.html">
 <meta property="og:site_name" content="jueluo">
+<meta property="og:description" content="现状处境 如果你和我一样，是一名互联网公司的产品经理，你目前处于一个从0-1的供应链ERP系统项目的中期，具体来说是需要设计多级供应商之间订单、配送、退货、库存管理。你需要保证项目组每两周进行一次迭代，所以你在交付一次迭代给研发后，需要陪同他们理解本迭代模块里的流程、状态、时序、原型、prd；此外，你还需并行设计下一轮迭代的新模块，怎么办？没有完整不被打扰的时间去做系统的设计。处境就是这样，如果">
 <meta property="og:locale">
+<meta property="article:published_time" content="2024-12-14T02:12:05.517Z">
+<meta property="article:modified_time" content="2024-12-14T11:16:56.503Z">
 <meta property="article:author" content="jueluo 深圳之恋">
+<meta property="article:tag" content="自我发展">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="jueluo" type="application/atom+xml">
@@ -146,50 +151,65 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-pat_basic/pat_basic_1055" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-工具/把时间当作朋友01" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/03/pat_basic/pat_basic_1055/">PAT_Basic_1055 集体照</a>
+    <h1 class="article-title" itemprop="name">
+      把时间当作朋友01
     </h1>
   
 
         
-        <a href="/2022/02/03/pat_basic/pat_basic_1055/" class="archive-article-date">
-  	<time datetime="2022-02-03T12:30:05.608Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-03</time>
+        <a href="/2024/12/14/%E5%B7%A5%E5%85%B7/%E6%8A%8A%E6%97%B6%E9%97%B4%E5%BD%93%E4%BD%9C%E6%9C%8B%E5%8F%8B01/" class="archive-article-date">
+  	<time datetime="2024-12-14T02:12:05.517Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-12-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>拍集体照时队形很重要，这里对给定的 <em>N</em> 个人 <em>K</em> 排的队形设计排队规则如下：</p>
-<ul>
-<li>每排人数为 <em>N</em>/<em>K</em>（向下取整），多出来的人全部站在最后一排；</li>
-<li>后排所有人的个子都不比前排任何人矮；</li>
-<li>每排中最高者站中间（中间位置为 <em>m</em>/2+1，其中 <em>m</em> 为该排人数，除法向下取整）；</li>
-<li>每排其他人以中间人为轴，按身高非增序，先右后左交替入队站在中间人的两侧（例如5人身高为190、188、186、175、170，则队形为175、188、190、186、170。这里假设你面对拍照者，所以你的左边是中间人的右边）；</li>
-<li>若多人身高相同，则按名字的字典序升序排列。这里保证无重名。</li>
-</ul>
-<p>现给定一组拍照人，请编写程序输出他们的队形。</p>
-<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
-<p>每个输入包含 1 个测试用例。每个测试用例第 1 行给出两个正整数 <em>N</em>（≤104，总人数）和 <em>K</em>（≤10，总排数）。随后 <em>N</em> 行，每行给出一个人的名字（不包含空格、长度不超过 8 个英文字母）和身高（[30, 300] 区间内的整数）。</p>
-<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
-<p>输出拍照的队形。即K排人名，其间以空格分隔，行末不得有多余空格。注意：假设你面对拍照者，后排的人输出在上方，前排输出在下方。</p>
-<h4 id="输入样例"><a class="markdownIt-Anchor" href="#输入样例"></a> 输入样例：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10</span> <span class="number">3</span></span><br><span class="line">Tom <span class="number">188</span></span><br><span class="line">Mike <span class="number">170</span></span><br><span class="line">Eva <span class="number">168</span></span><br><span class="line">Tim <span class="number">160</span></span><br><span class="line">Joe <span class="number">190</span></span><br><span class="line">Ann <span class="number">168</span></span><br><span class="line">Bob <span class="number">175</span></span><br><span class="line">Nick <span class="number">186</span></span><br><span class="line">Amy <span class="number">160</span></span><br><span class="line">John <span class="number">159</span></span><br></pre></td></tr></table></figure>
-<h4 id="输出样例"><a class="markdownIt-Anchor" href="#输出样例"></a> 输出样例：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Bob Tom Joe Nick</span><br><span class="line">Ann Mike Eva</span><br><span class="line">Tim Amy John</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2022/02/03/pat_basic/pat_basic_1055/#more">more >></a>
-        
+        <h5 id="现状处境"><a class="markdownIt-Anchor" href="#现状处境"></a> 现状处境</h5>
+<p>如果你和我一样，是一名互联网公司的产品经理，你目前处于一个从0-1的供应链ERP系统项目的中期，具体来说是需要设计多级供应商之间订单、配送、退货、库存管理。你需要保证项目组每两周进行一次迭代，所以你在交付一次迭代给研发后，需要陪同他们理解本迭代模块里的流程、状态、时序、原型、prd；此外，你还需并行设计下一轮迭代的新模块，怎么办？没有完整不被打扰的时间去做系统的设计。处境就是这样，如果每天早上一到办公室，泡好黑咖啡吃完早饭上完厕所后，东搞一下，西动一下，研发倒是把本迭代内容写得看起来可以提测了，虽然里产品验测还有几天时间，但你还有新的表单需要设计出来啊，你会感到慌乱吗？时间不可管理，时间只会自顾自地流逝。我们无法管理时间，我们能管理的，只有我们自己。</p>
+<p>那么怎么应对呢？脱离上一段描述的具体场景，抽象为普遍任务。</p>
+<h5 id="速成绝无可能要换"><a class="markdownIt-Anchor" href="#速成绝无可能要换"></a> 速成绝无可能，要“换”</h5>
+<blockquote>
+<p>速成（完成一项目工作）绝无可能，希望速成是因为，太快想甚至马上想知道结果，浮躁的根源在于不明白有些阶段无法跨越，比如没有办法今天怀孕，明天生产。</p>
+</blockquote>
+<p>速成不可能，那该怎么办？**答案只有一个字：换。**俗话说“一分耕耘，一分收获”，从本质上看也是这一个字——换。不成熟的人有什么样的特征？他们的特征很多，但一个通病就是整天都在想“我要……”，全然不顾自己其实一无所有。**每个人的起点不同，有些人的地板是另一些人的天花板。但起点就是起点，尽管不同，可每个人都要从起点出发。**最初每个人都一无所有，而后通过各种手段，或努力、或投机、或勤奋、或取巧，换取能够拥有的东西——无论手段如何。当然，很多人连投机取巧都不会，更谈不上努力和勤奋，致使长期以来得到的东西少之又少，积累聊胜于无。然而“我要”的欲望从来不会消减，只会不断增加。大多数人之所以会浮躁，是因为他们一无积累（或者积累太少，几乎无法换取任何东西），二无方法和经验（所以求而不得）。</p>
+<p>积累多的人之所以稳健，是因为对他来说，“我要”的欲望可以用“我有”的东西来满足。即便“我有”的暂时不够，他也能借助已经拥有的足够的努力和勤奋（抑或投机取巧的方法和经验），只需假以时日，定能如愿以偿。一旦得偿所愿，不仅“我有”的更多，“我要”的也更容易获得，如此形成良性循环。生活的本质就是这样，你想要什么，它偏不给你什么。摆脱这个死循环的方法只有一个——给我什么我就用好什么，积累到一定程度再去换能换的东西。<span id="more"></span></p>
+<h5 id="未知永远存在-现状无法马上摆脱"><a class="markdownIt-Anchor" href="#未知永远存在-现状无法马上摆脱"></a> 未知永远存在 现状无法马上摆脱</h5>
+<p>未知永远存在，一个相对有效的策略是：当有问题解决不了时，可以先把它记下来，然后继续前行。注意，一定要把问题记下来。很多人没有记录的习惯，以至出现曾经因为思考（疑问就是思考的起点）后“忘了”而失去获得答案机会的情况。你一直在前行，你一直在积累，你一直在成长。所以，到有了答案的那一刻，你不再是当初无能为力的你，你已经重生。</p>
+<p>现状无法马上摆脱，当初未能完成一项任务已经能说明问题了——除了运气不好，更可能的原因是积累不够。越是不满现状，摆脱现状的欲望就越强烈，而这种欲望会让一个人最终迷失方向，因为无论是谁，从本质上看都无法摆脱现状——每一时刻的现状都是过去某一或者某些时刻的结果，而每一时刻的现状都是未来某一或者某些时刻的原因。没有人能够逃脱现实的束缚。</p>
+<p>对现状不满、急于摆脱现状，是人们常常不知不觉落入的陷阱（尽管偶尔这也是少数人真正的动力）。接受现状才是最优策略——有什么做什么，有什么用什么；做什么都做好，用什么都用好。不要常常觉得苦（这会让人忍不住顾影自怜，浪费精力与时间），而要想办法在任何情况下找到情趣——快乐是一种本事。</p>
+<h5 id="无法管理时间做时间的朋友"><a class="markdownIt-Anchor" href="#无法管理时间做时间的朋友"></a> 无法管理时间—&gt;做时间的朋友</h5>
+<p>与时间做朋友的方法很简单：用正确的方法做正确的事情。怎样判断所做的事情是否正确？核心只有一个：看它是否现实。几乎一切愚蠢的行为都来自否定现实、逃避现实。只有接受现实，才可能脚踏实地，避免心浮气躁、好高骛远。尽管现实总是如此难于接受，坚强的你却应该坦然。“速成绝无可能”、“只有付出才有收获”、“完美永不存在”、“未知永远存在”、“现状无法马上摆脱”，都既清楚又简单，你必须要接受——不仅要接受，还要牢记；不仅要牢记，还要坚信，不容半点动摇。</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你倾听我!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -200,7 +220,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">自我发展</a>
         		</li>
       		
 		</ul>
@@ -212,7 +232,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        			<a href="/categories/自我发展//" class="article-tag-list-link color5">自我发展</a>
         		</li>
       		
 		</ul>
@@ -220,16 +240,84 @@
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/02/03/pat_basic/pat_basic_1055/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://verasince1997.github.io/2024/12/14/%E5%B7%A5%E5%85%B7/%E6%8A%8A%E6%97%B6%E9%97%B4%E5%BD%93%E4%BD%9C%E6%9C%8B%E5%8F%8B01/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2024/12/14/%E5%B7%A5%E5%85%B7/%E6%8A%8A%E6%97%B6%E9%97%B4%E5%BD%93%E4%BD%9C%E6%9C%8B%E5%8F%8B02/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          把时间当作朋友02
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/12/03/%E4%BA%BA%E4%BA%BA%E9%83%BD%E6%98%AF%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/%E5%B7%A5%E4%BD%9C/%E4%BA%A7%E5%93%81%E4%B9%8B%E8%B7%AF%20%E5%B7%A5%E4%BD%9C%E7%A2%8E%E7%A2%8E%E5%BF%B5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">产品之路 工作碎碎念</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -249,398 +337,14 @@
 
 
 
-
-  
-    <article id="post-pat_basic/pat_basic_1054" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/03/pat_basic/pat_basic_1054/">PAT_Basic_1054 求平均值</a>
-    </h1>
-  
-
-        
-        <a href="/2022/02/03/pat_basic/pat_basic_1054/" class="archive-article-date">
-  	<time datetime="2022-02-03T09:37:40.547Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本题的基本要求非常简单：给定 <em>N</em> 个实数，计算它们的平均值。但复杂的是有些输入数据可能是非法的。一个“合法”的输入是 [−1000,1000] 区间内的实数，并且最多精确到小数点后 2 位。当你计算平均值的时候，不能把那些非法的数据算在内。</p>
-<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
-<p>输入第一行给出正整数 <em>N</em>（≤100）。随后一行给出 <em>N</em> 个实数，数字间以一个空格分隔。</p>
-<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
-<p>对每个非法输入，在一行中输出 <code>ERROR: X is not a legal number</code>，其中 <code>X</code> 是输入。最后在一行中输出结果：<code>The average of K numbers is Y</code>，其中 <code>K</code> 是合法输入的个数，<code>Y</code> 是它们的平均值，精确到小数点后 2 位。如果平均值无法计算，则用 <code>Undefined</code> 替换 <code>Y</code>。如果 <code>K</code> 为 1，则输出 <code>The average of 1 number is Y</code>。</p>
-<h4 id="输入样例-1"><a class="markdownIt-Anchor" href="#输入样例-1"></a> 输入样例 1：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">7</span></span><br><span class="line"><span class="number">5</span> <span class="number">-3.2</span> aaa <span class="number">9999</span> <span class="number">2.3</span><span class="number">.4</span> <span class="number">7.123</span> <span class="number">2.35</span></span><br></pre></td></tr></table></figure>
-<h4 id="输出样例-1"><a class="markdownIt-Anchor" href="#输出样例-1"></a> 输出样例 1：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ERROR: aaa is <span class="keyword">not</span> a legal number</span><br><span class="line">ERROR: <span class="number">9999</span> is <span class="keyword">not</span> a legal number</span><br><span class="line">ERROR: <span class="number">2.3</span><span class="number">.4</span> is <span class="keyword">not</span> a legal number</span><br><span class="line">ERROR: <span class="number">7.123</span> is <span class="keyword">not</span> a legal number</span><br><span class="line">The average of <span class="number">3</span> numbers is <span class="number">1.38</span></span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2022/02/03/pat_basic/pat_basic_1054/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/02/03/pat_basic/pat_basic_1054/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-pat_basic/pat_basic_1053" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/02/pat_basic/pat_basic_1053/">PAT_Basic_1053 住房空置率</a>
-    </h1>
-  
-
-        
-        <a href="/2022/02/02/pat_basic/pat_basic_1053/" class="archive-article-date">
-  	<time datetime="2022-02-02T11:24:38.690Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在不打扰居民的前提下，统计住房空置率的一种方法是根据每户用电量的连续变化规律进行判断。判断方法如下：</p>
-<ul>
-<li>在观察期内，若存在超过一半的日子用电量低于某给定的阈值 <em>e</em>，则该住房为“可能空置”；</li>
-<li>若观察期超过某给定阈值 <em>D</em> 天，且满足上一个条件，则该住房为“空置”。</li>
-</ul>
-<p>现给定某居民区的住户用电量数据，请你统计“可能空置”的比率和“空置”比率，即以上两种状态的住房占居民区住房总套数的百分比。</p>
-<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
-<p>输入第一行给出正整数 <em>N</em>（≤1000），为居民区住房总套数；正实数 <em>e</em>，即低电量阈值；正整数 <em>D</em>，即观察期阈值。随后 <em>N</em> 行，每行按以下格式给出一套住房的用电量数据：</p>
-<p><em>K</em> <em>E</em>1 <em>E</em>2 … <em>E**K</em></p>
-<p>其中 <em>K</em> 为观察的天数，<em>E**i</em> 为第 <em>i</em> 天的用电量。</p>
-<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
-<p>在一行中输出“可能空置”的比率和“空置”比率的百分比值，其间以一个空格分隔，保留小数点后 1 位。</p>
-<h4 id="输入样例"><a class="markdownIt-Anchor" href="#输入样例"></a> 输入样例：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span> <span class="number">0.5</span> <span class="number">10</span></span><br><span class="line"><span class="number">6</span> <span class="number">0.3</span> <span class="number">0.4</span> <span class="number">0.5</span> <span class="number">0.2</span> <span class="number">0.8</span> <span class="number">0.6</span></span><br><span class="line"><span class="number">10</span> <span class="number">0.0</span> <span class="number">0.1</span> <span class="number">0.2</span> <span class="number">0.3</span> <span class="number">0.0</span> <span class="number">0.8</span> <span class="number">0.6</span> <span class="number">0.7</span> <span class="number">0.0</span> <span class="number">0.5</span></span><br><span class="line"><span class="number">5</span> <span class="number">0.4</span> <span class="number">0.3</span> <span class="number">0.5</span> <span class="number">0.1</span> <span class="number">0.7</span></span><br><span class="line"><span class="number">11</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span></span><br><span class="line"><span class="number">11</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0.1</span> <span class="number">1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span></span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2022/02/02/pat_basic/pat_basic_1053/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/02/02/pat_basic/pat_basic_1053/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-pat_basic/pat_basic_1052" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/02/pat_basic/pat_basic_1052/">PAT_Basic_1052 卖个萌</a>
-    </h1>
-  
-
-        
-        <a href="/2022/02/02/pat_basic/pat_basic_1052/" class="archive-article-date">
-  	<time datetime="2022-02-02T10:05:35.263Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>萌萌哒表情符号通常由“手”、“眼”、“口”三个主要部分组成。简单起见，我们假设一个表情符号是按下列格式输出的：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[左手]([左眼][口][右眼])[右手]</span><br></pre></td></tr></table></figure>
-<p>现给出可选用的符号集合，请你按用户的要求输出表情。</p>
-<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
-<p>输入首先在前三行顺序对应给出手、眼、口的可选符号集。每个符号括在一对方括号 <code>[]</code>内。题目保证每个集合都至少有一个符号，并不超过 10 个符号；每个符号包含 1 到 4 个非空字符。</p>
-<p>之后一行给出一个正整数 K，为用户请求的个数。随后 K 行，每行给出一个用户的符号选择，顺序为左手、左眼、口、右眼、右手——这里只给出符号在相应集合中的序号（从 1 开始），数字间以空格分隔。</p>
-<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
-<p>对每个用户请求，在一行中输出生成的表情。若用户选择的序号不存在，则输出 <code>Are you kidding me? @\/@</code>。</p>
-        
-          <a class="article-more-a" href="/2022/02/02/pat_basic/pat_basic_1052/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/02/02/pat_basic/pat_basic_1052/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-pat_basic/pat_basic_1051" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/01/pat_basic/pat_basic_1051/">PAT_Basic_1051 复数乘法</a>
-    </h1>
-  
-
-        
-        <a href="/2022/02/01/pat_basic/pat_basic_1051/" class="archive-article-date">
-  	<time datetime="2022-02-01T10:20:30.328Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>复数可以写成 (<em>A</em>+<em>B**i</em>) 的常规形式，其中 <em>A</em> 是实部，<em>B</em> 是虚部，<em>i</em> 是虚数单位，满足 <em>i</em>2=−1；也可以写成极坐标下的指数形式 (<em>R</em>×<em>e</em>(<em>P**i</em>))，其中 <em>R</em> 是复数模，<em>P</em> 是辐角，<em>i</em> 是虚数单位，其等价于三角形式 <em>R</em>(cos(<em>P</em>)+<em>i</em>sin(<em>P</em>))。</p>
-<p>现给定两个复数的 <em>R</em> 和 <em>P</em>，要求输出两数乘积的常规形式。</p>
-<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
-<p>输入在一行中依次给出两个复数的 <em>R</em>1, <em>P</em>1, <em>R</em>2, <em>P</em>2，数字间以空格分隔。</p>
-<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
-<p>在一行中按照 <code>A+Bi</code> 的格式输出两数乘积的常规形式，实部和虚部均保留 2 位小数。注意：如果 <code>B</code> 是负数，则应该写成 <code>A-|B|i</code> 的形式。</p>
-<h4 id="输入样例"><a class="markdownIt-Anchor" href="#输入样例"></a> 输入样例：</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2.3 3.5 5.2 0.4</span><br></pre></td></tr></table></figure>
-<h4 id="输出样例"><a class="markdownIt-Anchor" href="#输出样例"></a> 输出样例：</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-8.68-8.23i</span><br></pre></td></tr></table></figure>
-<h4 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路：</h4>
-        
-          <a class="article-more-a" href="/2022/02/01/pat_basic/pat_basic_1051/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/02/01/pat_basic/pat_basic_1051/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/17/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/">35</a><a class="extend next" rel="next" href="/page/19/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -664,8 +368,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

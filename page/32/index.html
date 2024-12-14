@@ -148,6 +148,184 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-算法/专题：评分卡模型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/04/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A2%98%EF%BC%9A%E8%AF%84%E5%88%86%E5%8D%A1%E6%A8%A1%E5%9E%8B/">专题：评分卡模型</a>
+    </h1>
+  
+
+        
+        <a href="/2021/03/04/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A2%98%EF%BC%9A%E8%AF%84%E5%88%86%E5%8D%A1%E6%A8%A1%E5%9E%8B/" class="archive-article-date">
+  	<time datetime="2021-03-04T09:40:18.082Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="导入数据"><a class="markdownIt-Anchor" href="#导入数据"></a> 导入数据</h5>
+<h5 id="数据预处理"><a class="markdownIt-Anchor" href="#数据预处理"></a> 数据预处理</h5>
+<p>去重，恢复索引，<a target="_blank" rel="noopener" href="http://df.info">df.info</a>()，查看缺失值，对缺失比例严重的属性列直接删除，其余填补，根据业务情况可采取mean,median,算法填补。我昨天的文章写了如何使用随机森林填补某特征列的缺失值，这儿同样采用随机森林填补缺失值。</p>
+<p>异常值处理 比如年龄为0岁的能向银行贷款？这种不符合常识的数据直接删掉。</p>
+        
+          <a class="article-more-a" href="/2021/03/04/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A2%98%EF%BC%9A%E8%AF%84%E5%88%86%E5%8D%A1%E6%A8%A1%E5%9E%8B/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">python算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据分析-基础//" class="article-tag-list-link color3">数据分析 基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/03/04/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A2%98%EF%BC%9A%E8%AF%84%E5%88%86%E5%8D%A1%E6%A8%A1%E5%9E%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-算法/专题：逻辑回归" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/03/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A2%98%EF%BC%9A%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/">专题：逻辑回归</a>
+    </h1>
+  
+
+        
+        <a href="/2021/03/03/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A2%98%EF%BC%9A%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/" class="archive-article-date">
+  	<time datetime="2021-03-03T05:34:51.589Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="1-原理"><a class="markdownIt-Anchor" href="#1-原理"></a> 1. 原理</h5>
+<p>它是一个返回对数几率，在线性数据上表现优异的分类器，它主要被应用在金融领域。其数学目的是求解能够让模型对数据拟合程度最高的参数的值，以此构建预测函数 ，然后将特征矩阵输入预测函数来计算出逻辑回归的结果y。注意，虽然我们熟悉的逻辑回归通常被用于处理二分类问题， 但逻辑回归也可以做多分类。</p>
+        
+          <a class="article-more-a" href="/2021/03/03/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A2%98%EF%BC%9A%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">python算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据分析-基础//" class="article-tag-list-link color3">数据分析 基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/03/03/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A2%98%EF%BC%9A%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-算法/专题：降维算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -391,183 +569,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/02/23/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A2%98%EF%BC%9A%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-算法/专题：决策树 11.22.19 AM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/22/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A2%98%EF%BC%9A%E5%86%B3%E7%AD%96%E6%A0%91%2011.22.19%20AM/">专题：决策树</a>
-    </h1>
-  
-
-        
-        <a href="/2021/02/22/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A2%98%EF%BC%9A%E5%86%B3%E7%AD%96%E6%A0%91%2011.22.19%20AM/" class="archive-article-date">
-  	<time datetime="2021-02-22T08:52:51.589Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>如何写出一篇外人能看懂的操作，让别人了解怎么一步一步用，得到数据，划分数据集，模型3步曲，画出决策树。</p>
-<h5 id="决策树参数"><a class="markdownIt-Anchor" href="#决策树参数"></a> 决策树参数</h5>
-<p>Decision Tree是一种非参数的监督学习方法，它能够从一系列有特征和标签的数据中总结出决策规则，并用树状图的结构来呈现这些规则，可解决分类和回归问题。它本质是一种图结构，只需要问一系列问题就可以对数据进行分类。</p>
-<p>补充：参数模型与非参数模型</p>
-        
-          <a class="article-more-a" href="/2021/02/22/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A2%98%EF%BC%9A%E5%86%B3%E7%AD%96%E6%A0%91%2011.22.19%20AM/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">python算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析-基础//" class="article-tag-list-link color3">数据分析 基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/22/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A2%98%EF%BC%9A%E5%86%B3%E7%AD%96%E6%A0%91%2011.22.19%20AM/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-算法/回看sklearn" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/22/%E7%AE%97%E6%B3%95/%E5%9B%9E%E7%9C%8Bsklearn/">回看sklearn</a>
-    </h1>
-  
-
-        
-        <a href="/2021/02/22/%E7%AE%97%E6%B3%95/%E5%9B%9E%E7%9C%8Bsklearn/" class="archive-article-date">
-  	<time datetime="2021-02-22T01:38:59.798Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>旨在从0到1，从数据的来源，数据的preprocessing ，模型的选择，模型参数的调参，到模型的保存，调用，模型评估。基础的必须掌握的东西就要死死印在脑海里。本文模拟一个二分类问题，先generate100条二分类数据，预处理数据集后划分训练集测试集，使用感知机进行训练及预测，对模型进行评估并且可视化预测结果。</p>
-        
-          <a class="article-more-a" href="/2021/02/22/%E7%AE%97%E6%B3%95/%E5%9B%9E%E7%9C%8Bsklearn/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">python基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析-基础//" class="article-tag-list-link color3">数据分析 基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/22/%E7%AE%97%E6%B3%95/%E5%9B%9E%E7%9C%8Bsklearn/">展开全文 >></a>
         </p>
       
 

@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://verasince1997.github.io">
-  <title>jueluo</title>
+  <title>Category: 自我发展 | jueluo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="jueluo">
-<meta property="og:url" content="https://verasince1997.github.io/page/18/index.html">
+<meta property="og:url" content="https://verasince1997.github.io/categories/%E8%87%AA%E6%88%91%E5%8F%91%E5%B1%95/index.html">
 <meta property="og:site_name" content="jueluo">
 <meta property="og:locale">
 <meta property="article:author" content="jueluo 深圳之恋">
@@ -148,500 +148,118 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-pat_basic/pat_basic_1055" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2024" class="archive-year">2024</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2024/12/14/%E5%B7%A5%E5%85%B7/%E6%8A%8A%E6%97%B6%E9%97%B4%E5%BD%93%E4%BD%9C%E6%9C%8B%E5%8F%8B02/" class="archive-article-date">
+  	<time datetime="2024-12-14T10:40:34.036Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-12-14</time>
+</a>
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/03/pat_basic/pat_basic_1055/">PAT_Basic_1055 集体照</a>
+      <a class="archive-article-title" href="/2024/12/14/%E5%B7%A5%E5%85%B7/%E6%8A%8A%E6%97%B6%E9%97%B4%E5%BD%93%E4%BD%9C%E6%9C%8B%E5%8F%8B02/">把时间当作朋友02</a>
     </h1>
   
 
-        
-        <a href="/2022/02/03/pat_basic/pat_basic_1055/" class="archive-article-date">
-  	<time datetime="2022-02-03T12:30:05.608Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>拍集体照时队形很重要，这里对给定的 <em>N</em> 个人 <em>K</em> 排的队形设计排队规则如下：</p>
-<ul>
-<li>每排人数为 <em>N</em>/<em>K</em>（向下取整），多出来的人全部站在最后一排；</li>
-<li>后排所有人的个子都不比前排任何人矮；</li>
-<li>每排中最高者站中间（中间位置为 <em>m</em>/2+1，其中 <em>m</em> 为该排人数，除法向下取整）；</li>
-<li>每排其他人以中间人为轴，按身高非增序，先右后左交替入队站在中间人的两侧（例如5人身高为190、188、186、175、170，则队形为175、188、190、186、170。这里假设你面对拍照者，所以你的左边是中间人的右边）；</li>
-<li>若多人身高相同，则按名字的字典序升序排列。这里保证无重名。</li>
-</ul>
-<p>现给定一组拍照人，请编写程序输出他们的队形。</p>
-<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
-<p>每个输入包含 1 个测试用例。每个测试用例第 1 行给出两个正整数 <em>N</em>（≤104，总人数）和 <em>K</em>（≤10，总排数）。随后 <em>N</em> 行，每行给出一个人的名字（不包含空格、长度不超过 8 个英文字母）和身高（[30, 300] 区间内的整数）。</p>
-<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
-<p>输出拍照的队形。即K排人名，其间以空格分隔，行末不得有多余空格。注意：假设你面对拍照者，后排的人输出在上方，前排输出在下方。</p>
-<h4 id="输入样例"><a class="markdownIt-Anchor" href="#输入样例"></a> 输入样例：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10</span> <span class="number">3</span></span><br><span class="line">Tom <span class="number">188</span></span><br><span class="line">Mike <span class="number">170</span></span><br><span class="line">Eva <span class="number">168</span></span><br><span class="line">Tim <span class="number">160</span></span><br><span class="line">Joe <span class="number">190</span></span><br><span class="line">Ann <span class="number">168</span></span><br><span class="line">Bob <span class="number">175</span></span><br><span class="line">Nick <span class="number">186</span></span><br><span class="line">Amy <span class="number">160</span></span><br><span class="line">John <span class="number">159</span></span><br></pre></td></tr></table></figure>
-<h4 id="输出样例"><a class="markdownIt-Anchor" href="#输出样例"></a> 输出样例：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Bob Tom Joe Nick</span><br><span class="line">Ann Mike Eva</span><br><span class="line">Tim Amy John</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2022/02/03/pat_basic/pat_basic_1055/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">自我发展</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        			<a href="/categories/自我发展//" class="article-tag-list-link color5">自我发展</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/02/03/pat_basic/pat_basic_1055/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
-    <article id="post-pat_basic/pat_basic_1054" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
     
-      <header class="article-header">
-        
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2024/12/14/%E5%B7%A5%E5%85%B7/%E6%8A%8A%E6%97%B6%E9%97%B4%E5%BD%93%E4%BD%9C%E6%9C%8B%E5%8F%8B01/" class="archive-article-date">
+  	<time datetime="2024-12-14T02:12:05.517Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-12-14</time>
+</a>
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/03/pat_basic/pat_basic_1054/">PAT_Basic_1054 求平均值</a>
+      <a class="archive-article-title" href="/2024/12/14/%E5%B7%A5%E5%85%B7/%E6%8A%8A%E6%97%B6%E9%97%B4%E5%BD%93%E4%BD%9C%E6%9C%8B%E5%8F%8B01/">把时间当作朋友01</a>
     </h1>
   
 
-        
-        <a href="/2022/02/03/pat_basic/pat_basic_1054/" class="archive-article-date">
-  	<time datetime="2022-02-03T09:37:40.547Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本题的基本要求非常简单：给定 <em>N</em> 个实数，计算它们的平均值。但复杂的是有些输入数据可能是非法的。一个“合法”的输入是 [−1000,1000] 区间内的实数，并且最多精确到小数点后 2 位。当你计算平均值的时候，不能把那些非法的数据算在内。</p>
-<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
-<p>输入第一行给出正整数 <em>N</em>（≤100）。随后一行给出 <em>N</em> 个实数，数字间以一个空格分隔。</p>
-<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
-<p>对每个非法输入，在一行中输出 <code>ERROR: X is not a legal number</code>，其中 <code>X</code> 是输入。最后在一行中输出结果：<code>The average of K numbers is Y</code>，其中 <code>K</code> 是合法输入的个数，<code>Y</code> 是它们的平均值，精确到小数点后 2 位。如果平均值无法计算，则用 <code>Undefined</code> 替换 <code>Y</code>。如果 <code>K</code> 为 1，则输出 <code>The average of 1 number is Y</code>。</p>
-<h4 id="输入样例-1"><a class="markdownIt-Anchor" href="#输入样例-1"></a> 输入样例 1：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">7</span></span><br><span class="line"><span class="number">5</span> <span class="number">-3.2</span> aaa <span class="number">9999</span> <span class="number">2.3</span><span class="number">.4</span> <span class="number">7.123</span> <span class="number">2.35</span></span><br></pre></td></tr></table></figure>
-<h4 id="输出样例-1"><a class="markdownIt-Anchor" href="#输出样例-1"></a> 输出样例 1：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ERROR: aaa is <span class="keyword">not</span> a legal number</span><br><span class="line">ERROR: <span class="number">9999</span> is <span class="keyword">not</span> a legal number</span><br><span class="line">ERROR: <span class="number">2.3</span><span class="number">.4</span> is <span class="keyword">not</span> a legal number</span><br><span class="line">ERROR: <span class="number">7.123</span> is <span class="keyword">not</span> a legal number</span><br><span class="line">The average of <span class="number">3</span> numbers is <span class="number">1.38</span></span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2022/02/03/pat_basic/pat_basic_1054/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">自我发展</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
+        			<a href="/categories/自我发展//" class="article-tag-list-link color5">自我发展</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/02/03/pat_basic/pat_basic_1054/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
-    <article id="post-pat_basic/pat_basic_1053" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+    </div></section>
+  
+
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/02/pat_basic/pat_basic_1053/">PAT_Basic_1053 住房空置率</a>
-    </h1>
-  
-
-        
-        <a href="/2022/02/02/pat_basic/pat_basic_1053/" class="archive-article-date">
-  	<time datetime="2022-02-02T11:24:38.690Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在不打扰居民的前提下，统计住房空置率的一种方法是根据每户用电量的连续变化规律进行判断。判断方法如下：</p>
-<ul>
-<li>在观察期内，若存在超过一半的日子用电量低于某给定的阈值 <em>e</em>，则该住房为“可能空置”；</li>
-<li>若观察期超过某给定阈值 <em>D</em> 天，且满足上一个条件，则该住房为“空置”。</li>
-</ul>
-<p>现给定某居民区的住户用电量数据，请你统计“可能空置”的比率和“空置”比率，即以上两种状态的住房占居民区住房总套数的百分比。</p>
-<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
-<p>输入第一行给出正整数 <em>N</em>（≤1000），为居民区住房总套数；正实数 <em>e</em>，即低电量阈值；正整数 <em>D</em>，即观察期阈值。随后 <em>N</em> 行，每行按以下格式给出一套住房的用电量数据：</p>
-<p><em>K</em> <em>E</em>1 <em>E</em>2 … <em>E**K</em></p>
-<p>其中 <em>K</em> 为观察的天数，<em>E**i</em> 为第 <em>i</em> 天的用电量。</p>
-<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
-<p>在一行中输出“可能空置”的比率和“空置”比率的百分比值，其间以一个空格分隔，保留小数点后 1 位。</p>
-<h4 id="输入样例"><a class="markdownIt-Anchor" href="#输入样例"></a> 输入样例：</h4>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span> <span class="number">0.5</span> <span class="number">10</span></span><br><span class="line"><span class="number">6</span> <span class="number">0.3</span> <span class="number">0.4</span> <span class="number">0.5</span> <span class="number">0.2</span> <span class="number">0.8</span> <span class="number">0.6</span></span><br><span class="line"><span class="number">10</span> <span class="number">0.0</span> <span class="number">0.1</span> <span class="number">0.2</span> <span class="number">0.3</span> <span class="number">0.0</span> <span class="number">0.8</span> <span class="number">0.6</span> <span class="number">0.7</span> <span class="number">0.0</span> <span class="number">0.5</span></span><br><span class="line"><span class="number">5</span> <span class="number">0.4</span> <span class="number">0.3</span> <span class="number">0.5</span> <span class="number">0.1</span> <span class="number">0.7</span></span><br><span class="line"><span class="number">11</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span></span><br><span class="line"><span class="number">11</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0.1</span> <span class="number">1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span> <span class="number">0.1</span></span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2022/02/02/pat_basic/pat_basic_1053/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/02/02/pat_basic/pat_basic_1053/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-pat_basic/pat_basic_1052" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/02/pat_basic/pat_basic_1052/">PAT_Basic_1052 卖个萌</a>
-    </h1>
-  
-
-        
-        <a href="/2022/02/02/pat_basic/pat_basic_1052/" class="archive-article-date">
-  	<time datetime="2022-02-02T10:05:35.263Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>萌萌哒表情符号通常由“手”、“眼”、“口”三个主要部分组成。简单起见，我们假设一个表情符号是按下列格式输出的：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[左手]([左眼][口][右眼])[右手]</span><br></pre></td></tr></table></figure>
-<p>现给出可选用的符号集合，请你按用户的要求输出表情。</p>
-<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
-<p>输入首先在前三行顺序对应给出手、眼、口的可选符号集。每个符号括在一对方括号 <code>[]</code>内。题目保证每个集合都至少有一个符号，并不超过 10 个符号；每个符号包含 1 到 4 个非空字符。</p>
-<p>之后一行给出一个正整数 K，为用户请求的个数。随后 K 行，每行给出一个用户的符号选择，顺序为左手、左眼、口、右眼、右手——这里只给出符号在相应集合中的序号（从 1 开始），数字间以空格分隔。</p>
-<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
-<p>对每个用户请求，在一行中输出生成的表情。若用户选择的序号不存在，则输出 <code>Are you kidding me? @\/@</code>。</p>
-        
-          <a class="article-more-a" href="/2022/02/02/pat_basic/pat_basic_1052/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/02/02/pat_basic/pat_basic_1052/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-pat_basic/pat_basic_1051" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/01/pat_basic/pat_basic_1051/">PAT_Basic_1051 复数乘法</a>
-    </h1>
-  
-
-        
-        <a href="/2022/02/01/pat_basic/pat_basic_1051/" class="archive-article-date">
-  	<time datetime="2022-02-01T10:20:30.328Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>复数可以写成 (<em>A</em>+<em>B**i</em>) 的常规形式，其中 <em>A</em> 是实部，<em>B</em> 是虚部，<em>i</em> 是虚数单位，满足 <em>i</em>2=−1；也可以写成极坐标下的指数形式 (<em>R</em>×<em>e</em>(<em>P**i</em>))，其中 <em>R</em> 是复数模，<em>P</em> 是辐角，<em>i</em> 是虚数单位，其等价于三角形式 <em>R</em>(cos(<em>P</em>)+<em>i</em>sin(<em>P</em>))。</p>
-<p>现给定两个复数的 <em>R</em> 和 <em>P</em>，要求输出两数乘积的常规形式。</p>
-<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h4>
-<p>输入在一行中依次给出两个复数的 <em>R</em>1, <em>P</em>1, <em>R</em>2, <em>P</em>2，数字间以空格分隔。</p>
-<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h4>
-<p>在一行中按照 <code>A+Bi</code> 的格式输出两数乘积的常规形式，实部和虚部均保留 2 位小数。注意：如果 <code>B</code> 是负数，则应该写成 <code>A-|B|i</code> 的形式。</p>
-<h4 id="输入样例"><a class="markdownIt-Anchor" href="#输入样例"></a> 输入样例：</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2.3 3.5 5.2 0.4</span><br></pre></td></tr></table></figure>
-<h4 id="输出样例"><a class="markdownIt-Anchor" href="#输出样例"></a> 输出样例：</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-8.68-8.23i</span><br></pre></td></tr></table></figure>
-<h4 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路：</h4>
-        
-          <a class="article-more-a" href="/2022/02/01/pat_basic/pat_basic_1051/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PAT-Basic-Level-Practice//" class="article-tag-list-link color2">PAT (Basic Level) Practice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/02/01/pat_basic/pat_basic_1051/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/17/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/">35</a><a class="extend next" rel="next" href="/page/19/">Next &amp;raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -664,11 +282,11 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
 		isArchive: false,
 		isTag: false,
-		isCategory: false,
+		isCategory: true,
 		open_in_new: false,
 		toc_hide_index: true,
 		root: "/",
